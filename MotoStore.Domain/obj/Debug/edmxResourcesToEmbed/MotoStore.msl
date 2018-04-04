@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MotoStoreDBModelContainer" CdmEntityContainer="MotoStoreDBEntities">
+    <EntitySetMapping Name="Moto_photos">
+      <EntityTypeMapping TypeName="MotoStoreDBModel.Moto_photos">
+        <MappingFragment StoreEntitySet="Moto_photos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_moto" ColumnName="id_moto" />
+          <ScalarProperty Name="photo_url" ColumnName="photo_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Motorcycles">
+      <EntityTypeMapping TypeName="MotoStoreDBModel.Motorcycle">
+        <MappingFragment StoreEntitySet="Motorcycle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="make" ColumnName="make" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="year_of_issue" ColumnName="year_of_issue" />
+          <ScalarProperty Name="engine_capacity" ColumnName="engine_capacity" />
+          <ScalarProperty Name="number_of_cilindrs" ColumnName="number_of_cilindrs" />
+          <ScalarProperty Name="isABS" ColumnName="isABS" />
+          <ScalarProperty Name="isElectrostarter" ColumnName="isElectrostarter" />
+          <ScalarProperty Name="isCruizeControl" ColumnName="isCruizeControl" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="number_of_models" ColumnName="number_of_models" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="MotoStoreDBModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_moto" ColumnName="id_moto" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shop_information">
+      <EntityTypeMapping TypeName="MotoStoreDBModel.Shop_information">
+        <MappingFragment StoreEntitySet="Shop_information">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="phone_1" ColumnName="phone_1" />
+          <ScalarProperty Name="phone_2" ColumnName="phone_2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MotoStoreDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="e_mail" ColumnName="e-mail" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="date_registration" ColumnName="date_registration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

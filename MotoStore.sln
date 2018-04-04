@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoStore.Domain", "MotoStore.Domain\MotoStore.Domain.csproj", "{746E91EE-3441-445E-A1B0-5E6AAFE39168}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoStore.WebUI", "MotoStore.WebUI\MotoStore.WebUI.csproj", "{3F9A5F00-8CEC-4B54-B370-FC845823411A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{746E91EE-3441-445E-A1B0-5E6AAFE39168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746E91EE-3441-445E-A1B0-5E6AAFE39168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746E91EE-3441-445E-A1B0-5E6AAFE39168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746E91EE-3441-445E-A1B0-5E6AAFE39168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F9A5F00-8CEC-4B54-B370-FC845823411A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F9A5F00-8CEC-4B54-B370-FC845823411A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F9A5F00-8CEC-4B54-B370-FC845823411A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F9A5F00-8CEC-4B54-B370-FC845823411A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC3C30D1-A4F2-419D-B144-84F8E4551571}
+	EndGlobalSection
+EndGlobal

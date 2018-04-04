@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MotoStoreDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Moto_photos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_moto" Type="int" Nullable="false" />
+          <Property Name="photo_url" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Motorcycle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="make" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="year_of_issue" Type="int" Nullable="false" />
+          <Property Name="engine_capacity" Type="float" Nullable="false" />
+          <Property Name="number_of_cilindrs" Type="int" Nullable="false" />
+          <Property Name="isABS" Type="bit" Nullable="false" />
+          <Property Name="isElectrostarter" Type="bit" Nullable="false" />
+          <Property Name="isCruizeControl" Type="bit" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="number_of_models" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_moto" Type="int" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="id_shop" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shop_information">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_1" Type="varchar" MaxLength="50" />
+          <Property Name="phone_2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="e-mail" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="date_registration" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Moto_photos_Moto">
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Moto_photos" Type="Self.Moto_photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motorcycle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Moto_photos">
+              <PropertyRef Name="id_moto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_ToMotorcycle">
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motorcycle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_moto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_ToShop">
+          <End Role="Shop_information" Type="Self.Shop_information" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop_information">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_shop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_ToUsers">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MotoStoreDBModelContainer">
+          <EntitySet Name="Moto_photos" EntityType="Self.Moto_photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Motorcycle" EntityType="Self.Motorcycle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shop_information" EntityType="Self.Shop_information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Moto_photos_Moto" Association="Self.FK_Moto_photos_Moto">
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+            <End Role="Moto_photos" EntitySet="Moto_photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToMotorcycle" Association="Self.FK_Orders_ToMotorcycle">
+            <End Role="Motorcycle" EntitySet="Motorcycle" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToShop" Association="Self.FK_Orders_ToShop">
+            <End Role="Shop_information" EntitySet="Shop_information" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToUsers" Association="Self.FK_Orders_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MotoStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Moto_photos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_moto" Type="Int32" Nullable="false" />
+          <Property Name="photo_url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Motorcycle" Relationship="Self.FK_Moto_photos_Moto" FromRole="Moto_photos" ToRole="Motorcycle" />
+        </EntityType>
+        <EntityType Name="Motorcycle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="year_of_issue" Type="Int32" Nullable="false" />
+          <Property Name="engine_capacity" Type="Double" Nullable="false" />
+          <Property Name="number_of_cilindrs" Type="Int32" Nullable="false" />
+          <Property Name="isABS" Type="Boolean" Nullable="false" />
+          <Property Name="isElectrostarter" Type="Boolean" Nullable="false" />
+          <Property Name="isCruizeControl" Type="Boolean" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="number_of_models" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Moto_photos" Relationship="Self.FK_Moto_photos_Moto" FromRole="Motorcycle" ToRole="Moto_photos" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToMotorcycle" FromRole="Motorcycle" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_moto" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_shop" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Motorcycle" Relationship="Self.FK_Orders_ToMotorcycle" FromRole="Orders" ToRole="Motorcycle" />
+          <NavigationProperty Name="Shop_information" Relationship="Self.FK_Orders_ToShop" FromRole="Orders" ToRole="Shop_information" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Orders_ToUsers" FromRole="Orders" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Shop_information">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToShop" FromRole="Shop_information" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_registration" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToUsers" FromRole="Users" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK_Moto_photos_Moto">
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Moto_photos" Type="Self.Moto_photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motorcycle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Moto_photos">
+              <PropertyRef Name="id_moto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_ToMotorcycle">
+          <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motorcycle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_moto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_ToShop">
+          <End Role="Shop_information" Type="Self.Shop_information" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop_information">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_shop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_ToUsers">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MotoStoreDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Moto_photos" EntityType="Self.Moto_photos" />
+          <EntitySet Name="Motorcycles" EntityType="Self.Motorcycle" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Shop_information" EntityType="Self.Shop_information" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Moto_photos_Moto" Association="Self.FK_Moto_photos_Moto">
+            <End Role="Motorcycle" EntitySet="Motorcycles" />
+            <End Role="Moto_photos" EntitySet="Moto_photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToMotorcycle" Association="Self.FK_Orders_ToMotorcycle">
+            <End Role="Motorcycle" EntitySet="Motorcycles" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToShop" Association="Self.FK_Orders_ToShop">
+            <End Role="Shop_information" EntitySet="Shop_information" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_ToUsers" Association="Self.FK_Orders_ToUsers">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MotoStoreDBModelContainer" CdmEntityContainer="MotoStoreDBEntities">
+          <EntitySetMapping Name="Moto_photos">
+            <EntityTypeMapping TypeName="MotoStoreDBModel.Moto_photos">
+              <MappingFragment StoreEntitySet="Moto_photos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="id_moto" ColumnName="id_moto" />
+                <ScalarProperty Name="photo_url" ColumnName="photo_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Motorcycles">
+            <EntityTypeMapping TypeName="MotoStoreDBModel.Motorcycle">
+              <MappingFragment StoreEntitySet="Motorcycle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="make" ColumnName="make" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="year_of_issue" ColumnName="year_of_issue" />
+                <ScalarProperty Name="engine_capacity" ColumnName="engine_capacity" />
+                <ScalarProperty Name="number_of_cilindrs" ColumnName="number_of_cilindrs" />
+                <ScalarProperty Name="isABS" ColumnName="isABS" />
+                <ScalarProperty Name="isElectrostarter" ColumnName="isElectrostarter" />
+                <ScalarProperty Name="isCruizeControl" ColumnName="isCruizeControl" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="number_of_models" ColumnName="number_of_models" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="MotoStoreDBModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="id_moto" ColumnName="id_moto" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shop_information">
+            <EntityTypeMapping TypeName="MotoStoreDBModel.Shop_information">
+              <MappingFragment StoreEntitySet="Shop_information">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="phone_1" ColumnName="phone_1" />
+                <ScalarProperty Name="phone_2" ColumnName="phone_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MotoStoreDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="e_mail" ColumnName="e-mail" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="date_registration" ColumnName="date_registration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
