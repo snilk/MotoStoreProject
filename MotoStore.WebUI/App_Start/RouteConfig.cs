@@ -15,9 +15,12 @@ namespace MotoStore.WebUI
 
             routes.MapRoute(
                 name: "",
-                url: "{controller}/{action}/{id}",
+                url: "{action}/{id}",//{controller}/
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+           
         }
     }
-}
+
+    }
+

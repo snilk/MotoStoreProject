@@ -13,5 +13,15 @@ namespace MotoStore.WebUI.Controllers
         {
             return View();
         }
+        public JsonResult getUniqCategories()
+        {
+            var category = new[]
+            {
+                new{name="Yamaha"},
+                new{name="Java"},
+                new{name="Ig"}
+            };
+           return Json(category,JsonRequestBehavior.AllowGet);
+        } 
     }
 }

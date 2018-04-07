@@ -30,7 +30,7 @@ D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\ru\System.Web.Webpages.Razor.resources.dll
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\ru\System.Web.Helpers.resources.dll
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\ru\System.Web.Mvc.resources.dll
-D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csprojResolveAssemblyReference.cache
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csproj.CoreCompileInputs.cache
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.dll
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.pdb
+D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csprojResolveAssemblyReference.cache
