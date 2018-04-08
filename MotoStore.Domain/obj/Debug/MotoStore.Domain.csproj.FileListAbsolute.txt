@@ -1,6 +1,5 @@
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\bin\Debug\MotoStore.Domain.dll
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\bin\Debug\MotoStore.Domain.pdb
-D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csprojResolveAssemblyReference.cache
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csproj.CoreCompileInputs.cache
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.dll
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.pdb
