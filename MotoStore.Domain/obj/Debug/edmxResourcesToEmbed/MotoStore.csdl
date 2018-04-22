@@ -27,6 +27,7 @@
     <Property Name="price" Type="Double" Nullable="false" />
     <NavigationProperty Name="Moto_photos" Relationship="Self.FK_Moto_photos_Moto" FromRole="Motorcycle" ToRole="Moto_photos" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToMotorcycle" FromRole="Motorcycle" ToRole="Orders" />
+    <Property Name="main_photo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -40,6 +41,7 @@
     <NavigationProperty Name="Motorcycle" Relationship="Self.FK_Orders_ToMotorcycle" FromRole="Orders" ToRole="Motorcycle" />
     <NavigationProperty Name="Shop_information" Relationship="Self.FK_Orders_ToShop" FromRole="Orders" ToRole="Shop_information" />
     <NavigationProperty Name="User" Relationship="Self.FK_Orders_ToUsers" FromRole="Orders" ToRole="Users" />
+    <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Shop_information">
     <Key>
@@ -58,12 +60,13 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="date_registration" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_ToUsers" FromRole="Users" ToRole="Orders" />
+    <Property Name="role" Type="Boolean" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Moto_photos_Moto">
     <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">

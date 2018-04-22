@@ -15,10 +15,24 @@ namespace MotoStore.WebUI
 
             routes.MapRoute(
                 name: "",
-                url: "{action}/{id}",//{controller}
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "Products/{action}/{makeForList}/{id}",//{controller}
+                defaults: new { controller = "Products", action = "Motorcycles",id=0,makeForList="All"}
             );
-           
+            routes.MapRoute(
+                name: "",
+                url: "Account/{action}",//{controller}
+                defaults: new { controller = "Account" }
+            );
+           // routes.MapRoute(
+           //    name: "",
+           //    url: "{controller}/{action}",//{controller}
+           //    defaults: new { controller = "Home", action="Index" }
+           //);
+            routes.MapRoute(
+            name: "",
+            url: "{*url}",//{controller}{controller}/{action}
+            defaults: new { controller = "Home", action = "Index" }
+        );
         }
     }
 

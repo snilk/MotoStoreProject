@@ -37,3 +37,5 @@ D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\MotoStore.Domain.dll
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\MotoStore.Domain.pdb
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\MotoStore.Domain.dll.config
+D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\System.Web.Http.dll
+D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.WebUI\bin\System.Web.Http.xml

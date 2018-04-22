@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="99f193042df24dc197a05d2cfbb1db0b" Name="Diagram1">
-        <EntityTypeShape EntityType="MotoStoreDBModel.Moto_photos" Width="1.5" PointX="0.875" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MotoStoreDBModel.Motorcycle" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MotoStoreDBModel.Order" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MotoStoreDBModel.Moto_photos" Width="1.5" PointX="0.625" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MotoStoreDBModel.Motorcycle" Width="1.5" PointX="3.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MotoStoreDBModel.Order" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MotoStoreDBModel.Shop_information" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MotoStoreDBModel.User" Width="1.5" PointX="8.625" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="MotoStoreDBModel.FK_Moto_photos_Moto" ManuallyRouted="false" />

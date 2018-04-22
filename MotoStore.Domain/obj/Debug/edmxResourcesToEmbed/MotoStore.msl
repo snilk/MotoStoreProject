@@ -13,6 +13,7 @@
     <EntitySetMapping Name="Motorcycles">
       <EntityTypeMapping TypeName="MotoStoreDBModel.Motorcycle">
         <MappingFragment StoreEntitySet="Motorcycle">
+          <ScalarProperty Name="main_photo" ColumnName="main_photo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="make" ColumnName="make" />
           <ScalarProperty Name="type" ColumnName="type" />
@@ -31,6 +32,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="MotoStoreDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="adress" ColumnName="adress" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="id_moto" ColumnName="id_moto" />
           <ScalarProperty Name="id_user" ColumnName="id_user" />
@@ -52,12 +54,13 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="MotoStoreDBModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="role" ColumnName="role" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="surname" ColumnName="surname" />
-          <ScalarProperty Name="e_mail" ColumnName="e-mail" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="date_registration" ColumnName="date_registration" />
         </MappingFragment>

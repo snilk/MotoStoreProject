@@ -24,6 +24,7 @@
     <Property Name="description" Type="varchar" MaxLength="500" />
     <Property Name="number_of_models" Type="int" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="main_photo" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -33,6 +34,7 @@
     <Property Name="id_moto" Type="int" Nullable="false" />
     <Property Name="id_user" Type="int" Nullable="false" />
     <Property Name="id_shop" Type="int" Nullable="false" />
+    <Property Name="adress" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Shop_information">
@@ -51,11 +53,12 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
-    <Property Name="surname" Type="varchar" MaxLength="50" />
-    <Property Name="e-mail" Type="varchar" MaxLength="50" />
-    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="date_registration" Type="datetime" Nullable="false" />
+    <Property Name="role" Type="bit" />
   </EntityType>
   <Association Name="FK_Moto_photos_Moto">
     <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">

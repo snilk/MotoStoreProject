@@ -33,6 +33,7 @@ namespace MotoStore.Domain
         public string description { get; set; }
         public int number_of_models { get; set; }
         public double price { get; set; }
+        public string main_photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Moto_photos> Moto_photos { get; set; }

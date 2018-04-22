@@ -19,6 +19,7 @@ namespace MotoStore.Domain
         public int id_user { get; set; }
         public int id_shop { get; set; }
         public bool status { get; set; }
+        public string adress { get; set; }
     
         public virtual Motorcycle Motorcycle { get; set; }
         public virtual Shop_information Shop_information { get; set; }

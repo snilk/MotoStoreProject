@@ -21,3 +21,4 @@ D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\bi
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\bin\Debug\System.Web.WebPages.xml
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+D:\универ\6 сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csprojResolveAssemblyReference.cache

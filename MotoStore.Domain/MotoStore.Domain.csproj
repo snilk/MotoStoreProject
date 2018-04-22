@@ -70,6 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManipulations\MotoGroup.cs" />
+    <Compile Include="DataManipulations\OrderOperations.cs" />
+    <Compile Include="DataManipulations\UserForAuthorization.cs" />
+    <Compile Include="DataManipulations\UserTokenRole.cs" />
     <Compile Include="Motorcycle.cs">
       <DependentUpon>MotoStore.tt</DependentUpon>
     </Compile>
@@ -95,6 +99,8 @@
       <DependentUpon>MotoStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataManipulations\ShopInformation.cs" />
+    <Compile Include="DataManipulations\UsersOperations.cs" />
     <Compile Include="Shop_information.cs">
       <DependentUpon>MotoStore.tt</DependentUpon>
     </Compile>
@@ -103,7 +109,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="MotoStore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MotoStore.Designer.cs</LastGenOutput>
