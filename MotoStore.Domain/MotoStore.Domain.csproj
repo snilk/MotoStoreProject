@@ -72,8 +72,9 @@
   <ItemGroup>
     <Compile Include="DataManipulations\MotoGroup.cs" />
     <Compile Include="DataManipulations\OrderOperations.cs" />
-    <Compile Include="DataManipulations\UserForAuthorization.cs" />
-    <Compile Include="DataManipulations\UserTokenRole.cs" />
+    <Compile Include="InterData\OrderInfo.cs" />
+    <Compile Include="InterData\UserForAuthorization.cs" />
+    <Compile Include="InterData\UserTokenRole.cs" />
     <Compile Include="Motorcycle.cs">
       <DependentUpon>MotoStore.tt</DependentUpon>
     </Compile>

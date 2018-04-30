@@ -40,6 +40,15 @@ namespace MotoStore.WebUI.Controllers
             //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(new { isCorrectToken = UsersOperations.checkUserByToken(token) }));
             return Json(new { isCorrectToken=UsersOperations.checkUserByToken(token) },JsonRequestBehavior.AllowGet);
         }
+        public JsonResult EnterAccount(string token)
+        {
+          //  string filepath = @"D:\универ\6_сем\бибд курсовой\MotoStore\JsonFIles\json" + "responseAfterEnterAccount" + ".json";
+          //  System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(UsersOperations.getAccountInformation(token)));
+          //  string filepath1 = @"D:\универ\6_сем\бибд курсовой\MotoStore\JsonFIles\json" + "responseAfterAddNewOrder" + ".json";
+          //  bool s = false;
+          //  System.IO.File.WriteAllText(filepath1, JsonConvert.SerializeObject(new { isCorrectOrder =s  }));
+            return Json(UsersOperations.getAccountInformation(token), JsonRequestBehavior.AllowGet);
+        }
         //public JsonResult Authorization()
         //{
         //    string token=

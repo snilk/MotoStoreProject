@@ -154,6 +154,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,6 +185,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Help\" />
+    <Folder Include="Views\Order\" />
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>

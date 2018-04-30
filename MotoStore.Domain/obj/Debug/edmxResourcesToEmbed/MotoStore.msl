@@ -32,6 +32,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="MotoStoreDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="date_compose" ColumnName="date_compose" />
           <ScalarProperty Name="adress" ColumnName="adress" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="id_moto" ColumnName="id_moto" />

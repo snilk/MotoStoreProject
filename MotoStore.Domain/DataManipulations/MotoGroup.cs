@@ -67,6 +67,7 @@ namespace MotoStore.Domain
                                   m.main_photo,
                                   photos = photoForSingleMoto
                               }).ToArray();
+            
             return singleMoto;
         }
         public static Array getUniqCategories()

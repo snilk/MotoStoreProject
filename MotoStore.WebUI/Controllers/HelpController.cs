@@ -112,6 +112,34 @@ namespace MotoStore.WebUI.Controllers
             System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(allMoto));
             return Json("success", JsonRequestBehavior.AllowGet);
         }
+        public JsonResult updateHarley()
+        {
+            MotoStoreDBEntities context = new MotoStoreDBEntities();
+            foreach (Motorcycle moto in context.Motorcycles)
+            {
+                if (moto.make == "Harly-Davidson") moto.make = "Harley-Davidson";
+            }
+            context.SaveChanges();
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult updateTables()
+        {
+            MotoStoreDBEntities context = new MotoStoreDBEntities();
+            int i = 0;
+            foreach (Motorcycle moto in context.Motorcycles)
+            {
+                i = 1;
+                moto.main_photo = Convert.ToString(moto.Id) + "1";
+                foreach (Moto_photos photots in context.Moto_photos.Where(p=>p.id_moto==moto.Id))
+                {
+                    photots.photo_url = Convert.ToString(moto.Id) + i;
+                    i++;
+                }
+            }
+            context.SaveChanges();
+            return Json("Success",JsonRequestBehavior.AllowGet);
+           
+        }
         // GET: Help
         //public JsonResult fillMotoData()
         //{
@@ -144,6 +172,6 @@ namespace MotoStore.WebUI.Controllers
         //    Response.Write("Ending Writing");
         //    return Json(range,JsonRequestBehavior.AllowGet);
         //}
-     
+
     }
 }

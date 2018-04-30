@@ -36,6 +36,7 @@
     <Property Name="id_shop" Type="int" Nullable="false" />
     <Property Name="adress" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="date_compose" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Shop_information">
     <Key>

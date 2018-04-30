@@ -41,6 +41,7 @@
           <Property Name="id_shop" Type="int" Nullable="false" />
           <Property Name="adress" Type="varchar" MaxLength="50" />
           <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="date_compose" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Shop_information">
           <Key>
@@ -188,6 +189,7 @@
           <NavigationProperty Name="Shop_information" Relationship="Self.FK_Orders_ToShop" FromRole="Orders" ToRole="Shop_information" />
           <NavigationProperty Name="User" Relationship="Self.FK_Orders_ToUsers" FromRole="Orders" ToRole="Users" />
           <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_compose" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Shop_information">
           <Key>
@@ -328,6 +330,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="MotoStoreDBModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="date_compose" ColumnName="date_compose" />
                 <ScalarProperty Name="adress" ColumnName="adress" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="id_moto" ColumnName="id_moto" />

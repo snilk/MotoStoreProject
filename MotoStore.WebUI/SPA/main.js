@@ -91,7 +91,7 @@ angular
 
                 authService.register(user).then(function (res) {
                     if (res.data.success) {
-                        toastr.success('Success!', 'You are pedik');
+                        toastr.success('Success!', 'You are registrated');
                         $scope.registerUsername = '';
                         $scope.registerPassword = '';
                         $scope.registerName = '';
