@@ -1,4 +1,5 @@
 <div class="individual_container">
+    <span ng-click="openModal()" class="make_order_icon"></span>
     <div class="individual_main_info_container">
         <img class="individual_main_photo" ng-src="./SPA/image/{{moto.main_photo}}.jpg" alt="">
         <div class="individual_main_info">
@@ -34,7 +35,39 @@
         <h2 class="individual_desc_title">Additional description:</h2>
         <span class="individual_desc_content">{{moto.description}}</span>
     </div>
-    <div class="individual_order">
+</div>
 
+<div ng-show="isModalOpen" class="overlay">
+    <div class="modal_window">
+            <div class="make_order_header">
+                <span class="make_order_title">Make order</span>
+                <span ng-click="isModalOpen = false" class="close_modal"></span>
+            </div>
+            <section class="make_order_body">
+                <span class="modal_item">Name: {{orderInfo.name + " " + orderInfo.surname}}</span>
+                <span class="modal_item">E-mail: {{orderInfo.email}}</span>
+                <span class="modal_item">Phone: {{orderInfo.phone}}</span>
+                <span class="modal_item">Moto make: {{moto.make}}</span>
+                <span class="modal_item">Moto type: {{moto.type}}</span>
+                <span class="modal_item">Moto price: {{moto.price}}$</span>
+                <div class="adress_container">
+                    <div class="adress_item">
+                        <span class="adress_item_title">Delivery: </span>
+                        <input type="checkbox" class="styled-checkbox" id="styled-checkbox-1" ng-model="isPickup" ng-click="isDelivery = false"/>
+                        <label for="styled-checkbox-1"></label>
+                        <input class="order_input" type="text" placeholder="Enter home adress" ng-show="isPickup" ng-model="homeAdress"/>
+                    </div>
+                    <div class="adress_item">
+                        <span class="adress_item_title">Pickup: </span>
+                        <input type="checkbox" class="styled-checkbox" id="styled-checkbox-2" ng-click="isPickup = false" ng-model="isDelivery" />
+                        <label for="styled-checkbox-2"></label>
+                        <select name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
+                            <option ng-repeat="option in orderInfo.shops" value="{{option.Id}}">{{option.adress}}</option>
+                        </select>
+                    </div>
+                </div>
+                <p>{{error}}</p>
+                <button class="make_order_btn" ng-click="makeOrder(isPickup, isDelivery, data.singleSelect, homeAdress)">Make Order</button>
+            </section>
     </div>
 </div>

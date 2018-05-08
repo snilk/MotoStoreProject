@@ -17,5 +17,6 @@ namespace MotoStore.WebUI.Controllers
               System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(ShopInformation.getShopInformation()));
             return Json(ShopInformation.getShopInformation(),JsonRequestBehavior.AllowGet);
         }
+     
     }
 }

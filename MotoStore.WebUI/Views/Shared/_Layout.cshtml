@@ -69,7 +69,7 @@
     </div>
     <header>
         <button class="sign_out" ng-click="logOut()" ng-show="isAuthorizated">Sign out</button>
-        <button class="sign_in" ng-click="toggleLogIn()">Sign in</button>
+        <button class="sign_in" ng-click="toggleLogIn()">{{isAuthorizated ? 'Profile' : 'Sign in'}}</button>
     </header>
     <div class="wrapper">
         <nav class="list_category">
@@ -118,13 +118,17 @@
     <script src="~/SPA/common/common.js"></script>
     <script src="~/SPA/common/service/categoriesService.js"></script>
     <script src="~/SPA/common/service/registerService.js"></script>
+    <script src="~/SPA/common/filter/dateFilter.js"></script>
     <script src="~/SPA/categories/categories.js"></script>
     <script src="~/SPA/categories/controller/categoriesController.js"></script>
     <script src="~/SPA/categories/service/motoByCategoriesService.js"></script>
     <script src="~/SPA/individual/individual.js"></script>
     <script src="~/SPA/individual/controller/individualController.js"></script>
     <script src="~/SPA/individual/service/motoService.js"></script>
-
+    <script src="~/SPA/individual/service/orderService.js"></script>
+    <script src="~/SPA/profile/profile.js"></script>
+    <script src="~/SPA/profile/controller/profileController.js"></script>
+    <script src="~/SPA/profile/service/userService.js"></script>
 
 
 </body>

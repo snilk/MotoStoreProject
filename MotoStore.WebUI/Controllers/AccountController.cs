@@ -40,6 +40,7 @@ namespace MotoStore.WebUI.Controllers
             //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(new { isCorrectToken = UsersOperations.checkUserByToken(token) }));
             return Json(new { isCorrectToken=UsersOperations.checkUserByToken(token) },JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public JsonResult EnterAccount(string token)
         {
           //  string filepath = @"D:\универ\6_сем\бибд курсовой\MotoStore\JsonFIles\json" + "responseAfterEnterAccount" + ".json";

@@ -100,6 +100,11 @@ namespace MotoStore.Domain
                                u.date_registration,
                                orders = orderInfo
                            }).ToArray();
+            
+            foreach (var item in userAndOrdersInfo)
+            {
+                   
+            }
             return userAndOrdersInfo;
         }
     }

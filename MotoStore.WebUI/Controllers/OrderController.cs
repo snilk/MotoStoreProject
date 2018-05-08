@@ -12,6 +12,7 @@ namespace MotoStore.WebUI.Controllers
     public class OrderController : Controller
     {
         // GET: Order
+        [HttpPost]
         public JsonResult OrderInterCompose (string token)
         {
             Array orderInfo = OrderOperations.GetOrderForComposeByToken(token);
@@ -23,12 +24,13 @@ namespace MotoStore.WebUI.Controllers
             //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(orderInfo));
             return Json(orderInfo,JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public JsonResult OrderCompose(OrderInfo order)
         {
            // return Json(order, JsonRequestBehavior.AllowGet);
             if (order.idMoto==0||order.idShop==0||order.token==null) return Json(new { isCorrectOrders=false},JsonRequestBehavior.AllowGet);
             //return Json("False",JsonRequestBehavior.AllowGet);
-
+          
             return Json(new { isCorrectOrder=OrderOperations.addNewOrder(order)},JsonRequestBehavior.AllowGet);
         }
     }

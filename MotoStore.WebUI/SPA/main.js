@@ -5,6 +5,7 @@ angular
         "ui.router.state.events",
         "motoStoreCategories",
         "motoStoreIndividual",
+        "motoStoreProfile",
         'ngAnimate',
         'toastr'
     ])
@@ -68,7 +69,12 @@ angular
             })
 
             $scope.toggleLogIn = function () {
-                $scope.isLogInShow = !$scope.isLogInShow;
+                
+                if ($scope.isAuthorizated) {
+                    $state.go('profile');
+                } else {
+                    $scope.isLogInShow = !$scope.isLogInShow;
+                }
             };
 
             $scope.toggleAuthForm = function () {

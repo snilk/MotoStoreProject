@@ -42,8 +42,10 @@ namespace MotoStore.Domain.DataManipulations
                 ((context.Users.Where(x => x.Id ==(int)id)).FirstOrDefault()) == null) return false;
             Order order = new Order
             {
-                id_moto=orderInfo.idMoto,id_shop=orderInfo.idShop,id_user=(int)id,adress=orderInfo.adress,status=false
+                id_moto=orderInfo.idMoto,id_shop=orderInfo.idShop,id_user=(int)id,adress=orderInfo.adress,status=false,date_compose=DateTime.Now
             };
+            int[] p = new int[] { 1, 2, 3 };
+            
            context.Orders.Add(order);
             context.SaveChanges();
             return true;

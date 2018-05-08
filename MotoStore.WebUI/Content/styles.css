@@ -395,6 +395,7 @@ header {
       cursor: pointer; }
       .categories_wrapper .motos_container .moto_item .moto_img {
         width: 299px;
+        height: 200px;
         padding: 1px; }
       .categories_wrapper .motos_container .moto_item .moto_price {
         position: absolute;
@@ -458,8 +459,25 @@ header {
 .individual_container {
   max-width: 1300px;
   margin: 0 auto;
+  position: relative;
   display: flex;
   flex-direction: column; }
+
+    .individual_container .make_order_icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+        .individual_container .make_order_icon::after {
+            content: '\f291';
+            color: black;
+            font-size: 40px;
+            font-family: FontAwesome;
+            display: block;
+            cursor: pointer;
+        }
+
   .individual_container .individual_main_info_container {
     display: flex;
     font-family: proximanovaReg;
@@ -469,6 +487,11 @@ header {
       font-size: 24px;
       align-items: center;
       height: 300px; }
+    .individual_container .individual_main_info_container .individual_main_photo {
+        width: 300px;
+        height: 200px;
+        margin: 50px;
+    }
       .individual_container .individual_main_info_container .individual_main_info .individual_info {
         display: flex;
         flex-direction: column;
@@ -503,6 +526,121 @@ header {
       font-size: 25px;
       padding-top: 5px; }
 
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.overlay .modal_window {
+    min-height: 400px;
+    background: white;
+    font-family: 'proximanovaReg';
+    width: 600px;
+}
+
+.overlay .modal_window .make_order_header {
+    height: 70px;
+    border-bottom: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.overlay .modal_window .make_order_header .make_order_title {
+    font-size: 25px;
+}
+
+.overlay .modal_window .make_order_header .close_modal::after {
+    content: '\f00d';
+    font-family: FontAwesome;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.overlay .modal_window .make_order_body {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.overlay .modal_window .make_order_body .modal_item {
+    font-size: 18px;
+    margin: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.overlay .modal_window .make_order_body .adress_container {
+    font-size: 18px;
+    margin: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.overlay .modal_window .make_order_body .adress_container .adress_item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+.styled-checkbox + label:before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  background: grey;
+}
+.styled-checkbox:hover + label:before {
+  background: #f35429;
+}
+.styled-checkbox:focus + label:before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+.styled-checkbox:checked + label:before {
+  background: #f35429;
+}
+.styled-checkbox:disabled + label {
+  color: #b8b8b8;
+  cursor: auto;
+}
+.styled-checkbox:disabled + label:before {
+  box-shadow: none;
+  background: #ddd;
+}
+.styled-checkbox:checked + label:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 11px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+  transform: rotate(45deg);
+}
+
+
+.overlay .modal_window .make_order_body .adress_container .adress_item_title {
+    margin-right: 10px;
+}
 .arrow {
   cursor: pointer;
   display: block;
@@ -604,11 +742,6 @@ header {
   -moz-transition: 1s linear all;
   -o-transition: 1s linear all;
   transition: 1s linear all;
-  -webkit-transform: rotateX(50deg) rotateY(30deg);
-  -moz-transform: rotateX(50deg) rotateY(30deg);
-  -ms-transform: rotateX(50deg) rotateY(30deg);
-  -o-transform: rotateX(50deg) rotateY(30deg);
-  transform: rotateX(50deg) rotateY(30deg);
   -webkit-transform-origin: right top 0;
   -moz-transform-origin: right top 0;
   -ms-transform-origin: right top 0;
@@ -628,6 +761,52 @@ header {
 
 .slide, .slide.ng-hide-remove.ng-hide-remove-active {
   opacity: 1; }
+
+.user_profile {
+    display: flex;
+    width: 1000px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px auto;
+    font-family: 'proximanovaReg';
+}
+
+.user_profile .user_profile_info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.user_profile .user_profile_info .info_item {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.user_profile .user_profile_orders {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.user_profile .user_profile_orders .orders_list {
+    height: 400px;
+    overflow: auto;
+}
+
+.user_profile .user_profile_orders .orders_list .order_item {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.user_profile .user_profile_orders .orders_list .order_item:hover {
+    background-color: black;
+    color: white;
+}
+
 
 @font-face {
   font-family: 'proximanova';

@@ -117,6 +117,7 @@
     <Content Include="SPA\categories\service\motoByCategoriesService.js" />
     <Content Include="SPA\categories\template\categoriesTemplate.html" />
     <Content Include="SPA\common\common.js" />
+    <Content Include="SPA\common\filter\dateFilter.js" />
     <Content Include="SPA\common\service\categoriesService.js" />
     <Content Include="SPA\common\service\registerService.js" />
     <Content Include="SPA\image\mainp.jpg" />
@@ -125,6 +126,7 @@
     <Content Include="SPA\image\photomoto2.jpg" />
     <Content Include="SPA\individual\controller\individualController.js" />
     <Content Include="SPA\individual\individual.js" />
+    <Content Include="SPA\individual\service\orderService.js" />
     <Content Include="SPA\individual\service\motoService.js" />
     <Content Include="SPA\individual\template\individualTemplate.html" />
     <Content Include="SPA\lib\angular.min.js" />
@@ -145,6 +147,10 @@
     <Content Include="SPA\lib\smart-table.js" />
     <Content Include="SPA\lib\stateEvents.js" />
     <Content Include="SPA\main.js" />
+    <Content Include="SPA\profile\controller\profileController.js" />
+    <Content Include="SPA\profile\profile.js" />
+    <Content Include="SPA\profile\service\userService.js" />
+    <Content Include="SPA\profile\template\profileTemplate.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
