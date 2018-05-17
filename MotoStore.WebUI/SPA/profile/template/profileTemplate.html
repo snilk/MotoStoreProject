@@ -9,7 +9,7 @@
     <div class="user_profile_orders">
         <h2>{{user.orders.length ? 'Orders' : 'No Orders'}}</h2>
         <ul class="orders_list">
-            <li ng-click="goToMoto(order)" ng-repeat="order in user.orders" class="order_item">
+            <li ng-click="goToMoto(order)" ng-repeat="order in user.orders | orderBy:status:true" class="order_item">
                 <span class="order_info">Make: {{order.make}}</span>
                 <span class="order_info">Type: {{order.type}}</span>
                 <span class="order_info">Year of issue: {{order.year_of_issue}}</span>

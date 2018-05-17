@@ -33,6 +33,11 @@ namespace MotoStore.WebUI
              url: "Shop/{action}",//{controller}
              defaults: new { controller = "Shop" }
          );
+            routes.MapRoute(
+            name: "",
+            url: "Admin/{action}",//{controller}
+            defaults: new { controller = "Admin" }
+        );
             // routes.MapRoute(
             //    name: "",
             //    url: "{controller}/{action}",//{controller}

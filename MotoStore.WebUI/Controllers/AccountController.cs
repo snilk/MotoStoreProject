@@ -38,7 +38,7 @@ namespace MotoStore.WebUI.Controllers
             //token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NSIsIm5h1006bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0.LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
             //string filepath = @"D:\универ\6 сем\бибд курсовой\MotoStore\JsonFIles\json" + "responseAfterCheckingToken" + ".json";
             //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(new { isCorrectToken = UsersOperations.checkUserByToken(token) }));
-            return Json(new { isCorrectToken=UsersOperations.checkUserByToken(token) },JsonRequestBehavior.AllowGet);
+            return Json(UsersOperations.checkUserByToken(token) ,JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult EnterAccount(string token)
@@ -50,6 +50,13 @@ namespace MotoStore.WebUI.Controllers
           //  System.IO.File.WriteAllText(filepath1, JsonConvert.SerializeObject(new { isCorrectOrder =s  }));
             return Json(UsersOperations.getAccountInformation(token), JsonRequestBehavior.AllowGet);
         }
+        //public JsonResult Testing()
+        //{
+        //    MotoStoreDBEntities context = new MotoStoreDBEntities();
+           
+                     
+        //    return Json(ob, JsonRequestBehavior.AllowGet);
+        //}
         //public JsonResult Authorization()
         //{
         //    string token=

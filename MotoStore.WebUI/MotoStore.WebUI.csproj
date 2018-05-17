@@ -112,13 +112,20 @@
     <Content Include="Content\styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="SPA\admin\admin.js" />
+    <Content Include="SPA\admin\controller\adminController.js" />
+    <Content Include="SPA\admin\service\adminService.js" />
+    <Content Include="SPA\admin\template\adminTemplate.html" />
+    <Content Include="SPA\admin\template\editTemplate.html" />
     <Content Include="SPA\categories\categories.js" />
     <Content Include="SPA\categories\controller\categoriesController.js" />
     <Content Include="SPA\categories\service\motoByCategoriesService.js" />
     <Content Include="SPA\categories\template\categoriesTemplate.html" />
     <Content Include="SPA\common\common.js" />
+    <Content Include="SPA\common\directive\range.js" />
     <Content Include="SPA\common\filter\dateFilter.js" />
     <Content Include="SPA\common\service\categoriesService.js" />
+    <Content Include="SPA\common\service\adressShops.js" />
     <Content Include="SPA\common\service\registerService.js" />
     <Content Include="SPA\image\mainp.jpg" />
     <Content Include="SPA\image\photomoto0.jpg" />
@@ -158,6 +165,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -190,6 +198,7 @@
     <Folder Include="Infrastructure\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Help\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\Products\" />

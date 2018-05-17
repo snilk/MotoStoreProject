@@ -26,6 +26,8 @@
              ng-mouseleave="hideInfoBtn(moto)">
             <img class="moto_img" ng-src="./SPA/image/{{moto.main_photo}}.jpg" alt="">
             <span class="moto_price">{{moto.price}}$</span>
+            <span class="moto_numbers">{{moto.number_of_models===0 ? 'Not in stock':''}}</span>
+
             <div class="moto_desc">
                 <span class="moto_desc_item make">{{moto.make}}</span>
                 <span class="moto_desc_item">Type: {{moto.type}}</span>

@@ -36,7 +36,7 @@ namespace MotoStore.Domain
             string keylast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
             return keystart + user.Id + keylast;
         }
-        public static bool checkUserByToken(string token)
+        public static object checkUserByToken(string token)
         {
             string keystart = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIxMjM0NSIsIm5h";
             string keylast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
@@ -51,7 +51,8 @@ namespace MotoStore.Domain
             }
             if (tokenId == null) return false;
             MotoStoreDBEntities context = new MotoStoreDBEntities();
-            return ((from u in context.Users where u.Id==tokenId select u).FirstOrDefault())!=null;
+            var roleAndCorrect = (from u in context.Users where u.Id == tokenId select new { u.role, isCorrectToken = true }).FirstOrDefault();
+            return roleAndCorrect;
         }
         public static int? getUserIdByToken(string token)
         {

@@ -19,24 +19,24 @@ namespace MotoStore.WebUI.Controllers
        // string randDescription = "Live to ride Ride to life";
         string[] randMake = { "Yamaha", "Jawa", "Izh", "BMW", "Harly-Davidson" };
 
-        //public JsonResult fillPhoto()
-        //{
-        //    MotoStoreDBEntities context = new MotoStoreDBEntities();
-        //    foreach (Motorcycle moto in context.Motorcycles)
-        //    {
-        //        for (int i = 0; i < 3; i++)
-        //        {
-        //            context.Moto_photos.Add(new Moto_photos
-        //            {
-        //                id_moto = moto.Id,
-        //                photo_url = string.Format("photomoto{0}",i)
-        //            });
-        //        }
-                
-        //    }
-        //    context.SaveChanges();
-        //    return Json("Success",JsonRequestBehavior.AllowGet);
-        //}
+        public JsonResult fillPhoto()
+        {
+            MotoStoreDBEntities context = new MotoStoreDBEntities();
+            foreach (Motorcycle moto in context.Motorcycles)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    context.Moto_photos.Add(new Moto_photos
+                    {
+                        id_moto = moto.Id,
+                        photo_url = string.Format("photomoto{0}", i)
+                    });
+                }
+
+            }
+            context.SaveChanges();
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
         public JsonResult allMotoByMake()
         {
                       
@@ -125,6 +125,7 @@ namespace MotoStore.WebUI.Controllers
         public JsonResult updateTables()
         {
             MotoStoreDBEntities context = new MotoStoreDBEntities();
+            
             int i = 0;
             foreach (Motorcycle moto in context.Motorcycles)
             {
@@ -170,7 +171,7 @@ namespace MotoStore.WebUI.Controllers
         //    context.Motorcycles.AddRange(range);
         //    context.SaveChanges();
         //    Response.Write("Ending Writing");
-        //    return Json(range,JsonRequestBehavior.AllowGet);
+        //    return Json(range, JsonRequestBehavior.AllowGet);
         //}
 
     }

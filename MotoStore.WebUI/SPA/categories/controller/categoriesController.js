@@ -25,7 +25,6 @@ angular.module("motoStoreCategories").controller("categoriesController", [
         $scope.$watch("currentPage + numPerPage", function () {
             var begin = ($scope.currentPage - 1) * $scope.numPerPage,
                 end = begin + $scope.numPerPage;
-
             $scope.filteredMotos = $scope.motos.slice(begin, end);
         });
     }

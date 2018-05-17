@@ -1,0 +1,97 @@
+﻿<md-dialog aria-label="Add moto">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add moto</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <span>Х</span>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Make</label>
+                    <md-select ng-model="make">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="make in makes" ng-value="make.make">
+                            {{make.make}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type</label>
+                    <md-select ng-model="type">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="type in types" ng-value="type">
+                            {{type}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type Year of Issue</label>
+                    <input ng-model="YearofIssue">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type Engine Capacity</label>
+                    <input ng-model="EngineCapacity">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type Number of Cilindrs</label>
+                    <input ng-model="NumberofCilindrs">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Is ABS</label>
+                    <md-select ng-model="isABS">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="item in [true, false]" ng-value="item">
+                            {{item}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Is Cruize Control</label>
+                    <md-select ng-model="isCruizeControl">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="item in [true, false]" ng-value="item">
+                            {{item}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Is Electrostarter</label>
+                    <md-select ng-model="isElectrostarter">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="item in [true, false]" ng-value="item">
+                            {{item}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type Description</label>
+                    <input ng-model="Description">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type Number of Models</label>
+                    <input ng-model="NumberofModels">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type Price</label>
+                    <input ng-model="Price">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="addMoto()">
+                Add Moto
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

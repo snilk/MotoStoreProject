@@ -1,0 +1,69 @@
+﻿<div class="admin_page">
+    <h2 class="admin_page_title">Admin Page</h2>
+    <div class="admin_data_container">
+        <div class="admin_order">
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                    <span>Orders</span>
+                </h2>
+            </md-toolbar>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Type Order Surname</label>
+                <input ng-model="orderFind">
+            </md-input-container>
+            <md-content>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="order in adminData.orders |orderBy:'status' | filter:{ surname: orderFind }">
+                        <div class="md-list-item-text">
+                            <p class="admin_item">MotoId: {{order.motoId}}</p>
+                            <p class="admin_item">Name: {{order.name}}</p>
+                            <p class="admin_item">Surname: {{order.surname}}</p>
+                            <p class="admin_item">Status: <strong>{{order.status ? 'Done' : 'Pending'}}</strong> </p>
+                            <p class="admin_item">OrderId: {{order.orderId}}</p>
+                            <p class="admin_item">
+                                {{order.homeAdress ? 'Home adress: ' + order.homeAdress : 'Shop adress: ' + order.shopAdress + '; Phones: ' + order.phone_1 + ', ' + order.phone_2}}
+                            </p>
+                            <p class="admin_item">Order date: {{order.date_compose | dateFilter}}</p>
+                        </div>
+                        <md-button class="md-secondary" ng-click="editStatus(order.orderId)">Change status</md-button>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+        <div class="admin_moto">
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                    <span>Motos</span>
+                </h2>
+            </md-toolbar>
+            <md-button class="md-secondary" ng-click="addMoto($event)">Add moto</md-button>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Type Moto ID</label>
+                <input ng-model="motoFind">
+            </md-input-container>
+            <md-content>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="moto in adminData.motos | filter:{ Id: motoFind }">
+                        <div class="md-list-item-text">
+                            <p class="admin_item">MotoId: {{moto.Id}}</p>
+                            <p class="admin_item">Description: {{moto.description}}</p>
+                            <p class="admin_item">Engine capacity: {{moto.engine_capacity}}</p>
+                            <p class="admin_item">isABS: {{moto.isABS}}</p>
+                            <p class="admin_item">isCruizeControl: {{moto.isCruizeControl}}</p>
+                            <p class="admin_item">isElectrostarter: {{moto.isElectrostarter}}</p>
+                            <p class="admin_item">Make: {{moto.make}}</p>
+                            <p class="admin_item">Number of cilindrs: {{moto.number_of_cilindrs}}</p>
+                            <p class="admin_item">Number of models: <strong>{{moto.number_of_models}}</strong></p>
+                            <p class="admin_item">Price: {{moto.price}}</p>
+                            <p class="admin_item">Type: {{moto.type}}</p>
+                            <p class="admin_item">Year of issue: {{moto.year_of_issue}}</p>
+                        </div>
+                        <md-button class="md-secondary" ng-click="removeMoto(moto.Id)">Remove Moto</md-button>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+    </div>
+</div>

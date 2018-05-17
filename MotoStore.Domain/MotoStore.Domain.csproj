@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManipulations\AdminOperations.cs" />
     <Compile Include="DataManipulations\MotoGroup.cs" />
     <Compile Include="DataManipulations\OrderOperations.cs" />
     <Compile Include="InterData\OrderInfo.cs" />

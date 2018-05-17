@@ -23,6 +23,7 @@ namespace MotoStore.WebUI.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            ViewBag.Lol = "LolKEK1";
             return View();
         }
         //public JsonResult getUniqCategories()
@@ -47,15 +48,15 @@ namespace MotoStore.WebUI.Controllers
 
      
         
-        [HttpPost]
-        public JsonResult addNewUser(User sameClass)
-        {
-            //MotoStoreDBEntities context = new MotoStoreDBEntities();
-            //sameClass.date_registration = DateTime.Now;            
-            //context.Users.Add(sameClass);
-            //context.SaveChanges();
-            return Json("Success");
+        //[HttpPost]
+        //public JsonResult addNewUser(User sameClass)
+        //{
+        //    //MotoStoreDBEntities context = new MotoStoreDBEntities();
+        //    //sameClass.date_registration = DateTime.Now;            
+        //    //context.Users.Add(sameClass);
+        //    //context.SaveChanges();
+        //    return Json("Success");
             
-        }
+        //}
     }
 }

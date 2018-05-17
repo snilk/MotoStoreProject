@@ -7,7 +7,7 @@ angular.module("motoStoreProfile", ['ui.bootstrap']).config([
         templateUrl: "/SPA/profile/template/profileTemplate.html",
         controller: "profileController",
         resolve: {
-            user: function (authService, $q, userService) {
+            user: function (authService, $q, userService, toastr) {
                 var token = authService.getToken();
                 var deferred = $q.defer();
                 var query = {
@@ -16,8 +16,12 @@ angular.module("motoStoreProfile", ['ui.bootstrap']).config([
 
                 userService.get(query, function (res) {
                     var user = res.data[0];
-
-                    deferred.resolve(user);
+                    if (user) {
+                        deferred.resolve(user);
+                    } else {
+                        deferred.reject();
+                        toastr.error('Please sign in or sign up', 'Error')
+                    }
                 }, function (err) {
                     deferred.reject(err);
                 });

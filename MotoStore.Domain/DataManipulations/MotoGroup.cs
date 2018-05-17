@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MotoStore.Domain
 {
-   public static  class MotoGroup
+
+    public static class MotoGroup
     {
         public static Array getMotosArrayByMake(string make)
         {
@@ -23,23 +24,33 @@ namespace MotoStore.Domain
                                     m.type,
                                     m.year_of_issue,
                                     m.engine_capacity,
-                                    m.main_photo
+                                    m.main_photo,
+                                    m.isABS,
+                                    m.isCruizeControl,
+                                    m.isElectrostarter,
+                                    m.number_of_models
                                 }).ToArray();
                 return allMotos;
             }
             var motoByMake = (from m in context.Motorcycles
-                             where m.make == make
-                             select new
-                             {
-                                 m.Id,
-                                 m.make,
-                                 m.number_of_cilindrs,
-                                 m.price,
-                                 m.type,
-                                 m.year_of_issue,
-                                 m.engine_capacity,
-                                 m.main_photo
-                             }).ToArray();
+                              where m.make == make
+                              select new
+                              {
+                                  m.Id,
+                                  m.make,
+                                  m.number_of_cilindrs,
+                                  m.price,
+                                  m.type,
+                                  m.year_of_issue,
+                                  m.engine_capacity,
+                                  m.main_photo,
+                                  m.isABS,
+                                  m.isCruizeControl,
+                                  m.isElectrostarter,
+                                  m.number_of_models
+                              }).ToArray();
+        
+            
             return motoByMake;
         }
         public static Array getMotoById(int id)
@@ -67,18 +78,21 @@ namespace MotoStore.Domain
                                   m.main_photo,
                                   photos = photoForSingleMoto
                               }).ToArray();
-            
+            Dictionary<string, string> a = new Dictionary<string, string>()
+            {
+                {"s","aa" }
+            };
             return singleMoto;
         }
         public static Array getUniqCategories()
         {
             MotoStoreDBEntities context = new MotoStoreDBEntities();
-           
+
             var categories = ((from c in context.Motorcycles
-                              select new
-                              {
-                                  c.make
-                              }).Distinct()).ToArray();
+                               select new
+                               {
+                                   c.make
+                               }).Distinct()).ToArray();
             //var categories = new[]
             //{
             //    new{make="BMW"},
@@ -89,5 +103,12 @@ namespace MotoStore.Domain
             //};
             return categories;
         }
+        //public static bool AddNewMotorcycle(Motorcycle newMoto)
+        //{
+        //    MotoStoreDBEntities context = new MotoStoreDBEntities();
+        //    context.Motorcycles.Add(newMoto);
+        //    context.SaveChanges();
+        //    return true;
+        //}
     }
 }

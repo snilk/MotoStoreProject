@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Moto Store</title>
     <base href="/">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.css">
     <link href="~/Content/styles.css" rel="stylesheet" type="text/css" />
@@ -52,6 +54,7 @@
                                     <div class="table-cell">
                                         <input type="text" ng-model="registerUsername" placeholder="Username">
                                         <input type="password" ng-model="registerPassword" placeholder="Password">
+                                      
                                         <input type="text" ng-model="registerName" placeholder="Name">
                                         <input type="text" ng-model="registerSurname" placeholder="Surname">
                                         <input type="email" ng-model="registerEmail" placeholder="E-mail">
@@ -68,8 +71,10 @@
         </div>
     </div>
     <header>
+        <button class="sign_out" ng-click="toggleLeft()">Filter</button>
         <button class="sign_out" ng-click="logOut()" ng-show="isAuthorizated">Sign out</button>
-        <button class="sign_in" ng-click="toggleLogIn()">{{isAuthorizated ? 'Profile' : 'Sign in'}}</button>
+        <button class="sign_in" ng-show="!isAdmin" ng-click="toggleLogIn()">{{isAuthorizated ? 'Profile' : 'Sign in'}}</button>
+        <button class="sign_in" ng-show="isAdmin" ng-click="goToAdmin()">Admin</button>
     </header>
     <div class="wrapper">
         <nav class="list_category">
@@ -96,17 +101,110 @@
             &copy; Snilk MotoStore
         </span>
         <div class="footer_store_conatiner">
-
+            <p ng-repeat="shop in shopsInfo">
+                {{shop.adress}}; {{shop.phone_1}}, {{shop.phone_2}}
+            </p>
         </div>
     </footer>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-disable-backdrop md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Filter Motos</h1>
+        </md-toolbar>
+
+        <md-content layout-margin>
+            <div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Make</label>
+                    <md-select ng-model="make">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="make in makes" ng-value="make.make">
+                            {{make.make}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Type</label>
+                    <md-select ng-model="type">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="type in types" ng-value="type">
+                            {{type}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <div class="group_input">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Low Year of Issue</label>
+                        <input ng-model="YearofIssue.Low">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>High Year of Issue</label>
+                        <input ng-model="YearofIssue.High">
+                    </md-input-container>
+                </div>
+                <div class="group_input">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Low Engine Capacity</label>
+                        <input ng-model="EngineCapacity.Low">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>High Engine Capacity</label>
+                        <input ng-model="EngineCapacity.High">
+                    </md-input-container>
+                </div>
+                <div class="group_input">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Low Number of Cilindrs</label>
+                        <input ng-model="NumberofCilindrs.Low">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>High Number of Cilindrs</label>
+                        <input ng-model="NumberofCilindrs.High">
+                    </md-input-container>
+                </div>
+                <md-switch ng-model="isABS" aria-label="Switch 1">
+                    Is ABS
+                </md-switch>
+                <md-switch ng-model="isElectrostarter" aria-label="Switch 2">
+                    Is Electrostarter
+                </md-switch>
+                <md-switch ng-model="isCruizeControl" aria-label="Switch 3">
+                    Is Cruize Control
+                </md-switch>
+                <div class="group_input">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Low Price</label>
+                        <input ng-model="Price.Low">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>High Price</label>
+                        <input ng-model="Price.High">
+                    </md-input-container>
+                </div>
+            </div>
+            <md-button ng-click="toggleLeft()">
+                Close
+            </md-button>
+            <md-button ng-click="filter()">
+                Filter
+            </md-button>
+        </md-content>
+    </md-sidenav>
 
     @RenderBody()
     <!-- libraries -->
     <script src="~/SPA/lib/jquery-1.10.2.min.js"></script>
     <script src="~/SPA/lib/bootstrap.min.js"></script>
     <script src="~/SPA/lib/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
     <script src="~/SPA/lib/stateEvents.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.tpls.js"></script>
@@ -118,7 +216,9 @@
     <script src="~/SPA/common/common.js"></script>
     <script src="~/SPA/common/service/categoriesService.js"></script>
     <script src="~/SPA/common/service/registerService.js"></script>
+    <script src="~/SPA/common/service/adressShops.js"></script>
     <script src="~/SPA/common/filter/dateFilter.js"></script>
+    <script src="~/SPA/common/directive/range.js"></script>
     <script src="~/SPA/categories/categories.js"></script>
     <script src="~/SPA/categories/controller/categoriesController.js"></script>
     <script src="~/SPA/categories/service/motoByCategoriesService.js"></script>
@@ -129,6 +229,9 @@
     <script src="~/SPA/profile/profile.js"></script>
     <script src="~/SPA/profile/controller/profileController.js"></script>
     <script src="~/SPA/profile/service/userService.js"></script>
+    <script src="~/SPA/admin/admin.js"></script>
+    <script src="~/SPA/admin/controller/adminController.js"></script>
+    <script src="~/SPA/admin/service/adminService.js"></script>
 
 
 </body>
