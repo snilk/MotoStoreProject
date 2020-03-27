@@ -26,15 +26,17 @@ angular.module("motoStoreIndividual").controller("individualController", [
     })
 
     $scope.openModal = function () {
-        if ($scope.moto.number_of_models==0) {
-            if (toastr.active() == 0) { toastr.warning('This motorcycle is not in stock', 'Sorry'); }
-        }
-        else {
-            if ($scope.isAuthorizated) {
+      
+       
+        if ($scope.isAuthorizated) {
+            if ($scope.moto.number_of_models == 0) {
+                if (toastr.active() == 0) { toastr.warning('This motorcycle is not in stock', 'Sorry'); }
+            } else {
                 $scope.isModalOpen = true;
                 orderService.getOrderInfo(function (res) { $scope.orderInfo = res.data[0] }, function (err) {
                     console.log(err)
                 })
+            }
             } else {
                 if (toastr.active() == 0) {
                     var toast = toastr.warning('Warning!', 'You have to login or registrated for make order!');
@@ -43,7 +45,7 @@ angular.module("motoStoreIndividual").controller("individualController", [
 
             }
 
-        }
+        
     }
 
     $scope.makeOrder = function (isPickup, isDelivery, selectModel, homeAdress) {

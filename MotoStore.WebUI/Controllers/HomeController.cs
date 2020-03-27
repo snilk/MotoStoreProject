@@ -23,7 +23,7 @@ namespace MotoStore.WebUI.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Lol = "LolKEK1";
+            
             return View();
         }
         //public JsonResult getUniqCategories()

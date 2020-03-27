@@ -45,4 +45,5 @@ D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\bi
 D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csproj.CoreCompileInputs.cache
 D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.dll
 D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.pdb
-D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csprojResolveAssemblyReference.cache
+D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csprojAssemblyReference.cache
+D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.Domain\obj\Debug\MotoStore.Domain.csproj.CopyComplete
