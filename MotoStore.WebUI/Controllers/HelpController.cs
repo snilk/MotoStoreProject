@@ -27,7 +27,7 @@ namespace MotoStore.WebUI.Controllers
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    context.MotoImages.Add(new MotoImages()
+                    context.MotoImages.Add(new MotoImage()
                     {
                         MotoId = moto.Id,
                         ImageUrl = string.Format("photomoto{0}", i)

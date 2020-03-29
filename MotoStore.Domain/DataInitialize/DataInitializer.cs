@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using MotoStore.Domain.EF;
 
@@ -10,7 +9,6 @@ namespace MotoStore.Domain.DataInitialize
         public static void InitializeTables()
         {
             var context = new MotoStoreContext();
-            context.Database.Initialize(false);
 
             var admin = new User
             {

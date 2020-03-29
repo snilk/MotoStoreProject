@@ -24,7 +24,7 @@
     <div class="motos_container">
         <div class="moto_item" ng-repeat="moto in filteredMotos | orderBy:sortType:sortReverse track by $index" ng-mouseenter="showInfoBtn(moto)"
              ng-mouseleave="hideInfoBtn(moto)">
-            <img class="moto_img" ng-src="./SPA/image/{{moto.MainImage}}.jpg" alt="">
+            <img class="moto_img" ng-src="./SPA/image/{{moto.MainImage}}" alt="">
             <span class="moto_price">{{moto.Price}}$</span>
             <span class="moto_numbers">{{moto.ModelsCount===0 ? 'Not in stock':''}}</span>
 

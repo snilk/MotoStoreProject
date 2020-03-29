@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MotoStore.Domain.EF
 {
     public class Motorcycle
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Make { get; set; }
         public string Type { get; set; }
@@ -18,7 +20,7 @@ namespace MotoStore.Domain.EF
         public double Price { get; set; }
         public string MainImage { get; set; }
 
-        public virtual ICollection<MotoImages> MotoImages { get; set; }
+        public virtual ICollection<MotoImage> MotoImages { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

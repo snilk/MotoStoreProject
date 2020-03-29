@@ -4,7 +4,7 @@
 <div class="individual_container">
     <span ng-click="openModal()" class="make_order_icon"></span>
     <div class="individual_main_info_container">
-        <img class="individual_main_photo" ng-src="./SPA/image/{{moto.MainImage}}.jpg" alt="">
+        <img class="individual_main_photo" ng-src="./SPA/image/{{moto.MainImage}}" alt="">
         <div class="individual_main_info">
             <div class="individual_info">
                 <span class="individual_info_item">{{moto.Make}}</span>
@@ -23,13 +23,13 @@
     </div>
     <div class="individual_photos">
         <div class="container slider">
-            <img ng-repeat="photo in moto.photos track by $index" class="slide" ng-show="isActive($index)" ng-src="./SPA/image/{{photo}}.jpg"
+            <img ng-repeat="photo in moto.photos track by $index" class="slide" ng-show="isActive($index)" ng-src="./SPA/image/{{photo}}"
                 alt="">
             <a class="arrow prev" href="#" ng-click="showPrev(moto.photos)"></a>
             <a class="arrow next" href="#" ng-click="showNext(moto.photos)"></a>
             <ul class="nav">
                 <li ng-repeat="photo in moto.photos" ng-class="{'active':isActive($index)}">
-                    <img ng-src="./SPA/image/{{photo}}.jpg" ng-click="showPhoto($index);" />
+                    <img ng-src="./SPA/image/{{photo}}" ng-click="showPhoto($index);" />
                 </li>
             </ul>
         </div>

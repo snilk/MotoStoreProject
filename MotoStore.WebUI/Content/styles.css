@@ -863,6 +863,12 @@ html {
     overflow: auto;
 }
 
+.admin_page .admin_data_container .admin_shops {
+    width: 49%;
+    height: 600px;
+    overflow: auto;
+}
+
 .md-errors-spacer {
     display: none;
 }

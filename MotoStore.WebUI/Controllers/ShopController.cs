@@ -13,8 +13,8 @@ namespace MotoStore.WebUI.Controllers
         // GET: Shop
         public JsonResult shopInformaiton()
         {
-            string filepath = @"D:\универ\6_сем\бибд курсовой\MotoStore\JsonFIles\json" + "shopInformation" + ".json";
-              System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(ShopInformation.getShopInformation()));
+            //string filepath = @"D:\универ\6_сем\бибд курсовой\MotoStore\JsonFIles\json" + "shopInformation" + ".json";
+              //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(ShopInformation.getShopInformation()));
             return Json(ShopInformation.getShopInformation(),JsonRequestBehavior.AllowGet);
         }
      

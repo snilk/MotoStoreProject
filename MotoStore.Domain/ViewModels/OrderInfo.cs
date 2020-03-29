@@ -1,4 +1,4 @@
-﻿namespace MotoStore.Domain.InterData
+﻿namespace MotoStore.Domain.ViewModels
 {
     public class OrderInfo
     {

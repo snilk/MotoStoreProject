@@ -1,4 +1,4 @@
-﻿namespace MotoStore.Domain.DataManipulations
+﻿namespace MotoStore.Domain.ViewModels
 {
     public class UserForAuthorization
     {

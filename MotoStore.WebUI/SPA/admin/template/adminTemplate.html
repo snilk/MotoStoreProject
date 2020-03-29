@@ -65,5 +65,26 @@
                 </md-list>
             </md-content>
         </div>
+        <div class="admin_shops">
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                    <span>Shop Information</span>
+                </h2>
+            </md-toolbar>
+            <md-button class="md-secondary" ng-click="showAddShopDialog($event)">Add Shop</md-button>
+            <md-content>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="shopInfo in adminData.shopInformations">
+                        <div class="md-list-item-text">
+                            <p class="admin_item">Shop Address: {{shopInfo.Address}}</p>
+                            <p class="admin_item">Phone1: {{shopInfo.Phone1}}</p>
+                            <p class="admin_item">Phone2: {{shopInfo.Phone2}}</p>
+                        </div>
+                        <md-button class="md-secondary" ng-click="removeShopClick(shopInfo.Id)">Remove Shop</md-button>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
     </div>
 </div>

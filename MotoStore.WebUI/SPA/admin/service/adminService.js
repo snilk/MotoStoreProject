@@ -42,6 +42,32 @@
             };
 
             return $http(req).then(successCb, errorCb);
-        }
+        },
+        addShop: function (query, successCb, errorCb) {
+            var req = {
+                method: "POST",
+                url: "Admin/AddNewShop",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: query
+            };
+
+            return $http(req).then(successCb, errorCb);
+        },
+        removeShop: function (id, successCb, errorCb) {
+            var req = {
+                method: "POST",
+                url: "Admin/RemoveShop",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    id: id
+                }
+            };
+
+            return $http(req).then(successCb, errorCb);
+        },
     };
 });

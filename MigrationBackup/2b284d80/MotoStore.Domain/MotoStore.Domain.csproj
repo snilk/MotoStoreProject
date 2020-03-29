@@ -9,9 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MotoStore.Domain</RootNamespace>
     <AssemblyName>MotoStore.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +30,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,53 +74,24 @@
     <Compile Include="DataManipulations\AdminOperations.cs" />
     <Compile Include="DataManipulations\MotoGroup.cs" />
     <Compile Include="DataManipulations\OrderOperations.cs" />
-    <Compile Include="EF\MotoImage.cs" />
+    <Compile Include="EF\MotoImages.cs" />
     <Compile Include="EF\Motorcycle.cs" />
     <Compile Include="EF\MotoStoreContext.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\ShopInformation.cs" />
     <Compile Include="EF\User.cs" />
-    <Compile Include="Static\MotoImagesConstants.cs" />
-    <Compile Include="ViewModels\AdminInformationVm.cs" />
-    <Compile Include="ViewModels\MotorcycleVm.cs" />
-    <Compile Include="ViewModels\OrderInfo.cs" />
-    <Compile Include="ViewModels\OrderInfoAdminVm.cs" />
-    <Compile Include="ViewModels\ShopInformationVm.cs" />
-    <Compile Include="ViewModels\SuccessVm.cs" />
-    <Compile Include="ViewModels\TokenVM.cs" />
-    <Compile Include="ViewModels\UserForAuthorization.cs" />
-    <Compile Include="ViewModels\UserTokenRole.cs" />
-    <Compile Include="Migrations\202003291408144_InitialCreate.cs" />
-    <Compile Include="Migrations\202003291408144_InitialCreate.Designer.cs">
-      <DependentUpon>202003291408144_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003291505480_AddForeighnKeys.cs" />
-    <Compile Include="Migrations\202003291505480_AddForeighnKeys.Designer.cs">
-      <DependentUpon>202003291505480_AddForeighnKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="InterData\OrderInfo.cs" />
+    <Compile Include="InterData\UserForAuthorization.cs" />
+    <Compile Include="InterData\UserTokenRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataManipulations\ShopInformation.cs" />
     <Compile Include="DataManipulations\UsersOperations.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="EntityFramework">
-      <Version>6.2.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.Mvc">
-      <Version>5.2.4</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003291408144_InitialCreate.resx">
-      <DependentUpon>202003291408144_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003291505480_AddForeighnKeys.resx">
-      <DependentUpon>202003291505480_AddForeighnKeys.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

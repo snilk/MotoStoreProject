@@ -2,98 +2,102 @@
 using System.Linq;
 using MotoStore.Domain.DataManipulations;
 using MotoStore.Domain.EF;
+using MotoStore.Domain.ViewModels;
 
 namespace MotoStore.Domain
 {
     public static class UsersOperations
     {
-        public static bool? addNewUser(User newUser)
+        private const string KeyStart = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIxMjM0NSIsIm5h";
+        private const string KeyLast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
+        public static bool? AddNewUser(User newUser)
         {
-            if (newUser == null) return null;
             var context = new MotoStoreContext();
-            var isExist = (from u in context.Users where u.UserName == newUser.UserName select u.UserName)
-                .FirstOrDefault();
-            if (isExist != null)
+
+            if (newUser == null || context.Users.Any(u => u.UserName == newUser.UserName))
+            {
                 return false;
+            }
             context.Users.Add(newUser);
             context.SaveChanges();
+
             return true;
         }
 
-        public static UserTokenRole getUserToken(UserForAuthorization user)
+        public static UserTokenRole GetUserToken(UserForAuthorization user)
         {
             var context = new MotoStoreContext();
-            var existUser = (from u in context.Users where u.UserName == user.UserName select u).FirstOrDefault();
+            var existUser = context.Users.FirstOrDefault(u => u.UserName == user.UserName);
             if (existUser == null)
+            {
                 return new UserTokenRole {correctUsername = false, correctPassword = null, token = null, IsAdmin = null};
+            }
             if (existUser.Password == user.Password)
                 return new UserTokenRole
                 {
-                    IsAdmin = existUser.IsAdmin, token = getTokenById(existUser), correctPassword = true,
+                    IsAdmin = existUser.IsAdmin, token = getTokenById(existUser.Id), correctPassword = true,
                     correctUsername = true
                 };
             return new UserTokenRole {correctPassword = false, correctUsername = true, token = null, IsAdmin = null};
         }
 
-        public static string getTokenById(User user)
+        public static string getTokenById(int id)
         {
-            var keystart = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIxMjM0NSIsIm5h";
-            var keylast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
-            return keystart + user.Id + keylast;
+            return KeyStart + id + KeyLast;
         }
 
-        public static object checkUserByToken(string token)
+        public static TokenVm CheckUserByToken(string token)
         {
-            var keystart = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIxMjM0NSIsIm5h";
-            var keylast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
-            int? tokenId = null;
-            try
+            var user = GetUserByToken(token);
+
+            var tokenVm = new TokenVm
             {
-                tokenId = Convert.ToInt32(token.Replace(keystart, "").Replace(keylast, ""));
-            }
-            catch (Exception)
+                IsAdmin = false,
+                isCorrectToken = false
+            };
+
+            if (user != null)
             {
-                tokenId = null;
+                tokenVm.IsAdmin = user.IsAdmin;
+                tokenVm.isCorrectToken = true;
             }
 
-            if (tokenId == null) return false;
-            var context = new MotoStoreContext();
-            var roleAndCorrect =
-                (from u in context.Users where u.Id == tokenId select new {IsAdmin = u.IsAdmin, isCorrectToken = true})
-                .FirstOrDefault();
-            return roleAndCorrect;
+            return tokenVm;
         }
 
-        public static int? getUserIdByToken(string token)
+        public static User GetUserByToken(string token)
         {
-            var keystart = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIxMjM0NSIsIm5h";
-            var keylast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
-            int? tokenId = null;
-            try
+            User user = null;
+
+            if (token.Contains(KeyLast) && token.Contains(KeyStart))
             {
-                tokenId = Convert.ToInt32(token.Replace(keystart, "").Replace(keylast, ""));
-            }
-            catch (Exception)
-            {
-                tokenId = null;
+                var id = Convert.ToInt32(token.Replace(KeyStart, "").Replace(KeyLast, ""));
+
+                var context = new MotoStoreContext();
+                user = context.Users.FirstOrDefault(u => u.Id == id);
             }
 
-            if (tokenId == null) return null;
-            var context = new MotoStoreContext();
-            if ((from u in context.Users where u.Id == tokenId select u).FirstOrDefault() != null) return tokenId;
-            return null;
+            return user;
         }
 
         public static Array getAccountInformation(string token)
         {
-            var id = getUserIdByToken(token);
-            if (id == null) return null;
+            var id = GetUserByToken(token);
+
+            var user = GetUserByToken(token);
+
+
+            if (user == null)
+            {
+                return null;
+            }
             var context = new MotoStoreContext();
+
             var orderInfo = from o in context.Orders
                 join m in context.Motorcycles on o.MotoId equals m.Id
                 join s in context.ShopInformations on o.ShopId equals s.Id
                 join u in context.Users on o.UserId equals u.Id
-                where u.Id == (int) id
+                where u.Id == user.Id
                 select new
                 {
                     motoId = m.Id, Make = m.Make, Type = m.Type, Year = m.Year, Price = m.Price, MainImage = m.MainImage,
@@ -101,7 +105,7 @@ namespace MotoStore.Domain
                     orderId = o.Id, homeAdress = o.Address, Status = o.Status, OrderDate = o.OrderDate
                 };
             var userAndOrdersInfo = (from u in context.Users
-                where u.Id == (int) id
+                where u.Id == user.Id
                 select new
                 {
                     Name = u.Name,
@@ -111,10 +115,6 @@ namespace MotoStore.Domain
                     RegistrationDate = u.RegistrationDate,
                     orders = orderInfo
                 }).ToArray();
-
-            foreach (var item in userAndOrdersInfo)
-            {
-            }
 
             return userAndOrdersInfo;
         }

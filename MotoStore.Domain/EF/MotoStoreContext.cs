@@ -10,7 +10,7 @@ namespace MotoStore.Domain.EF
         {
         }
 
-        public virtual DbSet<MotoImages> MotoImages { get; set; }
+        public virtual DbSet<MotoImage> MotoImages { get; set; }
         public virtual DbSet<Motorcycle> Motorcycles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<ShopInformation> ShopInformations { get; set; }

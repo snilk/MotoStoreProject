@@ -1,11 +1,11 @@
 ﻿using MotoStore.Domain.DataManipulations;
-using MotoStore.Domain.InterData;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MotoStore.Domain.ViewModels;
 
 namespace MotoStore.WebUI.Controllers
 {
