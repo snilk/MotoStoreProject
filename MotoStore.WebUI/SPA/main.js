@@ -80,7 +80,7 @@ angular
                 if (res.data.isCorrectToken) {
                     $scope.isAuthorizated = true;
                 };
-                if (res.data.role === true) {
+                if (res.data.IsAdmin === true) {
                     $scope.isAdmin = true;
                 };
             }, function (err) {
@@ -101,9 +101,9 @@ angular
                 $scope.isLogIn = !$scope.isLogIn;
             };
 
-            $scope.selectCategory = function (make) {
+            $scope.selectCategory = function (Make) {
                 
-                $state.go("categories", { category: make });
+                $state.go("categories", { category: Make });
             };
 
             $scope.goToAdmin = function () {
@@ -112,15 +112,15 @@ angular
 
             $scope.registerUser = function () {
                 var user = {
-                    username: $scope.registerUsername,
-                    password: $scope.registerPassword,
-                    name: $scope.registerName,
-                    surname: $scope.registerSurname,
-                    email: $scope.registerEmail,
-                    phone: $scope.registerPhone
+                    UserName: $scope.registerUsername,
+                    Password: $scope.registerPassword,
+                    Name: $scope.registerName,
+                    Surname: $scope.registerSurname,
+                    Email: $scope.registerEmail,
+                    Phone: $scope.registerPhone
                 };
                
-                if (user.username && user.password && user.name && user.surname && user.email && user.phone) {
+                if (user.UserName && user.Password && user.Name && user.Surname && user.Email && user.Phone) {
                     authService.register(user).then(function (res) {
                         if (res.data.success) {
                             toastr.success('Success!', 'You are registrated');
@@ -151,8 +151,8 @@ angular
                
                 
                 var user = {
-                    username: $scope.loginUsername,
-                    password: $scope.loginPassword,
+                    UserName: $scope.loginUsername,
+                    Password: $scope.loginPassword,
                 };
 
                 authService.logIn(user).then(function (res) {
@@ -162,21 +162,21 @@ angular
                             $scope.isLogInShow = false;
                             $scope.isAuthorizated = true;
                         })
-                        localStorage.setItem('role', res.data.role);
-                        if (res.data.role === true) {
+                        localStorage.setItem('IsAdmin', res.data.IsAdmin);
+                        if (res.data.IsAdmin === true) {
                             $scope.isAdmin = true;
                         }
                     } else if (!res.data.correctUsername) {
                         
                         if (toastr.active() == 0) {
-                            toastr.error('Error!', 'Wrong username');
+                            toastr.error('Error!', 'Wrong UserName');
                         }
                         $scope.loginPassword = '';
                         $scope.loginUsername = '';
                     } else if (!res.data.correctPassword) {
                        
                         if (toastr.active() == 0) {
-                            toastr.error('Error!', 'Wrong password');
+                            toastr.error('Error!', 'Wrong Password');
                         }
                         $scope.loginPassword = '';
                     }
@@ -199,7 +199,7 @@ angular
 
             $scope.toggleLeft = buildToggler('left');
 
-            $scope.makes = [{ "make": "BMW" }, { "make": "Harley-Davidson" }, { "make": "Izh" }, { "make": "Jawa" }, { "make": "Yamaha" }];
+            $scope.makes = [{ "Make": "BMW" }, { "Make": "Harley-Davidson" }, { "Make": "Izh" }, { "Make": "Jawa" }, { "Make": "Yamaha" }];
             $scope.types = ['Cruiser', 'Sports bike', 'Classic', 'Sport-tourist'];
             $scope.YearofIssue = {};
             $scope.EngineCapacity = {};
@@ -208,7 +208,7 @@ angular
 
             $scope.filter = function () {
                 var query = {
-                    type: $scope.type,
+                    Type: $scope.Type,
                     YearofIssue: {
                         Low: +$scope.YearofIssue.Low || 0,
                         High: +$scope.YearofIssue.High || 1000000000000000
@@ -221,17 +221,17 @@ angular
                         Low: +$scope.NumberofCilindrs.Low || 0,
                         High: +$scope.NumberofCilindrs.High || 1000000000000000
                     },
-                    isABS: $scope.isABS,
-                    isElectrostarter: $scope.isElectrostarter,
-                    isCruizeControl: $scope.isCruizeControl,
+                    Abs: $scope.Abs,
+                    ElectricStarter: $scope.ElectricStarter,
+                    CruizeControl: $scope.CruizeControl,
                     Price: {
                         Low: +$scope.Price.Low || 0,
                         High: +$scope.Price.High || 1000000000000000
                     }
                 }
 
-                if ($scope.make && $scope.make !== 'None') {
-                    $state.go('categories', { category: $scope.make, filter: query })
+                if ($scope.Make && $scope.Make !== 'None') {
+                    $state.go('categories', { category: $scope.Make, filter: query })
                 } else {
                     $state.go('categories', { category: 'All', filter: query})
                 }

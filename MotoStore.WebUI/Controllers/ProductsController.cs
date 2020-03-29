@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Http;
 using MotoStore.Domain;
+using MotoStore.Domain.EF;
 
 namespace MotoStore.WebUI.Controllers
 {
@@ -25,7 +26,11 @@ namespace MotoStore.WebUI.Controllers
             {
                 motos = MotoGroup.getMotoById(id);
             }
-            if (motos.Length == 0) throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
+
+            if (motos.Length == 0)
+            {
+                motos = Array.Empty<Motorcycle>();
+            }
             return Json(motos, JsonRequestBehavior.AllowGet);
 
         }

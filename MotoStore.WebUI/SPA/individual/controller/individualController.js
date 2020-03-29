@@ -29,7 +29,7 @@ angular.module("motoStoreIndividual").controller("individualController", [
       
        
         if ($scope.isAuthorizated) {
-            if ($scope.moto.number_of_models == 0) {
+            if ($scope.moto.ModelsCount == 0) {
                 if (toastr.active() == 0) { toastr.warning('This motorcycle is not in stock', 'Sorry'); }
             } else {
                 $scope.isModalOpen = true;
@@ -39,7 +39,7 @@ angular.module("motoStoreIndividual").controller("individualController", [
             }
             } else {
                 if (toastr.active() == 0) {
-                    var toast = toastr.warning('Warning!', 'You have to login or registrated for make order!');
+                    var toast = toastr.warning('Warning!', 'You have to login or registrated for Make order!');
                 }
 
 
@@ -54,25 +54,25 @@ angular.module("motoStoreIndividual").controller("individualController", [
         var query = {
             token: token,
             idMoto: $scope.moto.Id,
-            adress: isPickup ? homeAdress : null,
+            Address: isPickup ? homeAdress : null,
             idShop: shop
 
         };
        
         if ((isPickup === undefined || isPickup === false) && (isDelivery === undefined || isDelivery === false)) {
-            $scope.error = 'Fill adress or delivery field';
+            $scope.error = 'Fill Address or delivery field';
         }
-        else if (isPickup && (query.adress === '' || query.adress === undefined || query.adress === null)) {
+        else if (isPickup && (query.Address === '' || query.Address === undefined || query.Address === null)) {
             $scope.error = 'Fill  delivery field';
         }
         else if (isDelivery && selectModel === null) {
-            $scope.error = 'Fill  shop adress field';
+            $scope.error = 'Fill  shop Address field';
         }
         else {
             $scope.error = '';
             orderService.makeOrder(query, function (res) {
                 if (res.data.isCorrectOrder) {
-                    toastr.success('Success!', 'You are make order. Order is pending. Manager will contact you in the near future');
+                    toastr.success('Success!', 'You are Make order. Order is pending. Manager will contact you in the near future');
                     $scope.isModalOpen = false;
                 } else {
                     
@@ -84,8 +84,8 @@ angular.module("motoStoreIndividual").controller("individualController", [
         }
 
 
-        //if (isPickup === undefined && (query.adress === '' || query.adress === undefined || query.adress === null)) {
-        //    $scope.error = 'Fill adress field';
+        //if (isPickup === undefined && (query.Address === '' || query.Address === undefined || query.Address === null)) {
+        //    $scope.error = 'Fill Address field';
         //    console.log(1)
         //} else if ((isDelivery === undefined || isDelivery === false) || selectModel === null) {
         //    console.log(isDelivery, selectModel)

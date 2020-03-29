@@ -14,7 +14,7 @@ angular.module("motoStoreCategories").controller("categoriesController", [
             item.isShowInfoBtn = false;
         };
 
-        // $scope.sortType     = 'price'; // set the default sort type
+        // $scope.sortType     = 'Price'; // set the default sort Type
         $scope.sortReverse = false;
 
         $scope.filteredMotos = [];

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MotoStore.Domain.EF;
 
 namespace MotoStore.Domain
 {
@@ -10,14 +8,13 @@ namespace MotoStore.Domain
     {
         public static Array getShopInformation()
         {
-            MotoStoreDBEntities context = new MotoStoreDBEntities();
-            var shopInfo = (from s in context.Shop_information
-                           select new
-                           {
-                               s.Id,s.adress,s.phone_1,s.phone_2
-                           }).ToArray();
+            var context = new MotoStoreContext();
+            var shopInfo = (from s in context.ShopInformations
+                select new
+                {
+                    s.Id, Address = s.Address, Phone1 = s.Phone1, Phone2 = s.Phone2
+                }).ToArray();
             return shopInfo;
-                        
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Хранилище MotoStoreDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="MotoStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Moto_photos">
     <Key>
       <PropertyRef Name="Id" />
@@ -8,7 +8,7 @@
     <Property Name="id_moto" Type="int" Nullable="false" />
     <Property Name="photo_url" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <EntityType Name="Motorcycle">
+  <EntityType Name="Motorcycles">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -34,8 +34,8 @@
     <Property Name="id_moto" Type="int" Nullable="false" />
     <Property Name="id_user" Type="int" Nullable="false" />
     <Property Name="id_shop" Type="int" Nullable="false" />
-    <Property Name="adress" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="adress" Type="varchar" MaxLength="50" />
     <Property Name="date_compose" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Shop_information">
@@ -56,18 +56,18 @@
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="date_registration" Type="datetime" Nullable="false" />
     <Property Name="role" Type="bit" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Moto_photos_Moto">
-    <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">
+    <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Moto_photos" Type="Self.Moto_photos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Motorcycle">
+      <Principal Role="Motorcycles">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Moto_photos">
@@ -76,12 +76,12 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orders_ToMotorcycle">
-    <End Role="Motorcycle" Type="Self.Motorcycle" Multiplicity="1">
+    <End Role="Motorcycles" Type="Self.Motorcycles" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Motorcycle">
+      <Principal Role="Motorcycles">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Orders">
@@ -115,18 +115,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Хранилище MotoStoreDBModelContainer">
+  <EntityContainer Name="MotoStoreDBModelStoreContainer">
     <EntitySet Name="Moto_photos" EntityType="Self.Moto_photos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Motorcycle" EntityType="Self.Motorcycle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motorcycles" EntityType="Self.Motorcycles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Shop_information" EntityType="Self.Shop_information" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Moto_photos_Moto" Association="Self.FK_Moto_photos_Moto">
-      <End Role="Motorcycle" EntitySet="Motorcycle" />
+      <End Role="Motorcycles" EntitySet="Motorcycles" />
       <End Role="Moto_photos" EntitySet="Moto_photos" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_ToMotorcycle" Association="Self.FK_Orders_ToMotorcycle">
-      <End Role="Motorcycle" EntitySet="Motorcycle" />
+      <End Role="Motorcycles" EntitySet="Motorcycles" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_ToShop" Association="Self.FK_Orders_ToShop">

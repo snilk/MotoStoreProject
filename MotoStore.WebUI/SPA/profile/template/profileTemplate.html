@@ -1,24 +1,24 @@
 <div class="user_profile">
     <div class="user_profile_info">
-        <span class="info_item">Name: {{user.name}}</span>
-        <span class="info_item">Surname: {{user.surname}}</span>
-        <span class="info_item">Email: {{user.email}}</span>
-        <span class="info_item">Phone: {{user.phone}}</span>
-        <span class="info_item">Date registration: {{user.date_registration | dateFilter}}</span>
+        <span class="info_item">Name: {{user.Name}}</span>
+        <span class="info_item">Surname: {{user.Surname}}</span>
+        <span class="info_item">Email: {{user.Email}}</span>
+        <span class="info_item">Phone: {{user.Phone}}</span>
+        <span class="info_item">Date registration: {{user.RegistrationDate | dateFilter}}</span>
     </div>
     <div class="user_profile_orders">
         <h2>{{user.orders.length ? 'Orders' : 'No Orders'}}</h2>
         <ul class="orders_list">
-            <li ng-click="goToMoto(order)" ng-repeat="order in user.orders | orderBy:status:true" class="order_item">
-                <span class="order_info">Make: {{order.make}}</span>
-                <span class="order_info">Type: {{order.type}}</span>
-                <span class="order_info">Year of issue: {{order.year_of_issue}}</span>
-                <span class="order_info">Status: {{order.status ? 'Done' : 'Pending'}}</span>
-                <span class="order_info">Price: {{order.price}}</span>
+            <li ng-click="goToMoto(order)" ng-repeat="order in user.orders | orderBy:Status:true" class="order_item">
+                <span class="order_info">Make: {{order.Make}}</span>
+                <span class="order_info">Type: {{order.Type}}</span>
+                <span class="order_info">Year of issue: {{order.Year}}</span>
+                <span class="order_info">Status: {{order.Status ? 'Done' : 'Pending'}}</span>
+                <span class="order_info">Price: {{order.Price}}</span>
                 <span class="order_info">
-                    {{order.homeAdress ? 'Home adress: ' + order.homeAdress : 'Shop adress: ' + order.shopAdress + '; Phones: ' + order.phone_1 + ', ' + order.phone_2}}
+                    {{order.homeAdress ? 'Home Address: ' + order.homeAdress : 'Shop Address: ' + order.shopAdress + '; Phones: ' + order.Phone1 + ', ' + order.Phone2}}
                 </span>
-                <span class="order_info">Order date: {{order.date_compose | dateFilter}}</span>
+                <span class="order_info">Order date: {{order.OrderDate | dateFilter}}</span>
             </li>
         </ul>
     </div>

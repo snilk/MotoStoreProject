@@ -2,21 +2,21 @@
     <div class="categories_filter_container">
         <div class="categories_filter">
             <span class="sort_title">Sort by: </span>
-            <span class="sort_btn" ng-click="sortType = 'year_of_issue'; sortReverse = !sortReverse">
+            <span class="sort_btn" ng-click="sortType = 'Year'; sortReverse = !sortReverse">
                 Year of issue
-                <span ng-show="sortType == 'year_of_issue' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'year_of_issue' && sortReverse" class="fa fa-caret-up"></span>
+                <span ng-show="sortType == 'Year' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Year' && sortReverse" class="fa fa-caret-up"></span>
                 ;
             </span>
-            <span class="sort_btn" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+            <span class="sort_btn" ng-click="sortType = 'Price'; sortReverse = !sortReverse">
                 Price
-                <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>;
+                <span ng-show="sortType == 'Price' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Price' && sortReverse" class="fa fa-caret-up"></span>;
             </span>
-            <span class="sort_btn" ng-click="sortType = 'engine_capacity'; sortReverse = !sortReverse">
+            <span class="sort_btn" ng-click="sortType = 'EngineCapacity'; sortReverse = !sortReverse">
                 Engine capacity
-                <span ng-show="sortType == 'engine_capacity' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'engine_capacity' && sortReverse" class="fa fa-caret-up"></span>
+                <span ng-show="sortType == 'EngineCapacity' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'EngineCapacity' && sortReverse" class="fa fa-caret-up"></span>
                 ;
             </span>
         </div>
@@ -24,19 +24,19 @@
     <div class="motos_container">
         <div class="moto_item" ng-repeat="moto in filteredMotos | orderBy:sortType:sortReverse track by $index" ng-mouseenter="showInfoBtn(moto)"
              ng-mouseleave="hideInfoBtn(moto)">
-            <img class="moto_img" ng-src="./SPA/image/{{moto.main_photo}}.jpg" alt="">
-            <span class="moto_price">{{moto.price}}$</span>
-            <span class="moto_numbers">{{moto.number_of_models===0 ? 'Not in stock':''}}</span>
+            <img class="moto_img" ng-src="./SPA/image/{{moto.MainImage}}.jpg" alt="">
+            <span class="moto_price">{{moto.Price}}$</span>
+            <span class="moto_numbers">{{moto.ModelsCount===0 ? 'Not in stock':''}}</span>
 
             <div class="moto_desc">
-                <span class="moto_desc_item make">{{moto.make}}</span>
-                <span class="moto_desc_item">Type: {{moto.type}}</span>
-                <span class="moto_desc_item">Engine capacity: {{moto.engine_capacity}}</span>
-                <span class="moto_desc_item">Number of cilindrs: {{moto.number_of_cilindrs}}</span>
-                <span class="moto_desc_item">Year of issue: {{moto.year_of_issue}}</span>
+                <span class="moto_desc_item Make">{{moto.Make}}</span>
+                <span class="moto_desc_item">Type: {{moto.Type}}</span>
+                <span class="moto_desc_item">Engine capacity: {{moto.EngineCapacity}}</span>
+                <span class="moto_desc_item">Number of cilindrs: {{moto.Cylinders}}</span>
+                <span class="moto_desc_item">Year of issue: {{moto.Year}}</span>
             </div>
             <div class="view_moto_info_container" class="active" ng-class="{active: moto.isShowInfoBtn}">
-                <a ui-sref="individual({ motoId: moto.Id, category: moto.make })" class="view_moto_info">View moto info</a>
+                <a ui-sref="individual({ motoId: moto.Id, category: moto.Make })" class="view_moto_info">View moto info</a>
             </div>
         </div>
 

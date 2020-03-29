@@ -433,7 +433,7 @@ header {
         .categories_wrapper .motos_container .moto_item .moto_desc .moto_desc_item {
           font-size: 18px;
           padding: 5px 0; }
-          .categories_wrapper .motos_container .moto_item .moto_desc .moto_desc_item.make {
+          .categories_wrapper .motos_container .moto_item .moto_desc .moto_desc_item.Make {
             font-family: proximanova; }
       .categories_wrapper .motos_container .moto_item .view_moto_info_container {
         position: absolute;

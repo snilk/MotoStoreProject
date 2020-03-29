@@ -10,10 +10,10 @@
                 isAdmin: function ($q, toastr) {
                     var deferred = $q.defer();
 
-                    var role = localStorage.getItem('role');
+                    var IsAdmin = localStorage.getItem('IsAdmin');
 
-                    if (role === "true") {
-                        console.log(role)
+                    if (IsAdmin === "true") {
+                        console.log(IsAdmin)
                         deferred.resolve();
                     } else {
                         deferred.reject();

@@ -14,19 +14,19 @@
             <div class="md-dialog-content">
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Make</label>
-                    <md-select ng-model="make">
+                    <md-select ng-model="Make">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="make in makes" ng-value="make.make">
-                            {{make.make}}
+                        <md-option ng-repeat="Make in makes" ng-value="Make.Make">
+                            {{Make.Make}}
                         </md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Type</label>
-                    <md-select ng-model="type">
+                    <md-select ng-model="Type">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="type in types" ng-value="type">
-                            {{type}}
+                        <md-option ng-repeat="Type in types" ng-value="Type">
+                            {{Type}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -44,7 +44,7 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Is ABS</label>
-                    <md-select ng-model="isABS">
+                    <md-select ng-model="Abs">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="item in [true, false]" ng-value="item">
                             {{item}}
@@ -53,7 +53,7 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Is Cruize Control</label>
-                    <md-select ng-model="isCruizeControl">
+                    <md-select ng-model="CruizeControl">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="item in [true, false]" ng-value="item">
                             {{item}}
@@ -62,7 +62,7 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Is Electrostarter</label>
-                    <md-select ng-model="isElectrostarter">
+                    <md-select ng-model="ElectricStarter">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="item in [true, false]" ng-value="item">
                             {{item}}

@@ -84,7 +84,7 @@
                     <span>/</span>
                 </li>
                 <li ng-repeat="item in motoCategories track by $index">
-                    <button ng-click="selectCategory(item.make)" class="category">{{item.make}}</button>
+                    <button ng-click="selectCategory(item.Make)" class="category">{{item.Make}}</button>
                     <span>/</span>
                 </li>
             </ul>
@@ -102,7 +102,7 @@
         </span>
         <div class="footer_store_conatiner">
             <p ng-repeat="shop in shopsInfo">
-                {{shop.adress}}; {{shop.phone_1}}, {{shop.phone_2}}
+                {{shop.Address}}; {{shop.Phone1}}, {{shop.Phone2}}
             </p>
         </div>
     </footer>
@@ -118,19 +118,19 @@
             <div>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Make</label>
-                    <md-select ng-model="make">
+                    <md-select ng-model="Make">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="make in makes" ng-value="make.make">
-                            {{make.make}}
+                        <md-option ng-repeat="Make in makes" ng-value="Make.Make">
+                            {{Make.Make}}
                         </md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Type</label>
-                    <md-select ng-model="type">
+                    <md-select ng-model="Type">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="type in types" ng-value="type">
-                            {{type}}
+                        <md-option ng-repeat="Type in types" ng-value="Type">
+                            {{Type}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -164,13 +164,13 @@
                         <input ng-model="NumberofCilindrs.High">
                     </md-input-container>
                 </div>
-                <md-switch ng-model="isABS" aria-label="Switch 1">
+                <md-switch ng-model="Abs" aria-label="Switch 1">
                     Is ABS
                 </md-switch>
-                <md-switch ng-model="isElectrostarter" aria-label="Switch 2">
+                <md-switch ng-model="ElectricStarter" aria-label="Switch 2">
                     Is Electrostarter
                 </md-switch>
-                <md-switch ng-model="isCruizeControl" aria-label="Switch 3">
+                <md-switch ng-model="CruizeControl" aria-label="Switch 3">
                     Is Cruize Control
                 </md-switch>
                 <div class="group_input">

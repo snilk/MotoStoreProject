@@ -1,108 +1,109 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MotoStore.Domain.EF;
 
 namespace MotoStore.Domain
 {
-
     public static class MotoGroup
     {
-        public static Array getMotosArrayByMake(string make)
+        public static Array getMotosArrayByMake(string Make)
         {
-            MotoStoreDBEntities context = new MotoStoreDBEntities();
-            if (make.ToLower() == "all")
+            var context = new MotoStoreContext();
+            if (Make.ToLower() == "all")
             {
                 var allMotos = (from m in context.Motorcycles
-                                select new
-                                {
-                                    m.Id,
-                                    m.make,
-                                    m.number_of_cilindrs,
-                                    m.price,
-                                    m.type,
-                                    m.year_of_issue,
-                                    m.engine_capacity,
-                                    m.main_photo,
-                                    m.isABS,
-                                    m.isCruizeControl,
-                                    m.isElectrostarter,
-                                    m.number_of_models
-                                }).ToArray();
+                    select new
+                    {
+                        m.Id,
+                        Make = m.Make,
+                        Cylinders = m.Cylinders,
+                        Price = m.Price,
+                        Type = m.Type,
+                        Year = m.Year,
+                        EngineCapacity = m.EngineCapacity,
+                        MainImage = m.MainImage,
+                        Abs = m.Abs,
+                        CruizeControl = m.CruizeControl,
+                        ElectricStarter = m.ElectricStarter,
+                        ModelsCount = m.ModelsCount
+                    }).ToArray();
                 return allMotos;
             }
+
             var motoByMake = (from m in context.Motorcycles
-                              where m.make == make
-                              select new
-                              {
-                                  m.Id,
-                                  m.make,
-                                  m.number_of_cilindrs,
-                                  m.price,
-                                  m.type,
-                                  m.year_of_issue,
-                                  m.engine_capacity,
-                                  m.main_photo,
-                                  m.isABS,
-                                  m.isCruizeControl,
-                                  m.isElectrostarter,
-                                  m.number_of_models
-                              }).ToArray();
-        
-            
+                where m.Make == Make
+                select new
+                {
+                    m.Id,
+                    Make = m.Make,
+                    Cylinders = m.Cylinders,
+                    Price = m.Price,
+                    Type = m.Type,
+                    Year = m.Year,
+                    EngineCapacity = m.EngineCapacity,
+                    MainImage = m.MainImage,
+                    Abs = m.Abs,
+                    CruizeControl = m.CruizeControl,
+                    ElectricStarter = m.ElectricStarter,
+                    ModelsCount = m.ModelsCount
+                }).ToArray();
+
             return motoByMake;
         }
+
         public static Array getMotoById(int id)
         {
-            MotoStoreDBEntities context = new MotoStoreDBEntities();
-            var photoForSingleMoto = from p in context.Moto_photos
-                                     where p.id_moto == id
-                                     select p.photo_url;
+            var context = new MotoStoreContext();
+            var photoForSingleMoto = from p in context.MotoImages
+                where p.MotoId == id
+                select p.ImageUrl;
             var singleMoto = (from m in context.Motorcycles
-                              where m.Id == id
-                              select new
-                              {
-                                  m.Id,
-                                  m.make,
-                                  m.isElectrostarter,
-                                  m.isCruizeControl,
-                                  m.isABS,
-                                  m.number_of_cilindrs,
-                                  m.number_of_models,
-                                  m.price,
-                                  m.type,
-                                  m.year_of_issue,
-                                  m.description,
-                                  m.engine_capacity,
-                                  m.main_photo,
-                                  photos = photoForSingleMoto
-                              }).ToArray();
-            Dictionary<string, string> a = new Dictionary<string, string>()
+                where m.Id == id
+                select new
+                {
+                    m.Id,
+                    Make = m.Make,
+                    ElectricStarter = m.ElectricStarter,
+                    CruizeControl = m.CruizeControl,
+                    Abs = m.Abs,
+                    Cylinders = m.Cylinders,
+                    ModelsCount = m.ModelsCount,
+                    Price = m.Price,
+                    Type = m.Type,
+                    Year = m.Year,
+                    Description = m.Description,
+                    EngineCapacity = m.EngineCapacity,
+                    MainImage = m.MainImage,
+                    photos = photoForSingleMoto
+                }).ToArray();
+            var a = new Dictionary<string, string>
             {
-                {"s","aa" }
+                {"s", "aa"}
             };
             return singleMoto;
         }
+
         public static Array getUniqCategories()
         {
-            MotoStoreDBEntities context = new MotoStoreDBEntities();
+            var context = new MotoStoreContext();
 
-            var categories = ((from c in context.Motorcycles
-                               select new
-                               {
-                                   c.make
-                               }).Distinct()).ToArray();
+            var categories = (from c in context.Motorcycles
+                select new
+                {
+                    Make = c.Make
+                }).Distinct().ToArray();
             //var categories = new[]
             //{
-            //    new{make="BMW"},
-            //    new{make="Harly-Davidson"},
-            //    new{make="Izh"},
-            //    new{make="Jawa"},
-            //    new{make="Yamaha",}
+            //    new{Make="BMW"},
+            //    new{Make="Harly-Davidson"},
+            //    new{Make="Izh"},
+            //    new{Make="Jawa"},
+            //    new{Make="Yamaha",}
             //};
             return categories;
         }
+
         //public static bool AddNewMotorcycle(Motorcycle newMoto)
         //{
         //    MotoStoreDBEntities context = new MotoStoreDBEntities();

@@ -21,14 +21,14 @@ angular.module("motoStoreCategories", ['ui.bootstrap']).config([
 
                             if (filter) {
                                 var newArr = res.data.filter(function (item) {
-                                    return (item.price >= filter.Price.Low && item.price <= filter.Price.High)
-                                        && (item.year_of_issue >= filter.YearofIssue.Low && item.year_of_issue <= filter.YearofIssue.High)
-                                        && (item.engine_capacity >= filter.EngineCapacity.Low && item.engine_capacity <= filter.EngineCapacity.High)
-                                        && (item.number_of_cilindrs >= filter.NumberofCilindrs.Low && item.number_of_cilindrs <= filter.NumberofCilindrs.High)
-                                        && (filter.isABS === undefined || filter.isABS === false ? true : item.isABS === filter.isABS)
-                                        && (filter.isElectrostarter === undefined || filter.isElectrostarter === false ? true : item.isElectrostarter === filter.isElectrostarter)
-                                        && (filter.isCruizeControl === undefined || filter.isCruizeControl === false ? true : item.isCruizeControl === filter.isCruizeControl)
-                                        && (filter.type === undefined || filter.type === 'None' ? true : item.type === filter.type)
+                                    return (item.Price >= filter.Price.Low && item.Price <= filter.Price.High)
+                                        && (item.Year >= filter.YearofIssue.Low && item.Year <= filter.YearofIssue.High)
+                                        && (item.EngineCapacity >= filter.EngineCapacity.Low && item.EngineCapacity <= filter.EngineCapacity.High)
+                                        && (item.Cylinders >= filter.NumberofCilindrs.Low && item.Cylinders <= filter.NumberofCilindrs.High)
+                                        && (filter.Abs === undefined || filter.Abs === false ? true : item.Abs === filter.Abs)
+                                        && (filter.ElectricStarter === undefined || filter.ElectricStarter === false ? true : item.ElectricStarter === filter.ElectricStarter)
+                                        && (filter.CruizeControl === undefined || filter.CruizeControl === false ? true : item.CruizeControl === filter.CruizeControl)
+                                        && (filter.Type === undefined || filter.Type === 'None' ? true : item.Type === filter.Type)
                                         
                                 });
 
@@ -39,7 +39,7 @@ angular.module("motoStoreCategories", ['ui.bootstrap']).config([
                             
                         },
                         function (err) {
-                            deferred.reject(err);
+                            deferred.resolve([]);
                         }
                     );
 

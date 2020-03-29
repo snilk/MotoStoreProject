@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,7 +15,7 @@ namespace MotoStore.WebUI.Controllers
     public class SameClass
     {
         public int Id { get; set; }
-        public string password { get; set; }
+        public string Password { get; set; }
     }
  
     public class HomeController : Controller
@@ -23,21 +24,24 @@ namespace MotoStore.WebUI.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            
+            //var db = new MotoStoreDBEntities();
+            //db.Database.CreateIfNotExists();
+            //db.Moto_photos.Add(new Moto_photos() {ImageUrl = "TestUtrl"});
+            //db.SaveChanges();
             return View();
         }
         //public JsonResult getUniqCategories()
         //{
         //    MotoStoreDBEntities context = new MotoStoreDBEntities();
         //    var categories = ((from c in context.Motorcycles
-        //                      select c.make).Distinct()).ToArray();
+        //                      select c.Make).Distinct()).ToArray();
         //    //var categories = new[]
         //    //{
-        //    //    new{make="BMW"},
-        //    //    new{make="Harly-Davidson"},
-        //    //    new{make="Izh"},
-        //    //    new{make="Jawa"},
-        //    //    new{make="Yamaha",}
+        //    //    new{Make="BMW"},
+        //    //    new{Make="Harly-Davidson"},
+        //    //    new{Make="Izh"},
+        //    //    new{Make="Jawa"},
+        //    //    new{Make="Yamaha",}
         //    //};
         //    //string json = JsonConvert.SerializeObject(categories);
         //    //string json1 = JsonConvert.SerializeObject(JToken.FromObject("1"));
@@ -52,7 +56,7 @@ namespace MotoStore.WebUI.Controllers
         //public JsonResult addNewUser(User sameClass)
         //{
         //    //MotoStoreDBEntities context = new MotoStoreDBEntities();
-        //    //sameClass.date_registration = DateTime.Now;            
+        //    //sameClass.RegistrationDate = DateTime.Now;            
         //    //context.Users.Add(sameClass);
         //    //context.SaveChanges();
         //    return Json("Success");

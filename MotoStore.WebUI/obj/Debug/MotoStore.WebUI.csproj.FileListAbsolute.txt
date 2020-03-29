@@ -81,3 +81,44 @@ D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj
 D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.pdb
 D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csprojAssemblyReference.cache
 D:\универ\6_сем\бибд курсовой\MotoStore\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csproj.CopyComplete
+D:\Projects\MotoStoreProject\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csprojAssemblyReference.cache
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\MotoStore.WebUI.dll.config
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\MotoStore.WebUI.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\MotoStore.WebUI.pdb
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\EntityFramework.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\EntityFramework.SqlServer.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\MotoStore.Domain.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Newtonsoft.Json.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Ninject.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Helpers.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Http.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Mvc.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Razor.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Webpages.Deployment.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Webpages.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Webpages.Razor.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\MotoStore.Domain.pdb
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\MotoStore.Domain.dll.config
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\EntityFramework.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\EntityFramework.SqlServer.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Newtonsoft.Json.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\Ninject.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Http.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Razor.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Webpages.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Webpages.Deployment.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Webpages.Razor.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Helpers.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\System.Web.Mvc.xml
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\ru\System.Web.Razor.resources.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\ru\System.Web.Webpages.resources.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\ru\System.Web.Webpages.Deployment.resources.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\ru\System.Web.Webpages.Razor.resources.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\ru\System.Web.Helpers.resources.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\bin\ru\System.Web.Mvc.resources.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.csproj.CopyComplete
+D:\Projects\MotoStoreProject\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.dll
+D:\Projects\MotoStoreProject\MotoStore.WebUI\obj\Debug\MotoStore.WebUI.pdb

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MotoStore.Domain.DataManipulations;
+using MotoStore.Domain.EF;
 using Newtonsoft.Json;
 
 namespace MotoStore.WebUI.Controllers
@@ -17,8 +18,8 @@ namespace MotoStore.WebUI.Controllers
         [HttpPost]
         public JsonResult Registration(User newUser)
         {
-            newUser.date_registration = DateTime.Now;
-            newUser.role = false;
+            newUser.RegistrationDate = DateTime.Now;
+            newUser.IsAdmin = false;
             //string filepath = @"D:\универ\6 сем\бибд курсовой\MotoStore\JsonFIles\json" + "testNewUser" + ".json";
             //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(newUser));
             success.Add("success", UsersOperations.addNewUser(newUser));           

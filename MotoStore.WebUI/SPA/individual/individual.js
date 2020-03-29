@@ -10,10 +10,10 @@ angular.module("motoStoreIndividual", []).config([
           motoById: function($stateParams, $q, motoService) {
             var deferred = $q.defer();
             var motoId = $stateParams.motoId;
-            var make = $stateParams.category;
+            var Make = $stateParams.category;
   
             motoService.get(
-                motoId, make,
+                motoId, Make,
               function(res) {
                 deferred.resolve(res.data);
               },

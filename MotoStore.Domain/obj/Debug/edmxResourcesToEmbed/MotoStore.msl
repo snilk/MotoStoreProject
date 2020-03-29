@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище MotoStoreDBModelContainer" CdmEntityContainer="MotoStoreDBEntities">
+  <EntityContainerMapping StorageEntityContainer="MotoStoreDBModelStoreContainer" CdmEntityContainer="MotoStoreDBEntities">
     <EntitySetMapping Name="Moto_photos">
-      <EntityTypeMapping TypeName="MotoStoreDBModel.Moto_photos">
+      <EntityTypeMapping TypeName="IsTypeOf(MotoStoreDBModel.Moto_photos)">
         <MappingFragment StoreEntitySet="Moto_photos">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="id_moto" ColumnName="id_moto" />
@@ -11,9 +11,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Motorcycles">
-      <EntityTypeMapping TypeName="MotoStoreDBModel.Motorcycle">
-        <MappingFragment StoreEntitySet="Motorcycle">
-          <ScalarProperty Name="main_photo" ColumnName="main_photo" />
+      <EntityTypeMapping TypeName="IsTypeOf(MotoStoreDBModel.Motorcycle)">
+        <MappingFragment StoreEntitySet="Motorcycles">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="make" ColumnName="make" />
           <ScalarProperty Name="type" ColumnName="type" />
@@ -26,24 +25,25 @@
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="number_of_models" ColumnName="number_of_models" />
           <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="main_photo" ColumnName="main_photo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="MotoStoreDBModel.Order">
+      <EntityTypeMapping TypeName="IsTypeOf(MotoStoreDBModel.Order)">
         <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="date_compose" ColumnName="date_compose" />
-          <ScalarProperty Name="adress" ColumnName="adress" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="id_moto" ColumnName="id_moto" />
           <ScalarProperty Name="id_user" ColumnName="id_user" />
           <ScalarProperty Name="id_shop" ColumnName="id_shop" />
           <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="date_compose" ColumnName="date_compose" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Shop_information">
-      <EntityTypeMapping TypeName="MotoStoreDBModel.Shop_information">
+      <EntityTypeMapping TypeName="IsTypeOf(MotoStoreDBModel.Shop_information)">
         <MappingFragment StoreEntitySet="Shop_information">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="adress" ColumnName="adress" />
@@ -53,10 +53,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="MotoStoreDBModel.User">
+      <EntityTypeMapping TypeName="IsTypeOf(MotoStoreDBModel.User)">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="role" ColumnName="role" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
@@ -64,6 +62,8 @@
           <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="date_registration" ColumnName="date_registration" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="email" ColumnName="email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

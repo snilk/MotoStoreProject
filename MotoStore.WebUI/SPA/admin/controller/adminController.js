@@ -18,9 +18,9 @@
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             })
             .then(function (answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
+                $scope.Status = 'You said the information was "' + answer + '".';
             }, function () {
-                $scope.status = 'You cancelled the dialog.';
+                $scope.Status = 'You cancelled the dialog.';
             });
         };
 
@@ -33,7 +33,7 @@
                     });
                     var resM = $.grep($scope.adminData.motos, function (e) { return e.Id == resO[0].motoId });
                    
-                  toastr.success('Motorcycle with Id = ' + resM[0].Id + " changed the count of models by 1.Now :  " + resM[0].number_of_models + " models in stock ");
+                  toastr.success('Motorcycle with Id = ' + resM[0].Id + " changed the count of models by 1.Now :  " + resM[0].ModelsCount + " models in stock ");
                     $state.reload();
                     
                    // $state.go('admin');
@@ -58,7 +58,7 @@
 
         function addMoto($scope, $mdDialog) {
 
-            $scope.makes = [{ "make": "BMW" }, { "make": "Harley-Davidson" }, { "make": "Izh" }, { "make": "Jawa" }, { "make": "Yamaha" }];
+            $scope.makes = [{ "Make": "BMW" }, { "Make": "Harley-Davidson" }, { "Make": "Izh" }, { "Make": "Jawa" }, { "Make": "Yamaha" }];
             $scope.types = ['Cruiser', 'Sports bike', 'Classic', 'Sport-tourist']
 
             $scope.cancel = function () {
@@ -67,17 +67,17 @@
 
             $scope.addMoto = function () {
                 var query = {
-                    make: $scope.make ,           
-                    type: $scope.type  ,    
-                    year_of_issue: $scope.YearofIssue,
-                    engine_capacity: $scope.EngineCapacity,
-                    number_of_cilindrs: $scope.NumberofCilindrs,
-                    isABS: $scope.isABS  ,
-                    isElectrostarter: $scope.isElectrostarter,
-                    isCruizeControl: $scope.isCruizeControl,
-                    description: $scope.Description ,
-                    number_of_models: $scope.NumberofModels ,
-                    price: $scope.Price    ,
+                    Make: $scope.Make ,           
+                    Type: $scope.Type  ,    
+                    Year: $scope.YearofIssue,
+                    EngineCapacity: $scope.EngineCapacity,
+                    Cylinders: $scope.NumberofCilindrs,
+                    Abs: $scope.Abs  ,
+                    ElectricStarter: $scope.ElectricStarter,
+                    CruizeControl: $scope.CruizeControl,
+                    Description: $scope.Description ,
+                    ModelsCount: $scope.NumberofModels ,
+                    Price: $scope.Price    ,
                 }
 
                 adminService.addMoto(query, function (res) {

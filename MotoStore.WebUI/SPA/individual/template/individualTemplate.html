@@ -1,23 +1,23 @@
 <head>
-    <title>{{moto.make}}</title>
+    <title>{{moto.Make}}</title>
 </head>
 <div class="individual_container">
     <span ng-click="openModal()" class="make_order_icon"></span>
     <div class="individual_main_info_container">
-        <img class="individual_main_photo" ng-src="./SPA/image/{{moto.main_photo}}.jpg" alt="">
+        <img class="individual_main_photo" ng-src="./SPA/image/{{moto.MainImage}}.jpg" alt="">
         <div class="individual_main_info">
             <div class="individual_info">
-                <span class="individual_info_item">{{moto.make}}</span>
-                <span class="individual_info_item">Type: {{moto.type}}</span>
-                <span class="individual_info_item">Price: {{moto.price}}$</span>
-                <span class="individual_info_item">Engine capacity: {{moto.engine_capacity}} cc<sup>3</sup></span>
-                <span class="individual_info_item">Number of cilindrs: {{moto.number_of_cilindrs}}</span>
-                <span class="individual_info_item">Year of issue: {{moto.year_of_issue}}</span>
+                <span class="individual_info_item">{{moto.Make}}</span>
+                <span class="individual_info_item">Type: {{moto.Type}}</span>
+                <span class="individual_info_item">Price: {{moto.Price}}$</span>
+                <span class="individual_info_item">Engine capacity: {{moto.EngineCapacity}} cc<sup>3</sup></span>
+                <span class="individual_info_item">Number of cilindrs: {{moto.Cylinders}}</span>
+                <span class="individual_info_item">Year of issue: {{moto.Year}}</span>
             </div>
             <div class="individual_add_info">
-                <span ng-class="{active: moto.isABS }" class="individual_add_info_item">ABS</span>
-                <span ng-class="{active: moto.isCruizeControl }" class="individual_add_info_item">Cruize Control</span>
-                <span ng-class="{active: moto.isElectrostarter }" class="individual_add_info_item">Electrostarter</span>
+                <span ng-class="{active: moto.Abs }" class="individual_add_info_item">ABS</span>
+                <span ng-class="{active: moto.CruizeControl }" class="individual_add_info_item">Cruize Control</span>
+                <span ng-class="{active: moto.ElectricStarter }" class="individual_add_info_item">Electrostarter</span>
             </div>
         </div>
     </div>
@@ -35,8 +35,8 @@
         </div>
     </div>
     <div class="individual_desc">
-        <h2 class="individual_desc_title">Additional description:</h2>
-        <span class="individual_desc_content">{{moto.description}}</span>
+        <h2 class="individual_desc_title">Additional Description:</h2>
+        <span class="individual_desc_content">{{moto.Description}}</span>
     </div>
 </div>
 
@@ -47,25 +47,25 @@
                 <span ng-click="isModalOpen = false" class="close_modal"></span>
             </div>
             <section class="make_order_body">
-                <span class="modal_item">Name: {{orderInfo.name + " " + orderInfo.surname}}</span>
-                <span class="modal_item">E-mail: {{orderInfo.email}}</span>
-                <span class="modal_item">Phone: {{orderInfo.phone}}</span>
-                <span class="modal_item">Moto make: {{moto.make}}</span>
-                <span class="modal_item">Moto type: {{moto.type}}</span>
-                <span class="modal_item">Moto price: {{moto.price}}$</span>
+                <span class="modal_item">Name: {{orderInfo.Name + " " + orderInfo.Surname}}</span>
+                <span class="modal_item">E-mail: {{orderInfo.Email}}</span>
+                <span class="modal_item">Phone: {{orderInfo.Phone}}</span>
+                <span class="modal_item">Moto Make: {{moto.Make}}</span>
+                <span class="modal_item">Moto Type: {{moto.Type}}</span>
+                <span class="modal_item">Moto Price: {{moto.Price}}$</span>
                 <div class="adress_container">
                     <div class="adress_item">
                         <span class="adress_item_title">Delivery: </span>
-                        <input type="checkbox" class="styled-checkbox" id="styled-checkbox-1" ng-model="isPickup" ng-click="isDelivery = false"/>
+                        <input Type="checkbox" class="styled-checkbox" id="styled-checkbox-1" ng-model="isPickup" ng-click="isDelivery = false"/>
                         <label for="styled-checkbox-1"></label>
-                        <input class="order_input" type="text" placeholder="Enter home adress" ng-show="isPickup" ng-model="homeAdress"/>
+                        <input class="order_input" Type="text" placeholder="Enter home Address" ng-show="isPickup" ng-model="homeAdress"/>
                     </div>
                     <div class="adress_item">
                         <span class="adress_item_title">Pickup: </span>
-                        <input type="checkbox" class="styled-checkbox" id="styled-checkbox-2" ng-click="isPickup = false" ng-model="isDelivery" />
+                        <input Type="checkbox" class="styled-checkbox" id="styled-checkbox-2" ng-click="isPickup = false" ng-model="isDelivery" />
                         <label for="styled-checkbox-2"></label>
-                        <select name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
-                            <option ng-repeat="option in orderInfo.shops" value="{{option.Id}}">{{option.adress}}</option>
+                        <select Name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
+                            <option ng-repeat="option in orderInfo.shops" value="{{option.Id}}">{{option.Address}}</option>
                         </select>
                     </div>
                 </div>

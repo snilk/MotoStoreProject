@@ -70,73 +70,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataInitialize\DataInitializer.cs" />
     <Compile Include="DataManipulations\AdminOperations.cs" />
     <Compile Include="DataManipulations\MotoGroup.cs" />
     <Compile Include="DataManipulations\OrderOperations.cs" />
+    <Compile Include="EF\MotoImages.cs" />
+    <Compile Include="EF\Motorcycle.cs" />
+    <Compile Include="EF\MotoStoreContext.cs" />
+    <Compile Include="EF\Order.cs" />
+    <Compile Include="EF\ShopInformation.cs" />
+    <Compile Include="EF\User.cs" />
     <Compile Include="InterData\OrderInfo.cs" />
     <Compile Include="InterData\UserForAuthorization.cs" />
     <Compile Include="InterData\UserTokenRole.cs" />
-    <Compile Include="Motorcycle.cs">
-      <DependentUpon>MotoStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MotoStore.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MotoStore.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MotoStore.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MotoStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MotoStore.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MotoStore.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Moto_photos.cs">
-      <DependentUpon>MotoStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Order.cs">
-      <DependentUpon>MotoStore.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataManipulations\ShopInformation.cs" />
     <Compile Include="DataManipulations\UsersOperations.cs" />
-    <Compile Include="Shop_information.cs">
-      <DependentUpon>MotoStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>MotoStore.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="MotoStore.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MotoStore.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MotoStore.edmx.diagram">
-      <DependentUpon>MotoStore.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MotoStore.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MotoStore.Context.cs</LastGenOutput>
-      <DependentUpon>MotoStore.edmx</DependentUpon>
-    </Content>
-    <Content Include="MotoStore.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MotoStore.edmx</DependentUpon>
-      <LastGenOutput>MotoStore.cs</LastGenOutput>
-    </Content>
+    <Content Include="MotoStore.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

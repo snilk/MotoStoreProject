@@ -7,7 +7,7 @@ angular.module("motoStoreProfile").controller("profileController", [
 
         $scope.goToMoto = function (order) {
             var id = order.motoId;
-            var category = order.make;
+            var category = order.Make;
 
             $state.go('individual', { motoId: id, category: category})
             console.log(order)
