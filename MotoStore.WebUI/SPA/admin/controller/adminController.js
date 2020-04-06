@@ -5,7 +5,8 @@
     'adminService',
     '$mdDialog',
     'toastr',
-    function ($scope, $state, adminData, adminService, $mdDialog, toastr) {
+    '$rootScope',
+function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope) {
         $scope.adminData = adminData;
 
         $scope.showAddShopDialog = function (ev, moto) {
@@ -41,22 +42,29 @@
         };
 
         $scope.editStatus = function (id) {
-            adminService.editStatus(id, function (res) {
-                if (res.data.Success) {
-                    
-                    var resO = $.grep($scope.adminData.orders, function (e) {                     
-                        return e.orderId == id;
-                    });
-                    var resM = $.grep($scope.adminData.motos, function (e) { return e.Id == resO[0].motoId });
-                   
-                  toastr.success('Motorcycle with Id = ' + resM[0].Id + " changed the count of models by 1.Now :  " + resM[0].ModelsCount + " models in stock ");
-                    $state.reload();
-                    
-                   // $state.go('admin');
-                }
-            }, function (err) {
-                console.log(err)
-            })
+            adminService.editStatus(id,
+                function(res) {
+                    if (res.data.Success) {
+
+                        var resO = $.grep($scope.adminData.orders,
+                            function(e) {
+                                return e.orderId == id;
+                            });
+                        var resM = $.grep($scope.adminData.motos, function(e) { return e.Id == resO[0].motoId });
+
+                        toastr.success('Motorcycle with Id = ' +
+                            resM[0].Id +
+                            " changed the count of models by 1.Now :  " +
+                            resM[0].ModelsCount +
+                            " models in stock ");
+                        $state.reload();
+
+                        // $state.go('admin');
+                    }
+                },
+                function(err) {
+                    console.log(err)
+                });
         }
 
         $scope.removeMoto = function (id) {
@@ -113,10 +121,13 @@
             }
         }
 
-        function addMoto($scope, $mdDialog) {
+        function addMoto($scope, $mdDialog, $rootScope) {
 
             $scope.makes = [{ "Make": "BMW" }, { "Make": "Harley-Davidson" }, { "Make": "Izh" }, { "Make": "Jawa" }, { "Make": "Yamaha" }];
             $scope.types = ['Cruiser', 'Sports bike', 'Classic', 'Sport-tourist']
+
+            $scope.mainImage = {};
+            $scope.additionalImages = {};
 
             $scope.cancel = function () {
                 $mdDialog.cancel();
@@ -134,19 +145,27 @@
                     CruizeControl: $scope.CruizeControl,
                     Description: $scope.Description ,
                     ModelsCount: $scope.NumberofModels ,
-                    Price: $scope.Price    ,
+                    Price: $scope.Price,
+                    MainImageFile: $scope.mainImage.file
                 }
+
+                query.AdditionalImagesFiles = new Array();
+                angular.forEach($scope.additionalImages.files,
+                    function(item) {
+                        query.AdditionalImagesFiles.push(item);
+                    });
 
                 adminService.addMoto(query,
                     function(res) {
                         if (res.data.Success) {
+                            $rootScope.$emit('OnMotoAdded', true);
                             $state.reload();
                             toastr.success('New moto added!', 'Success');
                             $mdDialog.cancel();
                         }
                     },
                     function(err) {
-                        console.log(err)
+                        console.log(err);
                     });
             }
 

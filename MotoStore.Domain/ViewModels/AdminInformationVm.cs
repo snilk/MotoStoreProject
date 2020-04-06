@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using MotoStore.Domain.EF;
+﻿using System.Collections.Generic;
 
 namespace MotoStore.Domain.ViewModels
 {

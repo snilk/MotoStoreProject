@@ -8,46 +8,63 @@ namespace MotoStore.Domain.DataManipulations
 {
     public class OrderOperations
     {
-        public static Array GetOrderForComposeByToken(string token)
+        public static OrderComposeVm GetOrderForComposeByToken(string token)
         {
-            var context = new MotoStoreContext();
             var user = UsersOperations.GetUserByToken(token);
+
             if (user != null)
             {
-                var shops = from s in context.ShopInformations
-                    select new {s.Id, Address = s.Address, Phone1 = s.Phone1, Phone2 = s.Phone2};
-                var orderInfo = (from o in context.Users
-                    where o.Id == user.Id
-                    select new
-                    {
-                        Name = o.Name, Surname = o.Surname, Phone = o.Phone, Email = o.Email,
-                        shops
-                    }).ToArray();
-
-                return orderInfo;
+                return new OrderComposeVm
+                {
+                    ShopsInformation = ShopInformationOperations.GetShopInformation(),
+                    User = new OrderUserVm(user)
+                };
             }
 
             return null;
         }
 
-        public static bool addNewOrder(OrderInfo orderInfo)
+        public static SuccessVm AddNewOrder(OrderInfoVm orderInfoVm)
         {
-            var user = UsersOperations.GetUserByToken(orderInfo.token);
-            if (user == null) return false;
-            var context = new MotoStoreContext();
-            if (context.Motorcycles.Where(x => x.Id == orderInfo.idMoto).FirstOrDefault() == null ||
-                context.ShopInformations.Where(x => x.Id == orderInfo.idShop).FirstOrDefault() == null ||
-                context.Users.Where(x => x.Id == user.Id).FirstOrDefault() == null) return false;
-            var order = new Order
-            {
-                MotoId = orderInfo.idMoto, ShopId = orderInfo.idShop, UserId = user.Id, Address = orderInfo.Address,
-                Status = false, OrderDate = DateTime.Now
-            };
-            int[] p = {1, 2, 3};
+            var user = UsersOperations.GetUserByToken(orderInfoVm.Token);
 
-            context.Orders.Add(order);
-            context.SaveChanges();
-            return true;
+            if (user == null)
+            {
+                return new SuccessVm(false);
+            }
+
+            using (var context = new MotoStoreContext())
+            {
+                var userWithinContext = context.Users.FirstOrDefault(us => us.Id == user.Id);
+
+                if (userWithinContext == null)
+                {
+                    return new SuccessVm(false);
+                }
+
+                var motorcycle = context.Motorcycles.FirstOrDefault(moto => moto.Id == orderInfoVm.MotoId);
+                var shopInformation = context.ShopInformations.FirstOrDefault(shop => shop.Id == orderInfoVm.ShopId);
+
+                if (motorcycle == null || shopInformation == null)
+                {
+                    return new SuccessVm(false);
+                }
+
+                var order = new Order
+                {
+                    Address = orderInfoVm.Address,
+                    User = userWithinContext,
+                    ShopInformation = shopInformation,
+                    Motorcycle = motorcycle,
+                    OrderDate = DateTime.Now,
+                    Status = false
+                };
+
+                context.Orders.Add(order);
+                context.SaveChanges();
+            }
+
+            return new SuccessVm(true);
         }
 
         public static List<OrderInfoAdminVm> GetAllOrders()

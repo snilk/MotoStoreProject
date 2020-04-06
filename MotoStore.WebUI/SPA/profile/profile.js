@@ -15,7 +15,7 @@ angular.module("motoStoreProfile", ['ui.bootstrap']).config([
                 };
 
                 userService.get(query, function (res) {
-                    var user = res.data[0];
+                    var user = res.data;
                     if (user) {
                         deferred.resolve(user);
                     } else {

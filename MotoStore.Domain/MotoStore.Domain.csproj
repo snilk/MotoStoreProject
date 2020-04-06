@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +47,8 @@
   <ItemGroup>
     <Compile Include="DataInitialize\DataInitializer.cs" />
     <Compile Include="DataManipulations\AdminOperations.cs" />
-    <Compile Include="DataManipulations\MotoGroup.cs" />
+    <Compile Include="DataManipulations\ImagesOperations.cs" />
+    <Compile Include="DataManipulations\MotorcycleOperations.cs" />
     <Compile Include="DataManipulations\OrderOperations.cs" />
     <Compile Include="EF\MotoImage.cs" />
     <Compile Include="EF\Motorcycle.cs" />
@@ -55,27 +57,25 @@
     <Compile Include="EF\ShopInformation.cs" />
     <Compile Include="EF\User.cs" />
     <Compile Include="Static\MotoImagesConstants.cs" />
+    <Compile Include="ViewModels\AccountOrderInformationVm.cs" />
     <Compile Include="ViewModels\AdminInformationVm.cs" />
     <Compile Include="ViewModels\MotorcycleVm.cs" />
-    <Compile Include="ViewModels\OrderInfo.cs" />
+    <Compile Include="ViewModels\OrderAccountInfoVm.cs" />
+    <Compile Include="ViewModels\OrderComposeVm.cs" />
+    <Compile Include="ViewModels\OrderInfoVm.cs" />
     <Compile Include="ViewModels\OrderInfoAdminVm.cs" />
+    <Compile Include="ViewModels\OrderUserVm.cs" />
     <Compile Include="ViewModels\ShopInformationVm.cs" />
     <Compile Include="ViewModels\SuccessVm.cs" />
     <Compile Include="ViewModels\TokenVM.cs" />
+    <Compile Include="ViewModels\UniqMakesVm.cs" />
+    <Compile Include="ViewModels\AccountInformationVm.cs" />
     <Compile Include="ViewModels\UserForAuthorization.cs" />
     <Compile Include="ViewModels\UserTokenRole.cs" />
-    <Compile Include="Migrations\202003291408144_InitialCreate.cs" />
-    <Compile Include="Migrations\202003291408144_InitialCreate.Designer.cs">
-      <DependentUpon>202003291408144_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003291505480_AddForeighnKeys.cs" />
-    <Compile Include="Migrations\202003291505480_AddForeighnKeys.Designer.cs">
-      <DependentUpon>202003291505480_AddForeighnKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataManipulations\ShopInformation.cs" />
+    <Compile Include="DataManipulations\ShopInformationOperations.cs" />
     <Compile Include="DataManipulations\UsersOperations.cs" />
+    <Compile Include="ViewModels\UserVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -88,14 +88,5 @@
       <Version>5.2.4</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003291408144_InitialCreate.resx">
-      <DependentUpon>202003291408144_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003291505480_AddForeighnKeys.resx">
-      <DependentUpon>202003291505480_AddForeighnKeys.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,12 +23,12 @@
     </div>
     <div class="individual_photos">
         <div class="container slider">
-            <img ng-repeat="photo in moto.photos track by $index" class="slide" ng-show="isActive($index)" ng-src="./SPA/image/{{photo}}"
+            <img ng-repeat="photo in moto.AdditionalImages track by $index" class="slide" ng-show="isActive($index)" ng-src="./SPA/image/{{photo}}"
                 alt="">
-            <a class="arrow prev" href="#" ng-click="showPrev(moto.photos)"></a>
-            <a class="arrow next" href="#" ng-click="showNext(moto.photos)"></a>
+            <a class="arrow prev" href="#" ng-click="showPrev(moto.AdditionalImages)"></a>
+            <a class="arrow next" href="#" ng-click="showNext(moto.AdditionalImages)"></a>
             <ul class="nav">
-                <li ng-repeat="photo in moto.photos" ng-class="{'active':isActive($index)}">
+                <li ng-repeat="photo in moto.AdditionalImages" ng-class="{'active':isActive($index)}">
                     <img ng-src="./SPA/image/{{photo}}" ng-click="showPhoto($index);" />
                 </li>
             </ul>
@@ -47,9 +47,9 @@
                 <span ng-click="isModalOpen = false" class="close_modal"></span>
             </div>
             <section class="make_order_body">
-                <span class="modal_item">Name: {{orderInfo.Name + " " + orderInfo.Surname}}</span>
-                <span class="modal_item">E-mail: {{orderInfo.Email}}</span>
-                <span class="modal_item">Phone: {{orderInfo.Phone}}</span>
+                <span class="modal_item">Name: {{orderInfo.User.Name + " " + orderInfo.User.Surname}}</span>
+                <span class="modal_item">E-mail: {{orderInfo.User.Email}}</span>
+                <span class="modal_item">Phone: {{orderInfo.User.Phone}}</span>
                 <span class="modal_item">Moto Make: {{moto.Make}}</span>
                 <span class="modal_item">Moto Type: {{moto.Type}}</span>
                 <span class="modal_item">Moto Price: {{moto.Price}}$</span>
@@ -65,7 +65,7 @@
                         <input Type="checkbox" class="styled-checkbox" id="styled-checkbox-2" ng-click="isPickup = false" ng-model="isDelivery" />
                         <label for="styled-checkbox-2"></label>
                         <select Name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
-                            <option ng-repeat="option in orderInfo.shops" value="{{option.Id}}">{{option.Address}}</option>
+                            <option ng-repeat="option in orderInfo.ShopsInformation" value="{{option.Id}}">{{option.Address}}</option>
                         </select>
                     </div>
                 </div>

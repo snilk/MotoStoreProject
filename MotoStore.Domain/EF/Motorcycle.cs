@@ -18,8 +18,10 @@ namespace MotoStore.Domain.EF
         public string Description { get; set; }
         public int ModelsCount { get; set; }
         public double Price { get; set; }
-        public string MainImage { get; set; }
+        public int MainImageId { get; set; }
 
+        [ForeignKey(nameof(MainImageId))]
+        public virtual MotoImage MainImage { get; set; }
         public virtual ICollection<MotoImage> MotoImages { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }

@@ -1,9 +1,4 @@
 ﻿using MotoStore.Domain.DataManipulations;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using MotoStore.Domain.ViewModels;
 
@@ -15,23 +10,28 @@ namespace MotoStore.WebUI.Controllers
         [HttpPost]
         public JsonResult OrderInterCompose (string token)
         {
-            Array orderInfo = OrderOperations.GetOrderForComposeByToken(token);
-            if (orderInfo==null)
+            var orderInfo = OrderOperations.GetOrderForComposeByToken(token);
+
+            if (orderInfo == null)
             {
-                return Json(new {isCorrectToken=false },JsonRequestBehavior.AllowGet);
+                return Json(new TokenVm
+                {
+                    IsCorrectToken = false
+                }, JsonRequestBehavior.AllowGet);
             }
-            //string filepath = @"D:\универ\6_сем\бибд курсовой\MotoStore\JsonFIles\json" + "responseAfterClickOnOrder" + ".json";
-            //System.IO.File.WriteAllText(filepath, JsonConvert.SerializeObject(orderInfo));
+
             return Json(orderInfo,JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
-        public JsonResult OrderCompose(OrderInfo order)
+        public JsonResult OrderCompose(OrderInfoVm order)
         {
-           // return Json(order, JsonRequestBehavior.AllowGet);
-            if (order.idMoto==0||order.idShop==0||order.token==null) return Json(new { isCorrectOrders=false},JsonRequestBehavior.AllowGet);
-            //return Json("False",JsonRequestBehavior.AllowGet);
-          
-            return Json(new { isCorrectOrder=OrderOperations.addNewOrder(order)},JsonRequestBehavior.AllowGet);
+            if (order.MotoId == 0 || order.ShopId == 0 || order.Token == null)
+            {
+                return Json(new SuccessVm(false), JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(OrderOperations.AddNewOrder(order), JsonRequestBehavior.AllowGet);
         }
     }
 }

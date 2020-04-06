@@ -15,6 +15,7 @@ namespace MotoStore.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Database.SetInitializer(new CreateDatabaseIfNotExists<MotoStoreContext>());
             DataInitializer.InitializeTables();
+            DataInitializer.RemoveDuplicates();
         }
     }
 }

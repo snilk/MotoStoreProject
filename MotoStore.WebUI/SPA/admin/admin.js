@@ -25,13 +25,14 @@
                 adminData: function (adminService, $q) {
                     var deferred = $q.defer();
 
-                    adminService.get(function (res) {
-                        deferred.resolve(res.data);
-                    }, function (err) {
-                        deferred.reject(err);
-                    })
+                    adminService.get(function(res) {
+                            deferred.resolve(res.data);
+                        },
+                        function(err) {
+                            deferred.reject(err);
+                        });
 
-                    return deferred.promise
+                    return deferred.promise;
                 }
             }
         });

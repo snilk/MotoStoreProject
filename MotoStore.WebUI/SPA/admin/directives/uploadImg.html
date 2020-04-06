@@ -1,0 +1,8 @@
+﻿<div class="cell upload_img">
+    <span class="upload_img_btn" ng-click="selectFile()">
+        <span class="upload_img_icon"></span>
+        <span class="upload_img_label" ng-bind="getUploadImgLabel()"></span>
+    </span>
+    <span class="remove_img_icon" ng-show="isRemoveButtonVisible" ng-click="removeFile()"></span>
+    <input type="file" name="imgFileInput" accept="image/*" multiple />
+</div>

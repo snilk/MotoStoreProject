@@ -1,44 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Http;
-using MotoStore.Domain;
-using MotoStore.Domain.EF;
+﻿using System.Web.Mvc;
+using MotoStore.Domain.DataManipulations;
 
 namespace MotoStore.WebUI.Controllers
 {
     public class ProductsController : Controller
     {
         // GET: Products
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public JsonResult Motorcycles(string makeForList,int id)
         {
-            //throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
-            Array motos = null;
-            if (id==0)
-            {
-                motos = MotoGroup.getMotosArrayByMake(makeForList);
-            }
-            else
-            {
-                motos = MotoGroup.getMotoById(id);
-            }
-
-            if (motos.Length == 0)
-            {
-                motos = Array.Empty<Motorcycle>();
-            }
-            return Json(motos, JsonRequestBehavior.AllowGet);
-
+            return id == 0
+                ? Json(MotorcycleOperations.GetMotorcyclesByMake(makeForList), JsonRequestBehavior.AllowGet)
+                : Json(MotorcycleOperations.GetMotoById(id), JsonRequestBehavior.AllowGet);
         }
-        [System.Web.Mvc.HttpGet]
+
+
+        [HttpGet]
         public JsonResult GetUniqCategories()
         {
-            Array categories = MotoGroup.getUniqCategories();
-            return Json(categories,JsonRequestBehavior.AllowGet);
+            return Json(MotorcycleOperations.GetUniqCategories(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetUniqTypes()
+        {
+            return Json(MotorcycleOperations.GetUniqTypes(), JsonRequestBehavior.AllowGet);
         }
     }
 }

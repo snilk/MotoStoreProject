@@ -5,12 +5,12 @@ angular.module("motoStoreProfile").controller("profileController", [
     function($scope, $state, user) {
         $scope.user = user;
 
-        $scope.goToMoto = function (order) {
-            var id = order.motoId;
-            var category = order.Make;
+        $scope.goToMoto = function (motorcycle) {
+            var id = motorcycle.Id;
+            var category = motorcycle.Make;
 
-            $state.go('individual', { motoId: id, category: category})
-            console.log(order)
+            $state.go('individual', { motoId: id, category: category });
+            console.log(motorcycle);
         }
     }
   ]);

@@ -5,7 +5,7 @@ angular.module("motoStoreIndividual").controller("individualController", [
     'authService',
   'toastr',
   function ($scope, motoById, orderService, authService, toastr) {
-      $scope.moto = motoById[0];
+      $scope.moto = motoById;
       $scope.isModalOpen = false;
       $scope.orderInfo = undefined;
       $scope.data = {
@@ -33,30 +33,28 @@ angular.module("motoStoreIndividual").controller("individualController", [
                 if (toastr.active() == 0) { toastr.warning('This motorcycle is not in stock', 'Sorry'); }
             } else {
                 $scope.isModalOpen = true;
-                orderService.getOrderInfo(function (res) { $scope.orderInfo = res.data[0] }, function (err) {
-                    console.log(err)
-                })
+                orderService.getOrderInfo(function(res) { $scope.orderInfo = res.data },
+                    function(err) {
+                        console.log(err);
+                    });
             }
             } else {
                 if (toastr.active() == 0) {
-                    var toast = toastr.warning('Warning!', 'You have to login or registrated for Make order!');
+                    toastr.warning('Warning!', 'You have to login or registered to make order!');
                 }
-
-
-            }
+        }
 
         
     }
 
     $scope.makeOrder = function (isPickup, isDelivery, selectModel, homeAdress) {
         var token = authService.getToken();
-        var shop = selectModel ? selectModel : $scope.orderInfo.shops[0].Id
+        var shop = selectModel ? selectModel : $scope.orderInfo.ShopsInformation[0].Id
         var query = {
-            token: token,
-            idMoto: $scope.moto.Id,
+            Token: token,
+            MotoId: $scope.moto.Id,
             Address: isPickup ? homeAdress : null,
-            idShop: shop
-
+            ShopId: shop
         };
        
         if ((isPickup === undefined || isPickup === false) && (isDelivery === undefined || isDelivery === false)) {
@@ -70,17 +68,22 @@ angular.module("motoStoreIndividual").controller("individualController", [
         }
         else {
             $scope.error = '';
-            orderService.makeOrder(query, function (res) {
-                if (res.data.isCorrectOrder) {
-                    toastr.success('Success!', 'You are Make order. Order is pending. Manager will contact you in the near future');
-                    $scope.isModalOpen = false;
-                } else {
-                    
-                    if (toastr.active() == 0) { toastr.error('Error!', 'Make order failed'); }
-                }
-            }, function (err) {
-        console.log(err)
-            })
+            orderService.makeOrder(query,
+                function(res) {
+                    if (res.data.Success) {
+                        toastr.success('Success!',
+                            'You have made order. Order is pending. Manager will contact you in the near future');
+                        $scope.isModalOpen = false;
+                    } else {
+
+                        if (toastr.active() == 0) {
+                            toastr.error('Error!', 'Make order failed');
+                        }
+                    }
+                },
+                function(err) {
+                    console.log(err);
+                });
         }
 
 

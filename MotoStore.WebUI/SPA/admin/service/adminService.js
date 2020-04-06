@@ -32,17 +32,47 @@
             return $http(req).then(successCb, errorCb);
         },
         addMoto: function (query, successCb, errorCb) {
+            var getModelAsFormData = function (data) {
+                var dataAsFormData = new FormData();
+                angular.forEach(data, function (value, key) {
+                    if (Array.isArray(value)) {
+                        for (var i = 0; i < value.length; i++) {
+                            dataAsFormData.append(key + "["+ i + "]", value[i]);
+                        }
+                    } else {
+                        dataAsFormData.append(key, value);
+                    }
+                    
+                });
+                return dataAsFormData;
+            };
+
+
             var req = {
                 method: "POST",
                 url: "Admin/AddNewMoto",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": undefined
                 },
-                data: query
+                data: getModelAsFormData(query)
             };
 
             return $http(req).then(successCb, errorCb);
         },
+        //addMoto: function (query, successCb, errorCb) {
+        //    var formData = new FormData();
+
+        //    var req = {
+        //        method: "POST",
+        //        url: "Admin/AddNewMoto",
+        //        headers: {
+        //            "Content-Type": "application/json"
+        //        },
+        //        data: query
+        //    };
+
+        //    return $http(req).then(successCb, errorCb);
+        //},
         addShop: function (query, successCb, errorCb) {
             var req = {
                 method: "POST",

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using MotoStore.Domain.DataManipulations;
-using MotoStore.Domain.EF;
+using MotoStore.Domain.Static;
 using MotoStore.Domain.ViewModels;
 
 namespace MotoStore.WebUI.Controllers
@@ -24,15 +24,13 @@ namespace MotoStore.WebUI.Controllers
         [HttpPost]
         public JsonResult RemoveMoto(int id)
         {
-            // return Json(id, JsonRequestBehavior.AllowGet);
             return Json(AdminOperations.RemoveMotoById(id));
         }
 
         [HttpPost]
-        public JsonResult AddNewMoto(Motorcycle newMoto)
+        public JsonResult AddNewMoto(MotorcycleVm moto)
         {
-            //return Json(newMoto, JsonRequestBehavior.AllowGet);
-            return Json(AdminOperations.AddNewMoto(newMoto));
+            return Json(AdminOperations.AddNewMoto(moto, Server.MapPath(MotoImagesConstants.ImagesFolder)));
         }
 
         [HttpPost]
@@ -44,7 +42,6 @@ namespace MotoStore.WebUI.Controllers
         [HttpPost]
         public JsonResult RemoveShop(int id)
         {
-            // return Json(id, JsonRequestBehavior.AllowGet);
             return Json(AdminOperations.RemoveShopById(id));
         }
     }

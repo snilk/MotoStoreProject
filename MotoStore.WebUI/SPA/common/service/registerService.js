@@ -16,7 +16,7 @@ angular.module('motoStoreCommon').factory('authService', function($http) {
             var token = this.getToken();
             var req = {
                 method: "POST",
-                url: "Account/isCorrectTokenUser",
+                url: "Account/IsCorrectTokenUser",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -42,7 +42,7 @@ angular.module('motoStoreCommon').factory('authService', function($http) {
         },
         storeToken: function (token, cb) {
             localStorage.setItem('user', token);
-            cb()
+            cb();
         },
         getToken: function (cb) {
             var token = localStorage.getItem('user');

@@ -81,6 +81,20 @@
                     <label>Type Price</label>
                     <input ng-model="Price">
                 </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <upload-img name="Upload An Main Image" ng-model="mainImage"></upload-img>
+                </md-input-container>
+                <div class="div_preview">
+                    <img class="image_preview" ng-src="{{mainImage.src}}" ng-show="mainImage.src" alt="" />
+                </div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <upload-img name="Upload An Additional Images" ng-model="additionalImages"></upload-img>
+                </md-input-container>
+                <div class="div_preview_multi">
+                    <div class="div_preview" ng-repeat="src in additionalImages.srcList">
+                        <img class="image_preview" ng-src="{{src}}" ng-show="src" alt="" />
+                    </div>
+                </div>
             </div>
         </md-dialog-content>
 

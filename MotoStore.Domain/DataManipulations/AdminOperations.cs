@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using MotoStore.Domain.EF;
-using MotoStore.Domain.Static;
 using MotoStore.Domain.ViewModels;
 
 namespace MotoStore.Domain.DataManipulations
@@ -14,7 +12,7 @@ namespace MotoStore.Domain.DataManipulations
 
             var orderList = OrderOperations.GetAllOrders();
 
-            var shopInformations = context.ShopInformations.ToList().Select(info => new ShopInformationVm()
+            var shopInformationVms = context.ShopInformations.ToList().Select(info => new ShopInformationVm
             {
                 Phone1 = info.Phone1,
                 Address = info.Address,
@@ -27,94 +25,95 @@ namespace MotoStore.Domain.DataManipulations
             {
                 motos = motoList,
                 orders = orderList,
-                shopInformations = shopInformations
+                shopInformations = shopInformationVms
             };
             return adminInformationVm;
         }
 
         public static SuccessVm ChangeOrderStatus(int id)
         {
-            var context = new MotoStoreContext();
-            var changedOrder = context.Orders.FirstOrDefault(o => o.Id == id);
+            using (var context = new MotoStoreContext())
+            {
+                var changedOrder = context.Orders.FirstOrDefault(o => o.Id == id);
 
-            if (changedOrder == null)
-            {
-                return new SuccessVm(false);
-            }
-            //changedOrder.Status = changedOrder.Status ? false : true;
-            if (changedOrder.Status)
-            {
-                changedOrder.Status = false;
-                var degMoto =
-                    context.Motorcycles.FirstOrDefault(m => m.Id == changedOrder.MotoId);
-                degMoto.ModelsCount = degMoto.ModelsCount == 0 ? 0 : --degMoto.ModelsCount;
-            }
-            else
-            {
-                changedOrder.Status = true;
-                context.Motorcycles.FirstOrDefault(m => m.Id == changedOrder.MotoId).ModelsCount += 1;
+                if (changedOrder == null)
+                {
+                    return new SuccessVm(false);
+                }
+
+                changedOrder.Status = !changedOrder.Status;
+                var motorcycle = changedOrder.Motorcycle;
+
+                var offSet = changedOrder.Status ? -1 : 1;
+                motorcycle.ModelsCount += offSet;
+
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
             return new SuccessVm(true);
         }
 
         public static SuccessVm RemoveMotoById(int id)
         {
-            var context = new MotoStoreContext();
-            var removedMoto = context.Motorcycles.FirstOrDefault(m => m.Id == id);
-            if (removedMoto == null)
+            using (var context = new MotoStoreContext())
             {
-                return new SuccessVm(false);
+                var removedMoto = context.Motorcycles.FirstOrDefault(m => m.Id == id);
+
+                if (removedMoto == null)
+                {
+                    return new SuccessVm(false);
+                }
+
+                context.MotoImages.RemoveRange(removedMoto.MotoImages);
+                context.MotoImages.Remove(removedMoto.MainImage);
+                context.Motorcycles.Remove(removedMoto);
+                context.SaveChanges();
             }
 
-            context.Motorcycles.Remove(removedMoto);
-            context.SaveChanges();
             return new SuccessVm(true);
         }
 
-        public static SuccessVm AddNewMoto(Motorcycle moto)
+        public static SuccessVm AddNewMoto(MotorcycleVm motorcycleVm, string imagesPath)
         {
-            var context = new MotoStoreContext();
-            moto.MainImage = MotoImagesConstants.PlaceHolderImage;
-            var imageList = new List<MotoImage>
+            using (var context = new MotoStoreContext())
             {
-                new MotoImage
-                {
-                    ImageUrl = MotoImagesConstants.PlaceHolderImage
-                }
-            };
-            moto.MotoImages = imageList;
-            context.Motorcycles.Add(moto);
-            context.SaveChanges();
+                context.Motorcycles.Add(MotorcycleOperations.CreateNewMotorcycle(motorcycleVm, imagesPath));
+                context.SaveChanges();
+            }
+
             return new SuccessVm(true);
         }
 
         public static SuccessVm AddShop(ShopInformationVm shopInformationVm)
         {
-            var context = new MotoStoreContext();
-            context.ShopInformations.Add(new EF.ShopInformation
+            using (var context = new MotoStoreContext())
             {
-                Address = shopInformationVm.Address,
-                Phone1 = shopInformationVm.Phone1,
-                Phone2 = shopInformationVm.Phone2
-            });
-            context.SaveChanges();
+                context.ShopInformations.Add(new ShopInformation
+                {
+                    Address = shopInformationVm.Address,
+                    Phone1 = shopInformationVm.Phone1,
+                    Phone2 = shopInformationVm.Phone2
+                });
+                context.SaveChanges();
+            }
 
             return new SuccessVm(true);
         }
 
         public static SuccessVm RemoveShopById(int id)
         {
-            var context = new MotoStoreContext();
-            var shopForRemove = context.ShopInformations.FirstOrDefault(m => m.Id == id);
-            if (shopForRemove == null)
+            using (var context = new MotoStoreContext())
             {
-                return new SuccessVm(false);
+                var shopForRemove = context.ShopInformations.FirstOrDefault(m => m.Id == id);
+                if (shopForRemove == null)
+                {
+                    return new SuccessVm(false);
+                }
+
+                context.ShopInformations.Remove(shopForRemove);
+                context.SaveChanges();
             }
 
-            context.ShopInformations.Remove(shopForRemove);
-            context.SaveChanges();
             return new SuccessVm(true);
         }
     }

@@ -15,22 +15,13 @@ angular
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider
             .state("home", {
-                url: "/",
-                
+                url: "/"
             })
             .state("error", {
                 url: "/error"
-                // data: {
-                //     pageTitle: 'Error'
-                // },
-                // templateUrl: '/scripts/bonusApp/template/errorTemplate.html'
             })
             .state("notFound", {
                 url: "/not_found"
-                // data: {
-                //     pageTitle: 'Error'
-                // },
-                // templateUrl: '/scripts/bonusApp/template/errorTemplate.html'
             });
 
         $urlRouterProvider.otherwise("/");
@@ -39,20 +30,21 @@ angular
     })
     .run(function (motoCategories, $rootScope, $state, $stateParams, $location, authService, adressShops) {
         $rootScope.motoCategories = undefined;
-        console.log($location.path())
+        console.log($location.path());
         if ($location.path() === '/') {
-            $location.path('/categories/All')
+            $location.path('/categories/All');
         }
 
         $rootScope.shopsInfo = undefined;
 
-        adressShops.get(function (res) {
-            $rootScope.shopsInfo = res.data;
-        }, function (err) {
-            console.log(err)
-        })
+        adressShops.get(function(res) {
+                $rootScope.shopsInfo = res.data;
+            },
+            function(err) {
+                console.log(err);
+            });
 
-        motoCategories.get(
+        motoCategories.getUniqMakes(
             function (res) {
                 $rootScope.motoCategories = res.data;
             },
@@ -63,6 +55,20 @@ angular
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        $rootScope.$on('OnMotoAdded',
+            function(event, data) {
+                if (data) {
+                    motoCategories.getUniqMakes(
+                        function (res) {
+                            $rootScope.motoCategories = res.data;
+                        },
+                        function (err) {
+                            console.log(err);
+                        }
+                    );
+                }
+            });
     })
     .controller("motoStoreController", [
         "$scope",
@@ -70,22 +76,25 @@ angular
         'authService',
         'toastr',
         '$mdSidenav',
-        function ($scope, $state, authService, toastr, $mdSidenav) {
+        'motoCategories',
+        '$rootScope',
+        function ($scope, $state, authService, toastr, $mdSidenav, motoCategories, $rootScope) {
             $scope.isLogInShow = false;
             $scope.isLogIn = false;
             $scope.isAdmin = false;
-            
 
-            authService.isAuthorizated(function (res) {
-                if (res.data.isCorrectToken) {
-                    $scope.isAuthorizated = true;
-                };
-                if (res.data.IsAdmin === true) {
-                    $scope.isAdmin = true;
-                };
-            }, function (err) {
-                $scope.isAuthorizated = false;
-            })
+
+            authService.isAuthorizated(function(res) {
+                    if (res.data.IsCorrectToken) {
+                        $scope.isAuthorizated = true;
+                    };
+                    if (res.data.IsAdmin === true) {
+                        $scope.isAdmin = true;
+                    };
+                },
+                function(err) {
+                    $scope.isAuthorizated = false;
+                });
 
             $scope.toggleLogIn = function () {
                 
@@ -101,9 +110,9 @@ angular
                 $scope.isLogIn = !$scope.isLogIn;
             };
 
-            $scope.selectCategory = function (Make) {
+            $scope.selectCategory = function (make) {
                 
-                $state.go("categories", { category: Make });
+                $state.go("categories", { category: make });
             };
 
             $scope.goToAdmin = function () {
@@ -121,8 +130,8 @@ angular
                 };
                
                 if (user.UserName && user.Password && user.Name && user.Surname && user.Email && user.Phone) {
-                    authService.register(user).then(function (res) {
-                        if (res.data.success) {
+                    authService.register(user).then(function(res) {
+                        if (res.data.Success) {
                             toastr.success('Success!', 'You are registrated');
                             $scope.registerUsername = '';
                             $scope.registerPassword = '';
@@ -133,10 +142,10 @@ angular
                         } else {
 
                             if (toastr.active() == 0) {
-                            toastr.error('Error!', 'User already exist');
-                             }
+                                toastr.error('Error!', 'User already exist');
+                            }
                         }
-                    })
+                    });
                 }
                 else {
                    
@@ -148,59 +157,73 @@ angular
             };
 
             $scope.logInUser = function () {
-               
-                
                 var user = {
                     UserName: $scope.loginUsername,
                     Password: $scope.loginPassword,
                 };
 
-                authService.logIn(user).then(function (res) {
-                    if (res.data.correctPassword && res.data.correctUsername) {
+                authService.logIn(user).then(function(res) {
+                    if (res.data.CorrectPassword && res.data.CorrectUsername) {
                         toastr.success('Success!', 'You are authorizated');
-                        authService.storeToken(res.data.token, function () {
-                            $scope.isLogInShow = false;
-                            $scope.isAuthorizated = true;
-                        })
+                        authService.storeToken(res.data.Token,
+                            function() {
+                                $scope.isLogInShow = false;
+                                $scope.isAuthorizated = true;
+                            })
                         localStorage.setItem('IsAdmin', res.data.IsAdmin);
                         if (res.data.IsAdmin === true) {
                             $scope.isAdmin = true;
                         }
-                    } else if (!res.data.correctUsername) {
-                        
+                    } else if (!res.data.CorrectUsername) {
+
                         if (toastr.active() == 0) {
                             toastr.error('Error!', 'Wrong UserName');
                         }
                         $scope.loginPassword = '';
                         $scope.loginUsername = '';
-                    } else if (!res.data.correctPassword) {
-                       
+                    } else if (!res.data.CorrectPassword) {
+
                         if (toastr.active() == 0) {
                             toastr.error('Error!', 'Wrong Password');
                         }
                         $scope.loginPassword = '';
                     }
-                })
+                });
             };
 
             $scope.logOut = function () {
-                authService.logOut(function () {
+                authService.logOut(function() {
 
                     $scope.isAuthorizated = false;
                     $scope.isAdmin = false;
-                    $state.go('categories', {
-                        category: 'All'
-                    });
+                    $state.go('categories',
+                        {
+                            category: 'All'
+                        });
                     toastr.info('You are left your account');
                     $scope.loginPassword = '';
                     $scope.loginUsername = '';
-                })
+                });
             }
 
             $scope.toggleLeft = buildToggler('left');
 
-            $scope.makes = [{ "Make": "BMW" }, { "Make": "Harley-Davidson" }, { "Make": "Izh" }, { "Make": "Jawa" }, { "Make": "Yamaha" }];
-            $scope.types = ['Cruiser', 'Sports bike', 'Classic', 'Sport-tourist'];
+
+            $rootScope.$watch('motoCategories',
+                function(newValue) {
+                    if (newValue && newValue.length) {
+                        $scope.makes = $rootScope.motoCategories;
+                        motoCategories.getUniqTypes(
+                            function (res) {
+                                $scope.types = res.data;
+                            },
+                            function (err) {
+                                console.log(err);
+                            }
+                        );
+                    }
+                });
+
             $scope.YearofIssue = {};
             $scope.EngineCapacity = {};
             $scope.NumberofCilindrs = {};
@@ -231,12 +254,19 @@ angular
                 }
 
                 if ($scope.Make && $scope.Make !== 'None') {
-                    $state.go('categories', { category: $scope.Make, filter: query })
+                    $state.go('categories', { category: $scope.Make, filter: query });
                 } else {
-                    $state.go('categories', { category: 'All', filter: query})
+                    $state.go('categories', { category: 'All', filter: query });
                 }
-                
-
+            };
+            $scope.clearFiler = function() {
+                $scope.Type = 'None';
+                $scope.Make = 'None';
+                $scope.YearofIssue = {};
+                $scope.EngineCapacity = {};
+                $scope.NumberofCilindrs = {};
+                $scope.Price = {};
+                $scope.filter();
             };
 
             function buildToggler(componentId) {

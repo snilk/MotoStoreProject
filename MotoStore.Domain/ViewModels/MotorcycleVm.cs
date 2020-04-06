@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Web;
 using MotoStore.Domain.EF;
 
 namespace MotoStore.Domain.ViewModels
 {
     public class MotorcycleVm
     {
+        public MotorcycleVm()
+        {
+        }
         public MotorcycleVm(Motorcycle motorcycle)
         {
             Id = motorcycle.Id;
@@ -23,9 +23,10 @@ namespace MotoStore.Domain.ViewModels
             Description = motorcycle.Description;
             ModelsCount = motorcycle.ModelsCount;
             Price = motorcycle.Price;
-            MainImage = motorcycle.MainImage;
+            MainImage = motorcycle.MainImage?.ImageUrl;
+            AdditionalImages = motorcycle.MotoImages?.ToList().Select(motoImage => motoImage.ImageUrl).ToArray();
         }
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Make { get; set; }
         public string Type { get; set; }
         public int Year { get; set; }
@@ -38,6 +39,8 @@ namespace MotoStore.Domain.ViewModels
         public int ModelsCount { get; set; }
         public double Price { get; set; }
         public string MainImage { get; set; }
-
+        public string[] AdditionalImages { get; set; }
+        public HttpPostedFileBase[] AdditionalImagesFiles { get; set; }
+        public HttpPostedFileBase MainImageFile { get; set; }
     }
 }

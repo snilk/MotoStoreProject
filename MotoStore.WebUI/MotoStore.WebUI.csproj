@@ -114,6 +114,8 @@
     <Content Include="Global.asax" />
     <Content Include="SPA\admin\admin.js" />
     <Content Include="SPA\admin\controller\adminController.js" />
+    <Content Include="SPA\admin\directives\uploadImage.js" />
+    <Content Include="SPA\admin\directives\uploadImg.html" />
     <Content Include="SPA\admin\service\adminService.js" />
     <Content Include="SPA\admin\template\addShopDialogTemplate.html" />
     <Content Include="SPA\admin\template\adminTemplate.html" />
@@ -167,7 +169,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />

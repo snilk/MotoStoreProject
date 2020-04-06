@@ -1,24 +1,24 @@
 <div class="user_profile">
     <div class="user_profile_info">
-        <span class="info_item">Name: {{user.Name}}</span>
-        <span class="info_item">Surname: {{user.Surname}}</span>
-        <span class="info_item">Email: {{user.Email}}</span>
-        <span class="info_item">Phone: {{user.Phone}}</span>
-        <span class="info_item">Date registration: {{user.RegistrationDate | dateFilter}}</span>
+        <span class="info_item">Name: {{user.User.Name}}</span>
+        <span class="info_item">Surname: {{user.User.Surname}}</span>
+        <span class="info_item">Email: {{user.User.Email}}</span>
+        <span class="info_item">Phone: {{user.User.Phone}}</span>
+        <span class="info_item">Date registration: {{user.User.RegistrationDate | dateFilter}}</span>
     </div>
     <div class="user_profile_orders">
-        <h2>{{user.orders.length ? 'Orders' : 'No Orders'}}</h2>
+        <h2>{{user.AccountOrdersInformation.length ? 'Orders' : 'No Orders'}}</h2>
         <ul class="orders_list">
-            <li ng-click="goToMoto(order)" ng-repeat="order in user.orders | orderBy:Status:true" class="order_item">
-                <span class="order_info">Make: {{order.Make}}</span>
-                <span class="order_info">Type: {{order.Type}}</span>
-                <span class="order_info">Year of issue: {{order.Year}}</span>
-                <span class="order_info">Status: {{order.Status ? 'Done' : 'Pending'}}</span>
-                <span class="order_info">Price: {{order.Price}}</span>
+            <li ng-click="goToMoto(order.Motorcycle)" ng-repeat="order in user.AccountOrdersInformation | orderBy:Status:true" class="order_item">
+                <span class="order_info">Make: {{order.Motorcycle.Make}}</span>
+                <span class="order_info">Type: {{order.Motorcycle.Type}}</span>
+                <span class="order_info">Year of issue: {{order.Motorcycle.Year}}</span>
+                <span class="order_info">Status: {{order.OrderInformation.Status ? 'Done' : 'Pending'}}</span>
+                <span class="order_info">Price: {{order.Motorcycle.Price}}</span>
                 <span class="order_info">
-                    {{order.homeAdress ? 'Home Address: ' + order.homeAdress : 'Shop Address: ' + order.shopAdress + '; Phones: ' + order.Phone1 + ', ' + order.Phone2}}
+                    {{order.OrderInformation.HomeAddress ? 'Home Address: ' + order.OrderInformation.HomeAddress : 'Shop Address: ' + order.ShopInformation.Address + '; Phones: ' + order.ShopInformation.Phone1 + ', ' + order.ShopInformation.Phone2}}
                 </span>
-                <span class="order_info">Order date: {{order.OrderDate | dateFilter}}</span>
+                <span class="order_info">Order date: {{order.OrderInformation.OrderDate | dateFilter}}</span>
             </li>
         </ul>
     </div>
