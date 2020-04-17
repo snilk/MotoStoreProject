@@ -1,4 +1,4 @@
-﻿angular.module('motoStoreCommon').filter('dateFilter', function () {
+﻿angular.module('bookStoreCommon').filter('dateFilter', function () {
     return function (date) {
         var thenum = date.match(/\d/g);
         var theNumber = thenum.join("");

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
-using MotoStore.Domain.EF;
+using BookStore.Domain.EF;
 
-namespace MotoStore.Domain.DataInitialize
+namespace BookStore.Domain.DataInitialize
 {
     public static class DataInitializer
     {
         public static void InitializeTables()
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 var admin = new User
                 {
@@ -32,7 +32,7 @@ namespace MotoStore.Domain.DataInitialize
 
         public static void RemoveDuplicates()
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 var query = context.Users.OrderBy(u=>u.Id).GroupBy(x => new { x.UserName, x.Password, x.Name, x.Surname, x.Phone, x.RegistrationDate, x.Email, x.IsAdmin })
                     .SelectMany(x => x.OrderBy(y=>y.Id).Skip(1));

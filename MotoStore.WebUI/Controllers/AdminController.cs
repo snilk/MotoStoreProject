@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
-using MotoStore.Domain.DataManipulations;
-using MotoStore.Domain.Static;
-using MotoStore.Domain.ViewModels;
+using BookStore.Domain.DataManipulations;
+using BookStore.Domain.Static;
+using BookStore.Domain.ViewModels;
 
-namespace MotoStore.WebUI.Controllers
+namespace BookStore.WebUI.Controllers
 {
     public class AdminController : Controller
     {
@@ -22,15 +22,15 @@ namespace MotoStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public JsonResult RemoveMoto(int id)
+        public JsonResult RemoveBook(int id)
         {
-            return Json(AdminOperations.RemoveMotoById(id));
+            return Json(AdminOperations.RemoveBookById(id));
         }
 
         [HttpPost]
-        public JsonResult AddNewMoto(MotorcycleVm moto)
+        public JsonResult AddNewBook(BookVm book)
         {
-            return Json(AdminOperations.AddNewMoto(moto, Server.MapPath(MotoImagesConstants.ImagesFolder)));
+            return Json(AdminOperations.AddNewBook(book, Server.MapPath(BookImagesConstants.ImagesFolder)));
         }
 
         [HttpPost]

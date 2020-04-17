@@ -15,7 +15,7 @@
                 <md-list>
                     <md-list-item class="md-3-line" ng-repeat="order in adminData.orders |orderBy:'Status' | filter:{ Surname: orderFind }">
                         <div class="md-list-item-text">
-                            <p class="admin_item">MotoId: {{order.motoId}}</p>
+                            <p class="admin_item">BookId: {{order.BookId}}</p>
                             <p class="admin_item">Name: {{order.Name}}</p>
                             <p class="admin_item">Surname: {{order.Surname}}</p>
                             <p class="admin_item">Status: <strong>{{order.Status ? 'Done' : 'Pending'}}</strong> </p>
@@ -31,35 +31,32 @@
                 </md-list>
             </md-content>
         </div>
-        <div class="admin_moto">
+        <div class="admin_book">
             <md-toolbar class="md-theme-light">
                 <h2 class="md-toolbar-tools">
-                    <span>Motos</span>
+                    <span>Books</span>
                 </h2>
             </md-toolbar>
-            <md-button class="md-secondary" ng-click="addMoto($event)">Add moto</md-button>
+            <md-button class="md-secondary" ng-click="addBook($event)">Add book</md-button>
             <md-input-container class="md-block" flex-gt-sm>
-                <label>Type Moto ID</label>
-                <input ng-model="motoFind">
+                <label>Type Book ID</label>
+                <input ng-model="bookFind">
             </md-input-container>
             <md-content>
                 <md-list>
-                    <md-list-item class="md-3-line" ng-repeat="moto in adminData.motos | filter:{ Id: motoFind }">
+                    <md-list-item class="md-3-line" ng-repeat="book in adminData.books | filter:{ Id: bookFind }">
                         <div class="md-list-item-text">
-                            <p class="admin_item">MotoId: {{moto.Id}}</p>
-                            <p class="admin_item">Description: {{moto.Description}}</p>
-                            <p class="admin_item">Engine capacity: {{moto.EngineCapacity}}</p>
-                            <p class="admin_item">Abs: {{moto.Abs}}</p>
-                            <p class="admin_item">CruizeControl: {{moto.CruizeControl}}</p>
-                            <p class="admin_item">ElectricStarter: {{moto.ElectricStarter}}</p>
-                            <p class="admin_item">Make: {{moto.Make}}</p>
-                            <p class="admin_item">Number of cilindrs: {{moto.Cylinders}}</p>
-                            <p class="admin_item">Number of models: <strong>{{moto.ModelsCount}}</strong></p>
-                            <p class="admin_item">Price: {{moto.Price}}</p>
-                            <p class="admin_item">Type: {{moto.Type}}</p>
-                            <p class="admin_item">Year of issue: {{moto.Year}}</p>
+                            <p class="admin_item">BookId: {{book.Id}}</p>
+                            <p class="admin_item">Description: {{book.Description}}</p>
+                            <p class="admin_item">Author: {{book.AuthorName}}</p>
+                            <p class="admin_item">Section: {{book.Section}}</p>
+                            <p class="admin_item">Title: {{book.Title}}</p>
+                            <p class="admin_item">Number of instances: <strong>{{book.ModelsCount}}</strong></p>
+                            <p class="admin_item">Price: {{book.Price}}</p>
+                            <p class="admin_item">Level: {{book.Level}}</p>
+                            <p class="admin_item">Year of issue: {{book.Year}}</p>
                         </div>
-                        <md-button class="md-secondary" ng-click="removeMoto(moto.Id)">Remove Moto</md-button>
+                        <md-button class="md-secondary" ng-click="removeBook(book.Id)">Remove Book</md-button>
                         <md-divider ng-if="!$last"></md-divider>
                     </md-list-item>
                 </md-list>

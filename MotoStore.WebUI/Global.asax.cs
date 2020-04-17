@@ -2,10 +2,10 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MotoStore.Domain.DataInitialize;
-using MotoStore.Domain.EF;
+using BookStore.Domain.DataInitialize;
+using BookStore.Domain.EF;
 
-namespace MotoStore.WebUI
+namespace BookStore.WebUI
 {
     public class MvcApplication : HttpApplication
     {
@@ -13,7 +13,7 @@ namespace MotoStore.WebUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new CreateDatabaseIfNotExists<MotoStoreContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<BookStoreContext>());
             DataInitializer.InitializeTables();
             DataInitializer.RemoveDuplicates();
         }

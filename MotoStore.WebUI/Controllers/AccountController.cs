@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using MotoStore.Domain;
-using MotoStore.Domain.DataManipulations;
-using MotoStore.Domain.EF;
-using MotoStore.Domain.ViewModels;
+using BookStore.Domain.DataManipulations;
+using BookStore.Domain.ViewModels;
+using BookStore.Domain;
+using BookStore.Domain.EF;
 
-namespace MotoStore.WebUI.Controllers
+namespace BookStore.WebUI.Controllers
 {
     public class AccountController : Controller
     {

@@ -1,8 +1,8 @@
-﻿using MotoStore.Domain.DataManipulations;
-using System.Web.Mvc;
-using MotoStore.Domain.ViewModels;
+﻿using System.Web.Mvc;
+using BookStore.Domain.DataManipulations;
+using BookStore.Domain.ViewModels;
 
-namespace MotoStore.WebUI.Controllers
+namespace BookStore.WebUI.Controllers
 {
     public class OrderController : Controller
     {
@@ -26,7 +26,7 @@ namespace MotoStore.WebUI.Controllers
         [HttpPost]
         public JsonResult OrderCompose(OrderInfoVm order)
         {
-            if (order.MotoId == 0 || order.ShopId == 0 || order.Token == null)
+            if (order.BookId == 0 || order.ShopId == 0 || order.Token == null)
             {
                 return Json(new SuccessVm(false), JsonRequestBehavior.AllowGet);
             }

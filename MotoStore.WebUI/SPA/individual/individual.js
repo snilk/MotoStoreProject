@@ -1,19 +1,19 @@
-angular.module("motoStoreIndividual", []).config([
+angular.module("bookStoreIndividual", []).config([
     "$stateProvider",
     "$locationProvider",
     function($stateProvider, $locationProvider) {
       $stateProvider.state("individual", {
-        url: "/categories/:category/:motoId",
+        url: "/sections/:section/:BookId",
         templateUrl: "/SPA/individual/template/individualTemplate.html",
         controller: "individualController",
         resolve: {
-          motoById: function($stateParams, $q, motoService) {
+          bookById: function($stateParams, $q, bookService) {
             var deferred = $q.defer();
-            var motoId = $stateParams.motoId;
-            var Make = $stateParams.category;
+            var BookId = $stateParams.BookId;
+            var Section = $stateParams.section;
   
-            motoService.get(
-                motoId, Make,
+            bookService.get(
+                BookId, Section,
               function(res) {
                 deferred.resolve(res.data);
               },

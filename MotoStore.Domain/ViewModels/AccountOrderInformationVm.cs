@@ -1,9 +1,9 @@
-﻿namespace MotoStore.Domain.ViewModels
+﻿namespace BookStore.Domain.ViewModels
 {
     public class AccountOrderInformationVm
     {
         public ShopInformationVm ShopInformation { get; set; }
-        public MotorcycleVm Motorcycle { get; set; }
+        public BookVm Book { get; set; }
         public OrderAccountInfoVm OrderInformation { get; set; }
     }
 }

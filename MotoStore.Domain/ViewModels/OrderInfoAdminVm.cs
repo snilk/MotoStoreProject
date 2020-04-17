@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace MotoStore.Domain.ViewModels
+namespace BookStore.Domain.ViewModels
 {
     public class OrderInfoAdminVm
     {
         public int orderId { get; set; }
         public int userId { get; set; }
-        public int motoId { get; set; }
+        public int BookId { get; set; }
         public string homeAdress { get; set; }
         public DateTime OrderDate { get; set; }
         public bool Status { get; set; }

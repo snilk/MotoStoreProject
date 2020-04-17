@@ -1,16 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Web;
-using MotoStore.Domain.EF;
-using MotoStore.Domain.Static;
+using BookStore.Domain.EF;
+using BookStore.Domain.Static;
 
-namespace MotoStore.Domain.DataManipulations
+namespace BookStore.Domain.DataManipulations
 {
     public class ImagesOperations
     {
-        public static MotoImage CreateMotoImage(HttpPostedFileBase image = null, string imagesPath = null)
+        public static BookImage CreateBookImage(HttpPostedFileBase image = null, string imagesPath = null)
         {
-            var imageFileName = MotoImagesConstants.PlaceHolderImageUrl;
+            var imageFileName = BookImagesConstants.PlaceHolderImageUrl;
 
             if (image != null && imagesPath != null)
             {
@@ -21,7 +21,7 @@ namespace MotoStore.Domain.DataManipulations
                 image.SaveAs(Path.Combine(imagesPath, imageFileName));
             }
 
-            return new MotoImage
+            return new BookImage
             {
                 ImageUrl = imageFileName
             };

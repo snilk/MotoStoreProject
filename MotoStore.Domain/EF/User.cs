@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MotoStore.Domain.EF
+namespace BookStore.Domain.EF
 {
     public class User
     {

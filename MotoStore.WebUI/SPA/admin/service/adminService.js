@@ -1,4 +1,4 @@
-﻿angular.module('motoStoreAdmin').factory('adminService', function ($http) {
+﻿angular.module('bookStoreAdmin').factory('adminService', function ($http) {
     return {
         get: function (successCb, errorCb) {
             return $http.get('Admin/EnterAdmin').then(successCb, errorCb);
@@ -17,10 +17,10 @@
 
             return $http(req).then(successCb, errorCb);
         },
-        removeMoto: function (id, successCb, errorCb) {
+        removeBook: function (id, successCb, errorCb) {
             var req = {
                 method: "POST",
-                url: "Admin/RemoveMoto",
+                url: "Admin/RemoveBook",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -31,7 +31,7 @@
 
             return $http(req).then(successCb, errorCb);
         },
-        addMoto: function (query, successCb, errorCb) {
+        addBook: function (query, successCb, errorCb) {
             var getModelAsFormData = function (data) {
                 var dataAsFormData = new FormData();
                 angular.forEach(data, function (value, key) {
@@ -50,7 +50,7 @@
 
             var req = {
                 method: "POST",
-                url: "Admin/AddNewMoto",
+                url: "Admin/AddNewBook",
                 headers: {
                     "Content-Type": undefined
                 },
@@ -59,12 +59,12 @@
 
             return $http(req).then(successCb, errorCb);
         },
-        //addMoto: function (query, successCb, errorCb) {
+        //addBook: function (query, successCb, errorCb) {
         //    var formData = new FormData();
 
         //    var req = {
         //        method: "POST",
-        //        url: "Admin/AddNewMoto",
+        //        url: "Admin/AddNewBook",
         //        headers: {
         //            "Content-Type": "application/json"
         //        },

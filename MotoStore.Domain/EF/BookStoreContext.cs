@@ -1,16 +1,16 @@
 ﻿using System.Data.Entity;
 
-namespace MotoStore.Domain.EF
+namespace BookStore.Domain.EF
 {
-    public class MotoStoreContext : DbContext
+    public class BookStoreContext : DbContext
     {
-        public MotoStoreContext()
-            : base("Name=MotoStoreDBEntities")
+        public BookStoreContext()
+            : base("Name=BookStoreDBEntities")
         {
         }
 
-        public virtual DbSet<MotoImage> MotoImages { get; set; }
-        public virtual DbSet<Motorcycle> Motorcycles { get; set; }
+        public virtual DbSet<BookImage> BookImages { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<ShopInformation> ShopInformations { get; set; }
         public virtual DbSet<User> Users { get; set; }

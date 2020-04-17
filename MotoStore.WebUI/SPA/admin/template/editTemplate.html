@@ -1,8 +1,8 @@
-﻿<md-dialog aria-label="Add moto">
+﻿<md-dialog aria-label="Add book">
     <form ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Add moto</h2>
+                <h2>Add book</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <span>Х</span>
@@ -13,20 +13,20 @@
         <md-dialog-content>
             <div class="md-dialog-content">
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Make</label>
-                    <md-select ng-model="Make">
+                    <label>Section</label>
+                    <md-select ng-model="Section">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="Make in makes" ng-value="Make.Make">
-                            {{Make.Make}}
+                        <md-option ng-repeat="Section in sections" ng-value="Section.Section">
+                            {{Section.Section}}
                         </md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type</label>
-                    <md-select ng-model="Type">
+                    <label>Level</label>
+                    <md-select ng-model="Level">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="Type in types" ng-value="Type">
-                            {{Type}}
+                        <md-option ng-repeat="Level in levels" ng-value="Level">
+                            {{Level}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -35,46 +35,19 @@
                     <input ng-model="YearofIssue">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Engine Capacity</label>
-                    <input ng-model="EngineCapacity">
+                    <label>Type Author Name</label>
+                    <input ng-model="AuthorName">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Number of Cilindrs</label>
-                    <input ng-model="NumberofCilindrs">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Is ABS</label>
-                    <md-select ng-model="Abs">
-                        <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="item in [true, false]" ng-value="item">
-                            {{item}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Is Cruize Control</label>
-                    <md-select ng-model="CruizeControl">
-                        <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="item in [true, false]" ng-value="item">
-                            {{item}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Is Electrostarter</label>
-                    <md-select ng-model="ElectricStarter">
-                        <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="item in [true, false]" ng-value="item">
-                            {{item}}
-                        </md-option>
-                    </md-select>
+                    <label>Type Title</label>
+                    <input ng-model="Title">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Type Description</label>
                     <input ng-model="Description">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Number of Models</label>
+                    <label>Type Number of Instances</label>
                     <input ng-model="NumberofModels">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
@@ -82,7 +55,7 @@
                     <input ng-model="Price">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <upload-img name="Upload An Main Image" ng-model="mainImage"></upload-img>
+                    <upload-img name="Upload A Main Image" ng-model="mainImage"></upload-img>
                 </md-input-container>
                 <div class="div_preview">
                     <img class="image_preview" ng-src="{{mainImage.src}}" ng-show="mainImage.src" alt="" />
@@ -103,8 +76,8 @@
             <md-button ng-click="cancel()">
                 Cancel
             </md-button>
-            <md-button ng-click="addMoto()">
-                Add Moto
+            <md-button ng-click="addBook()">
+                Add Book
             </md-button>
         </md-dialog-actions>
     </form>

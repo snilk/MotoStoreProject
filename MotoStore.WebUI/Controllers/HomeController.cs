@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MotoStore.WebUI.Controllers
+namespace BookStore.WebUI.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,15 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MotoStore.Domain.EF
+namespace BookStore.Domain.EF
 {
-    public class MotoImage
+    public class BookImage
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int? MotoId { get; set; }
+        public int? BookId { get; set; }
         public string ImageUrl { get; set; }
 
-        [ForeignKey(nameof(MotoId))]
-        public virtual Motorcycle Motorcycle { get; set; }
+        [ForeignKey(nameof(BookId))]
+        public virtual Book Book { get; set; }
     }
 }

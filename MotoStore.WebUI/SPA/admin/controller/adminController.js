@@ -1,4 +1,4 @@
-﻿angular.module("motoStoreAdmin").controller("adminController", [
+﻿angular.module("bookStoreAdmin").controller("adminController", [
     "$scope",
     '$state',
     'adminData',
@@ -9,7 +9,7 @@
 function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope) {
         $scope.adminData = adminData;
 
-        $scope.showAddShopDialog = function (ev, moto) {
+        $scope.showAddShopDialog = function (ev, book) {
             $mdDialog.show({
                     controller: addShopDialogController,
                     templateUrl: '/SPA/admin/template/addShopDialogTemplate.html',
@@ -25,9 +25,9 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
                 });
         };
         
-        $scope.addMoto = function (ev, moto) {
+        $scope.addBook = function (ev, book) {
             $mdDialog.show({
-                controller: addMoto,
+                controller: addBook,
                 templateUrl: '/SPA/admin/template/editTemplate.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
@@ -50,9 +50,9 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
                             function(e) {
                                 return e.orderId == id;
                             });
-                        var resM = $.grep($scope.adminData.motos, function(e) { return e.Id == resO[0].motoId });
+                        var resM = $.grep($scope.adminData.books, function(e) { return e.Id == resO[0].BookId });
 
-                        toastr.success('Motorcycle with Id = ' +
+                        toastr.success('Book with Id = ' +
                             resM[0].Id +
                             " changed the count of models by 1.Now :  " +
                             resM[0].ModelsCount +
@@ -67,12 +67,12 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
                 });
         }
 
-        $scope.removeMoto = function (id) {
-            adminService.removeMoto(id,
+        $scope.removeBook = function (id) {
+            adminService.removeBook(id,
                 function(res) {
                     if (res.data.Success) {
 
-                        toastr.error('Motorcycle with Id = ' + id + ' was deleted');
+                        toastr.error('Book with Id = ' + id + ' was deleted');
                         $state.reload();
                     }
                 },
@@ -121,10 +121,13 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
             }
         }
 
-        function addMoto($scope, $mdDialog, $rootScope) {
+        function addBook($scope, $mdDialog, $rootScope) {
 
-            $scope.makes = [{ "Make": "BMW" }, { "Make": "Harley-Davidson" }, { "Make": "Izh" }, { "Make": "Jawa" }, { "Make": "Yamaha" }];
-            $scope.types = ['Cruiser', 'Sports bike', 'Classic', 'Sport-tourist']
+            $scope.sections = [
+                { "Section": "DataBase" }, { "Section": "Programming Languages" }, { "Section": "Operating Systems" },
+                { "Section": "Multimedia & Design" }, { "Section": "Computer Security" }
+            ];
+            $scope.levels = ["Beginning", "Junior", "Middle", "Senior"];
 
             $scope.mainImage = {};
             $scope.additionalImages = {};
@@ -133,16 +136,13 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
                 $mdDialog.cancel();
             };
 
-            $scope.addMoto = function () {
+            $scope.addBook = function () {
                 var query = {
-                    Make: $scope.Make ,           
-                    Type: $scope.Type  ,    
+                    Section: $scope.Section ,           
+                    Level: $scope.Level  ,    
                     Year: $scope.YearofIssue,
-                    EngineCapacity: $scope.EngineCapacity,
-                    Cylinders: $scope.NumberofCilindrs,
-                    Abs: $scope.Abs  ,
-                    ElectricStarter: $scope.ElectricStarter,
-                    CruizeControl: $scope.CruizeControl,
+                    AuthorName: $scope.AuthorName,
+                    Title: $scope.Title,
                     Description: $scope.Description ,
                     ModelsCount: $scope.NumberofModels ,
                     Price: $scope.Price,
@@ -155,12 +155,12 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
                         query.AdditionalImagesFiles.push(item);
                     });
 
-                adminService.addMoto(query,
+                adminService.addBook(query,
                     function(res) {
                         if (res.data.Success) {
-                            $rootScope.$emit('OnMotoAdded', true);
+                            $rootScope.$emit('OnBookAdded', true);
                             $state.reload();
-                            toastr.success('New moto added!', 'Success');
+                            toastr.success('New book added!', 'Success');
                             $mdDialog.cancel();
                         }
                     },

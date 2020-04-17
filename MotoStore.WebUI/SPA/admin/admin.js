@@ -1,4 +1,4 @@
-﻿angular.module("motoStoreAdmin", []).config([
+﻿angular.module("bookStoreAdmin", []).config([
     "$stateProvider",
     "$locationProvider",
     function ($stateProvider, $locationProvider) {

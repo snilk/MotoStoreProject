@@ -1,14 +1,14 @@
 angular
-    .module("motoStore", [
-        "motoStoreCommon",
+    .module("bookStore", [
+        "bookStoreCommon",
         "ui.router",
         "ui.router.state.events",
-        "motoStoreCategories",
+        "bookStoreSections",
         'ngMaterial',
         'ngMessages',
-        "motoStoreIndividual",
-        "motoStoreProfile",
-        'motoStoreAdmin',
+        "bookStoreIndividual",
+        "bookStoreProfile",
+        'bookStoreAdmin',
         'ngAnimate',
         'toastr'
     ])
@@ -28,11 +28,11 @@ angular
 
         $locationProvider.html5Mode(true);
     })
-    .run(function (motoCategories, $rootScope, $state, $stateParams, $location, authService, adressShops) {
-        $rootScope.motoCategories = undefined;
+    .run(function (bookSections, $rootScope, $state, $stateParams, $location, authService, adressShops) {
+        $rootScope.bookSections = undefined;
         console.log($location.path());
         if ($location.path() === '/') {
-            $location.path('/categories/All');
+            $location.path('/sections/All');
         }
 
         $rootScope.shopsInfo = undefined;
@@ -44,9 +44,9 @@ angular
                 console.log(err);
             });
 
-        motoCategories.getUniqMakes(
+        bookSections.getUniqSections(
             function (res) {
-                $rootScope.motoCategories = res.data;
+                $rootScope.bookSections = res.data;
             },
             function (err) {
                 console.log(err);
@@ -56,12 +56,12 @@ angular
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        $rootScope.$on('OnMotoAdded',
+        $rootScope.$on('OnBookAdded',
             function(event, data) {
                 if (data) {
-                    motoCategories.getUniqMakes(
+                    bookSections.getUniqSections(
                         function (res) {
-                            $rootScope.motoCategories = res.data;
+                            $rootScope.bookSections = res.data;
                         },
                         function (err) {
                             console.log(err);
@@ -70,15 +70,15 @@ angular
                 }
             });
     })
-    .controller("motoStoreController", [
+    .controller("bookStoreController", [
         "$scope",
         "$state",
         'authService',
         'toastr',
         '$mdSidenav',
-        'motoCategories',
+        'bookSections',
         '$rootScope',
-        function ($scope, $state, authService, toastr, $mdSidenav, motoCategories, $rootScope) {
+        function ($scope, $state, authService, toastr, $mdSidenav, bookSections, $rootScope) {
             $scope.isLogInShow = false;
             $scope.isLogIn = false;
             $scope.isAdmin = false;
@@ -110,9 +110,9 @@ angular
                 $scope.isLogIn = !$scope.isLogIn;
             };
 
-            $scope.selectCategory = function (make) {
+            $scope.selectSection = function (make) {
                 
-                $state.go("categories", { category: make });
+                $state.go("sections", { section: make });
             };
 
             $scope.goToAdmin = function () {
@@ -196,9 +196,9 @@ angular
 
                     $scope.isAuthorizated = false;
                     $scope.isAdmin = false;
-                    $state.go('categories',
+                    $state.go('sections',
                         {
-                            category: 'All'
+                            section: 'All'
                         });
                     toastr.info('You are left your account');
                     $scope.loginPassword = '';
@@ -208,63 +208,89 @@ angular
 
             $scope.toggleLeft = buildToggler('left');
 
+            var uniqLevels = function() {
+                bookSections.getUniqLevels(
+                    function (res) {
+                        $scope.levels = res.data;
+                    },
+                    function (err) {
+                        console.log(err);
+                    }
+                );
+            }
 
-            $rootScope.$watch('motoCategories',
+            var uniqSections = function() {
+                bookSections.getUniqSections(
+                    function (res) {
+                        $scope.sections = res.data;
+                    },
+                    function (err) {
+                        console.log(err);
+                    }
+                );
+            }
+
+            var uniqAuthors = function() {
+                bookSections.getUniqAuthors(
+                    function(res) {
+                        $scope.authors = res.data;
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                );
+            }
+
+            $rootScope.$watch('bookSections',
                 function(newValue) {
                     if (newValue && newValue.length) {
-                        $scope.makes = $rootScope.motoCategories;
-                        motoCategories.getUniqTypes(
-                            function (res) {
-                                $scope.types = res.data;
-                            },
-                            function (err) {
-                                console.log(err);
-                            }
-                        );
+                        $scope.sections = $rootScope.bookSections;
+                        uniqLevels();
+                        uniqAuthors();
                     }
                 });
 
+            uniqSections();
+            uniqLevels();
+            uniqAuthors();
             $scope.YearofIssue = {};
-            $scope.EngineCapacity = {};
-            $scope.NumberofCilindrs = {};
+            $scope.AuthorName = {};
+            $scope.Title = {};
             $scope.Price = {};
 
             $scope.filter = function () {
                 var query = {
-                    Type: $scope.Type,
+                    Level: $scope.Level,
                     YearofIssue: {
                         Low: +$scope.YearofIssue.Low || 0,
                         High: +$scope.YearofIssue.High || 1000000000000000
                     },
-                    EngineCapacity: {
-                        Low: +$scope.EngineCapacity.Low || 0,
-                        High: +$scope.EngineCapacity.High || 1000000000000000
+                    AuthorName: {
+                        Low: +$scope.AuthorName.Low || 0,
+                        High: +$scope.AuthorName.High || 1000000000000000
                     },
-                    NumberofCilindrs: {
-                        Low: +$scope.NumberofCilindrs.Low || 0,
-                        High: +$scope.NumberofCilindrs.High || 1000000000000000
+                    Title: {
+                        Low: +$scope.Title.Low || 0,
+                        High: +$scope.Title.High || 1000000000000000
                     },
-                    Abs: $scope.Abs,
-                    ElectricStarter: $scope.ElectricStarter,
-                    CruizeControl: $scope.CruizeControl,
                     Price: {
                         Low: +$scope.Price.Low || 0,
                         High: +$scope.Price.High || 1000000000000000
                     }
                 }
 
-                if ($scope.Make && $scope.Make !== 'None') {
-                    $state.go('categories', { category: $scope.Make, filter: query });
+                if ($scope.Section && $scope.Section !== 'None') {
+                    $state.go('sections', { section: $scope.Section, filter: query });
                 } else {
-                    $state.go('categories', { category: 'All', filter: query });
+                    $state.go('sections', { section: 'All', filter: query });
                 }
             };
             $scope.clearFiler = function() {
-                $scope.Type = 'None';
-                $scope.Make = 'None';
+                $scope.Level = 'None';
+                $scope.Section = 'None';
                 $scope.YearofIssue = {};
-                $scope.EngineCapacity = {};
-                $scope.NumberofCilindrs = {};
+                $scope.AuthorName = {};
+                $scope.Title = {};
                 $scope.Price = {};
                 $scope.filter();
             };

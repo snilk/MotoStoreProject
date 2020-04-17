@@ -1,4 +1,4 @@
-angular.module("motoStoreProfile", ['ui.bootstrap']).config([
+angular.module("bookStoreProfile", ['ui.bootstrap']).config([
     "$stateProvider",
     "$locationProvider",
     function($stateProvider, $locationProvider) {

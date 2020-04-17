@@ -1,30 +1,36 @@
 ﻿using System.Web.Mvc;
-using MotoStore.Domain.DataManipulations;
+using BookStore.Domain.DataManipulations;
 
-namespace MotoStore.WebUI.Controllers
+namespace BookStore.WebUI.Controllers
 {
     public class ProductsController : Controller
     {
         // GET: Products
         [HttpGet]
-        public JsonResult Motorcycles(string makeForList,int id)
+        public JsonResult Books(string section,int id)
         {
             return id == 0
-                ? Json(MotorcycleOperations.GetMotorcyclesByMake(makeForList), JsonRequestBehavior.AllowGet)
-                : Json(MotorcycleOperations.GetMotoById(id), JsonRequestBehavior.AllowGet);
+                ? Json(BookOperations.GetBookBySection(section), JsonRequestBehavior.AllowGet)
+                : Json(BookOperations.GetBookById(id), JsonRequestBehavior.AllowGet);
         }
 
 
         [HttpGet]
-        public JsonResult GetUniqCategories()
+        public JsonResult GetUniqSections()
         {
-            return Json(MotorcycleOperations.GetUniqCategories(), JsonRequestBehavior.AllowGet);
+            return Json(BookOperations.GetUniqSections(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public JsonResult GetUniqTypes()
+        public JsonResult GetUniqLevels()
         {
-            return Json(MotorcycleOperations.GetUniqTypes(), JsonRequestBehavior.AllowGet);
+            return Json(BookOperations.GetUniqLevels(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetUniqAuthors()
+        {
+            return Json(BookOperations.GetUniqAuthors(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MotoStore.Domain.ViewModels
+﻿namespace BookStore.Domain.ViewModels
 {
     public class SuccessVm
     {

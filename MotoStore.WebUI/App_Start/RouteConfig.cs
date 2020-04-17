@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MotoStore.WebUI
+namespace BookStore.WebUI
 {
     public class RouteConfig
     {
@@ -11,8 +11,8 @@ namespace MotoStore.WebUI
 
             routes.MapRoute(
                 "",
-                "Products/{action}/{makeForList}/{id}", //{controller}
-                new {controller = "Products", action = "Motorcycles", id = 0, makeForList = "All"}
+                "Products/{action}/{section}/{id}", //{controller}
+                new {controller = "Products", action = "Books", id = 0, section = "All"}
             );
             routes.MapRoute(
                 "",

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MotoStore.Domain.EF;
-using MotoStore.Domain.ViewModels;
+using BookStore.Domain.EF;
+using BookStore.Domain.ViewModels;
 
-namespace MotoStore.Domain.DataManipulations
+namespace BookStore.Domain.DataManipulations
 {
     public static class UsersOperations
     {
@@ -12,7 +12,7 @@ namespace MotoStore.Domain.DataManipulations
         private const string KeyLast = "bWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0LIHjWCBORSWMEibq - tnT8ue_deUqZx1K0XxCOXZRrBI";
         public static SuccessVm AddNewUser(UserVm newUser)
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 if (newUser == null || context.Users.Any(u => u.UserName == newUser.UserName))
                 {
@@ -29,7 +29,7 @@ namespace MotoStore.Domain.DataManipulations
         public static UserTokenRole GetUserToken(UserForAuthorization user)
         {
             User existUser;
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 existUser = context.Users.FirstOrDefault(u => u.UserName == user.UserName);
             }
@@ -86,7 +86,7 @@ namespace MotoStore.Domain.DataManipulations
             {
                 var id = Convert.ToInt32(token.Replace(KeyStart, "").Replace(KeyLast, ""));
 
-                using (var context = new MotoStoreContext())
+                using (var context = new BookStoreContext())
                 {
                     user = context.Users.FirstOrDefault(u => u.Id == id);
                 }
@@ -104,7 +104,7 @@ namespace MotoStore.Domain.DataManipulations
                 return null;
             }
 
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 var userWithinContext = context.Users.FirstOrDefault(us => us.Id == user.Id);
 
@@ -121,13 +121,13 @@ namespace MotoStore.Domain.DataManipulations
                 foreach (var userOrder in userOrders)
                 {
                     var orderInformationVm = new OrderAccountInfoVm(userOrder);
-                    var motorcycleVm = new MotorcycleVm(userOrder.Motorcycle);
+                    var bookVm = new BookVm(userOrder.Book);
                     var shopInformationVm = new ShopInformationVm(userOrder.ShopInformation);
 
                     var accountOrderInformationVm = new AccountOrderInformationVm
                     {
                         ShopInformation = shopInformationVm,
-                        Motorcycle = motorcycleVm,
+                        Book = bookVm,
                         OrderInformation = orderInformationVm
                     };
 

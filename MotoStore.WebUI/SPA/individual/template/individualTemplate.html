@@ -1,34 +1,29 @@
 <head>
-    <title>{{moto.Make}}</title>
+    <title>{{book.Section}}</title>
 </head>
 <div class="individual_container">
     <span ng-click="openModal()" class="make_order_icon"></span>
     <div class="individual_main_info_container">
-        <img class="individual_main_photo" ng-src="./SPA/image/{{moto.MainImage}}" alt="">
+        <img class="individual_main_photo" ng-src="./SPA/image/{{book.MainImage}}" alt="">
         <div class="individual_main_info">
             <div class="individual_info">
-                <span class="individual_info_item">{{moto.Make}}</span>
-                <span class="individual_info_item">Type: {{moto.Type}}</span>
-                <span class="individual_info_item">Price: {{moto.Price}}$</span>
-                <span class="individual_info_item">Engine capacity: {{moto.EngineCapacity}} cc<sup>3</sup></span>
-                <span class="individual_info_item">Number of cilindrs: {{moto.Cylinders}}</span>
-                <span class="individual_info_item">Year of issue: {{moto.Year}}</span>
-            </div>
-            <div class="individual_add_info">
-                <span ng-class="{active: moto.Abs }" class="individual_add_info_item">ABS</span>
-                <span ng-class="{active: moto.CruizeControl }" class="individual_add_info_item">Cruize Control</span>
-                <span ng-class="{active: moto.ElectricStarter }" class="individual_add_info_item">Electrostarter</span>
+                <span class="individual_info_item">Title: {{book.Title}}</span>
+                <span class="individual_info_item">{{book.Section}}</span>
+                <span class="individual_info_item">Level: {{book.Level}}</span>
+                <span class="individual_info_item">Price: {{book.Price}}$</span>
+                <span class="individual_info_item">Author: {{book.AuthorName}} cc<sup>3</sup></span>
+                <span class="individual_info_item">Year of issue: {{book.Year}}</span>
             </div>
         </div>
     </div>
     <div class="individual_photos">
         <div class="container slider">
-            <img ng-repeat="photo in moto.AdditionalImages track by $index" class="slide" ng-show="isActive($index)" ng-src="./SPA/image/{{photo}}"
+            <img ng-repeat="photo in book.AdditionalImages track by $index" class="slide" ng-show="isActive($index)" ng-src="./SPA/image/{{photo}}"
                 alt="">
-            <a class="arrow prev" href="#" ng-click="showPrev(moto.AdditionalImages)"></a>
-            <a class="arrow next" href="#" ng-click="showNext(moto.AdditionalImages)"></a>
+            <a class="arrow prev" href="#" ng-click="showPrev(book.AdditionalImages)"></a>
+            <a class="arrow next" href="#" ng-click="showNext(book.AdditionalImages)"></a>
             <ul class="nav">
-                <li ng-repeat="photo in moto.AdditionalImages" ng-class="{'active':isActive($index)}">
+                <li ng-repeat="photo in book.AdditionalImages" ng-class="{'active':isActive($index)}">
                     <img ng-src="./SPA/image/{{photo}}" ng-click="showPhoto($index);" />
                 </li>
             </ul>
@@ -36,7 +31,7 @@
     </div>
     <div class="individual_desc">
         <h2 class="individual_desc_title">Additional Description:</h2>
-        <span class="individual_desc_content">{{moto.Description}}</span>
+        <span class="individual_desc_content">{{book.Description}}</span>
     </div>
 </div>
 
@@ -50,9 +45,9 @@
                 <span class="modal_item">Name: {{orderInfo.User.Name + " " + orderInfo.User.Surname}}</span>
                 <span class="modal_item">E-mail: {{orderInfo.User.Email}}</span>
                 <span class="modal_item">Phone: {{orderInfo.User.Phone}}</span>
-                <span class="modal_item">Moto Make: {{moto.Make}}</span>
-                <span class="modal_item">Moto Type: {{moto.Type}}</span>
-                <span class="modal_item">Moto Price: {{moto.Price}}$</span>
+                <span class="modal_item">Book Section: {{book.Section}}</span>
+                <span class="modal_item">Book Level: {{book.Level}}</span>
+                <span class="modal_item">Book Price: {{book.Price}}$</span>
                 <div class="adress_container">
                     <div class="adress_item">
                         <span class="adress_item_title">Delivery: </span>

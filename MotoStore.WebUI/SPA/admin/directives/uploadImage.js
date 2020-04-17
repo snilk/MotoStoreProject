@@ -1,4 +1,4 @@
-﻿angular.module("motoStoreAdmin").directive("uploadImg", function() {
+﻿angular.module("bookStoreAdmin").directive("uploadImg", function() {
     return {
         restrict: "AE",
         scope: {

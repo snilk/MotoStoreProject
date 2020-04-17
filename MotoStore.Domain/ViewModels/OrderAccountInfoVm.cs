@@ -1,8 +1,8 @@
 ﻿
 using System;
-using MotoStore.Domain.EF;
+using BookStore.Domain.EF;
 
-namespace MotoStore.Domain.ViewModels
+namespace BookStore.Domain.ViewModels
 {
     public class OrderAccountInfoVm
     {

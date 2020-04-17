@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace MotoStore.Domain.ViewModels
+namespace BookStore.Domain.ViewModels
 {
     public class UserVm
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using MotoStore.Domain.DataManipulations;
+using BookStore.Domain.DataManipulations;
 
-namespace MotoStore.WebUI.Controllers
+namespace BookStore.WebUI.Controllers
 {
     public class ShopController : Controller
     {

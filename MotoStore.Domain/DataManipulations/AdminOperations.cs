@@ -1,14 +1,14 @@
 ﻿using System.Linq;
-using MotoStore.Domain.EF;
-using MotoStore.Domain.ViewModels;
+using BookStore.Domain.EF;
+using BookStore.Domain.ViewModels;
 
-namespace MotoStore.Domain.DataManipulations
+namespace BookStore.Domain.DataManipulations
 {
     public class AdminOperations
     {
         public static AdminInformationVm GetInfoFormAdmin()
         {
-            var context = new MotoStoreContext();
+            var context = new BookStoreContext();
 
             var orderList = OrderOperations.GetAllOrders();
 
@@ -20,10 +20,10 @@ namespace MotoStore.Domain.DataManipulations
                 Id = info.Id
             }).ToList();
 
-            var motoList = context.Motorcycles.ToList().Select(moto=> new MotorcycleVm(moto)).ToList();
+            var bookList = context.Books.ToList().Select(book=> new BookVm(book)).ToList();
             var adminInformationVm = new AdminInformationVm
             {
-                motos = motoList,
+                books = bookList,
                 orders = orderList,
                 shopInformations = shopInformationVms
             };
@@ -32,7 +32,7 @@ namespace MotoStore.Domain.DataManipulations
 
         public static SuccessVm ChangeOrderStatus(int id)
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 var changedOrder = context.Orders.FirstOrDefault(o => o.Id == id);
 
@@ -42,10 +42,10 @@ namespace MotoStore.Domain.DataManipulations
                 }
 
                 changedOrder.Status = !changedOrder.Status;
-                var motorcycle = changedOrder.Motorcycle;
+                var book = changedOrder.Book;
 
                 var offSet = changedOrder.Status ? -1 : 1;
-                motorcycle.ModelsCount += offSet;
+                book.ModelsCount += offSet;
 
                 context.SaveChanges();
             }
@@ -53,31 +53,31 @@ namespace MotoStore.Domain.DataManipulations
             return new SuccessVm(true);
         }
 
-        public static SuccessVm RemoveMotoById(int id)
+        public static SuccessVm RemoveBookById(int id)
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
-                var removedMoto = context.Motorcycles.FirstOrDefault(m => m.Id == id);
+                var removedBook = context.Books.FirstOrDefault(m => m.Id == id);
 
-                if (removedMoto == null)
+                if (removedBook == null)
                 {
                     return new SuccessVm(false);
                 }
 
-                context.MotoImages.RemoveRange(removedMoto.MotoImages);
-                context.MotoImages.Remove(removedMoto.MainImage);
-                context.Motorcycles.Remove(removedMoto);
+                context.BookImages.RemoveRange(removedBook.BookImages);
+                context.BookImages.Remove(removedBook.MainImage);
+                context.Books.Remove(removedBook);
                 context.SaveChanges();
             }
 
             return new SuccessVm(true);
         }
 
-        public static SuccessVm AddNewMoto(MotorcycleVm motorcycleVm, string imagesPath)
+        public static SuccessVm AddNewBook(BookVm bookVm, string imagesPath)
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
-                context.Motorcycles.Add(MotorcycleOperations.CreateNewMotorcycle(motorcycleVm, imagesPath));
+                context.Books.Add(BookOperations.CreateNewBook(bookVm, imagesPath));
                 context.SaveChanges();
             }
 
@@ -86,7 +86,7 @@ namespace MotoStore.Domain.DataManipulations
 
         public static SuccessVm AddShop(ShopInformationVm shopInformationVm)
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 context.ShopInformations.Add(new ShopInformation
                 {
@@ -102,7 +102,7 @@ namespace MotoStore.Domain.DataManipulations
 
         public static SuccessVm RemoveShopById(int id)
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 var shopForRemove = context.ShopInformations.FirstOrDefault(m => m.Id == id);
                 if (shopForRemove == null)

@@ -1,4 +1,4 @@
-angular.module('motoStoreCommon').factory('authService', function($http) {
+angular.module('bookStoreCommon').factory('authService', function($http) {
     return {
         register: function(user, cb) {
             var req = {

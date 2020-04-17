@@ -1,10 +1,10 @@
-angular.module("motoStoreCategories").controller("categoriesController", [
+angular.module("bookStoreSections").controller("sectionsController", [
     "$scope",
-    "motoByCategories",
+    "bookBySections",
     "$state",
     '$filter',
-    function ($scope, motoByCategories, $state, $filter) {
-        $scope.motos = motoByCategories;
+    function ($scope, bookBySections, $state, $filter) {
+        $scope.books = bookBySections;
 
         $scope.showInfoBtn = function (item) {
             item.isShowInfoBtn = true;
@@ -14,10 +14,10 @@ angular.module("motoStoreCategories").controller("categoriesController", [
             item.isShowInfoBtn = false;
         };
 
-        // $scope.sortType     = 'Price'; // set the default sort Type
+        // $scope.sortType     = 'Price'; // set the default sort Level
         $scope.sortReverse = false;
 
-        $scope.filteredMotos = [];
+        $scope.filteredBooks = [];
         $scope.currentPage = 1;
         $scope.numPerPage = 9;
         $scope.maxSize = 5;
@@ -25,7 +25,7 @@ angular.module("motoStoreCategories").controller("categoriesController", [
         $scope.$watch("currentPage + numPerPage", function () {
             var begin = ($scope.currentPage - 1) * $scope.numPerPage,
                 end = begin + $scope.numPerPage;
-            $scope.filteredMotos = $scope.motos.slice(begin, end);
+            $scope.filteredBooks = $scope.books.slice(begin, end);
         });
     }
 ]);

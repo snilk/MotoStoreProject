@@ -1,11 +1,11 @@
-angular.module("motoStoreIndividual").controller("individualController", [
+angular.module("bookStoreIndividual").controller("individualController", [
   "$scope",
-    "motoById",
+    "bookById",
     'orderService',
     'authService',
   'toastr',
-  function ($scope, motoById, orderService, authService, toastr) {
-      $scope.moto = motoById;
+  function ($scope, bookById, orderService, authService, toastr) {
+      $scope.book = bookById;
       $scope.isModalOpen = false;
       $scope.orderInfo = undefined;
       $scope.data = {
@@ -29,8 +29,8 @@ angular.module("motoStoreIndividual").controller("individualController", [
       
        
         if ($scope.isAuthorizated) {
-            if ($scope.moto.ModelsCount == 0) {
-                if (toastr.active() == 0) { toastr.warning('This motorcycle is not in stock', 'Sorry'); }
+            if ($scope.book.ModelsCount == 0) {
+                if (toastr.active() == 0) { toastr.warning('This book is not in stock', 'Sorry'); }
             } else {
                 $scope.isModalOpen = true;
                 orderService.getOrderInfo(function(res) { $scope.orderInfo = res.data },
@@ -52,7 +52,7 @@ angular.module("motoStoreIndividual").controller("individualController", [
         var shop = selectModel ? selectModel : $scope.orderInfo.ShopsInformation[0].Id
         var query = {
             Token: token,
-            MotoId: $scope.moto.Id,
+            BookId: $scope.book.Id,
             Address: isPickup ? homeAdress : null,
             ShopId: shop
         };

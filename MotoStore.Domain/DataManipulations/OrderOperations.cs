@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MotoStore.Domain.EF;
-using MotoStore.Domain.ViewModels;
+using BookStore.Domain.EF;
+using BookStore.Domain.ViewModels;
 
-namespace MotoStore.Domain.DataManipulations
+namespace BookStore.Domain.DataManipulations
 {
     public class OrderOperations
     {
@@ -33,7 +33,7 @@ namespace MotoStore.Domain.DataManipulations
                 return new SuccessVm(false);
             }
 
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 var userWithinContext = context.Users.FirstOrDefault(us => us.Id == user.Id);
 
@@ -42,10 +42,10 @@ namespace MotoStore.Domain.DataManipulations
                     return new SuccessVm(false);
                 }
 
-                var motorcycle = context.Motorcycles.FirstOrDefault(moto => moto.Id == orderInfoVm.MotoId);
+                var book = context.Books.FirstOrDefault(book1 => book1.Id == orderInfoVm.BookId);
                 var shopInformation = context.ShopInformations.FirstOrDefault(shop => shop.Id == orderInfoVm.ShopId);
 
-                if (motorcycle == null || shopInformation == null)
+                if (book == null || shopInformation == null)
                 {
                     return new SuccessVm(false);
                 }
@@ -55,7 +55,7 @@ namespace MotoStore.Domain.DataManipulations
                     Address = orderInfoVm.Address,
                     User = userWithinContext,
                     ShopInformation = shopInformation,
-                    Motorcycle = motorcycle,
+                    Book = book,
                     OrderDate = DateTime.Now,
                     Status = false
                 };
@@ -69,7 +69,7 @@ namespace MotoStore.Domain.DataManipulations
 
         public static List<OrderInfoAdminVm> GetAllOrders()
         {
-            var context = new MotoStoreContext();
+            var context = new BookStoreContext();
             return context.Orders.Select(order => new OrderInfoAdminVm
             {
                 orderId = order.Id,
@@ -81,7 +81,7 @@ namespace MotoStore.Domain.DataManipulations
                 Surname = order.User.Surname,
                 Phone = order.User.Phone,
                 Email = order.User.Email,
-                motoId = order.Motorcycle.Id,
+                BookId = order.Book.Id,
                 shopAdress = order.ShopInformation.Address,
                 Phone1 = order.ShopInformation.Phone1
             }).ToList();

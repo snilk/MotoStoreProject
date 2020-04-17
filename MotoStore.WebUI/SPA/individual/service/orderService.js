@@ -1,4 +1,4 @@
-﻿angular.module('motoStoreIndividual').factory('orderService', function ($http, authService) {
+﻿angular.module('bookStoreIndividual').factory('orderService', function ($http, authService) {
     return {
         getOrderInfo: function (successCb, errorCb) {
             var token = authService.getToken();

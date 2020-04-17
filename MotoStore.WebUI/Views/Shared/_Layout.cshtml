@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html ng-app="motoStore">
+<html ng-app="bookStore">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moto Store</title>
+    <title>Book Store</title>
     <base href="/">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
@@ -14,7 +14,7 @@
     <link href="~/Content/styles.css" rel="stylesheet" type="text/css" />
 
 </head>
-<body ng-controller="motoStoreController">
+<body ng-controller="bookStoreController">
 
     <div ng-class="{active: isLogInShow}" class="pop_up_sign">
         <div class="pop_up-container">
@@ -77,14 +77,14 @@
         <button class="sign_in" ng-show="isAdmin" ng-click="goToAdmin()">Admin</button>
     </header>
     <div class="wrapper">
-        <nav class="list_category">
+        <nav class="list_section">
             <ul>
                 <li>
-                    <button ng-click="selectCategory('All')" class="back_main"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to main</button>
+                    <button ng-click="selectSection('All')" class="back_main"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to main</button>
                     <span>/</span>
                 </li>
-                <li ng-repeat="item in motoCategories track by $index">
-                    <button ng-click="selectCategory(item.Make)" class="category">{{item.Make}}</button>
+                <li ng-repeat="item in bookSections track by $index">
+                    <button ng-click="selectSection(item.Section)" class="section">{{item.Section}}</button>
                     <span>/</span>
                 </li>
             </ul>
@@ -98,7 +98,7 @@
 
     <footer class="page_footer">
         <span class="footer_coorp_title">
-            &copy; Snilk MotoStore
+            &copy; Love'Eina BookStore
         </span>
         <div class="footer_store_conatiner">
             <p ng-repeat="shop in shopsInfo">
@@ -111,26 +111,26 @@
                 md-disable-backdrop md-whiteframe="4">
 
         <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Filter Motos</h1>
+            <h1 class="md-toolbar-tools">Filter Books</h1>
         </md-toolbar>
 
         <md-content layout-margin>
             <div>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Make</label>
-                    <md-select ng-model="Make">
+                    <label>Section</label>
+                    <md-select ng-model="Section">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="Make in makes" ng-value="Make.Make">
-                            {{Make.Make}}
+                        <md-option ng-repeat="Section in sections" ng-value="Section.Section">
+                            {{Section.Section}}
                         </md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type</label>
-                    <md-select ng-model="Type">
+                    <label>Level</label>
+                    <md-select ng-model="Level">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="Type in types" ng-value="Type">
-                            {{Type}}
+                        <md-option ng-repeat="Level in levels" ng-value="Level">
+                            {{Level}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -144,35 +144,15 @@
                         <input ng-model="YearofIssue.High">
                     </md-input-container>
                 </div>
-                <div class="group_input">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Low Engine Capacity</label>
-                        <input ng-model="EngineCapacity.Low">
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>High Engine Capacity</label>
-                        <input ng-model="EngineCapacity.High">
-                    </md-input-container>
-                </div>
-                <div class="group_input">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Low Number of Cilindrs</label>
-                        <input ng-model="NumberofCilindrs.Low">
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>High Number of Cilindrs</label>
-                        <input ng-model="NumberofCilindrs.High">
-                    </md-input-container>
-                </div>
-                <md-switch ng-model="Abs" aria-label="Switch 1">
-                    Is ABS
-                </md-switch>
-                <md-switch ng-model="ElectricStarter" aria-label="Switch 2">
-                    Is Electrostarter
-                </md-switch>
-                <md-switch ng-model="CruizeControl" aria-label="Switch 3">
-                    Is Cruize Control
-                </md-switch>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Author</label>
+                    <md-select ng-model="Author">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="Author in authors" ng-value="Author">
+                            {{Author}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
                 <div class="group_input">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Low Price</label>
@@ -217,17 +197,17 @@
     <!-- main scripts -->
     <script src="~/SPA/main.js"></script>
     <script src="~/SPA/common/common.js"></script>
-    <script src="~/SPA/common/service/categoriesService.js"></script>
+    <script src="~/SPA/common/service/sectionsService.js"></script>
     <script src="~/SPA/common/service/registerService.js"></script>
     <script src="~/SPA/common/service/adressShops.js"></script>
     <script src="~/SPA/common/filter/dateFilter.js"></script>
     <script src="~/SPA/common/directive/range.js"></script>
-    <script src="~/SPA/categories/categories.js"></script>
-    <script src="~/SPA/categories/controller/categoriesController.js"></script>
-    <script src="~/SPA/categories/service/motoByCategoriesService.js"></script>
+    <script src="~/SPA/sections/sections.js"></script>
+    <script src="~/SPA/sections/controller/sectionsController.js"></script>
+    <script src="~/SPA/sections/service/bookBySectionsService.js"></script>
     <script src="~/SPA/individual/individual.js"></script>
     <script src="~/SPA/individual/controller/individualController.js"></script>
-    <script src="~/SPA/individual/service/motoService.js"></script>
+    <script src="~/SPA/individual/service/bookService.js"></script>
     <script src="~/SPA/individual/service/orderService.js"></script>
     <script src="~/SPA/profile/profile.js"></script>
     <script src="~/SPA/profile/controller/profileController.js"></script>

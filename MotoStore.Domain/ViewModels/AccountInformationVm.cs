@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MotoStore.Domain.ViewModels
+namespace BookStore.Domain.ViewModels
 {
     public class AccountInformationVm
     {

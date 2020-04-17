@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MotoStore.WebUI</RootNamespace>
-    <AssemblyName>MotoStore.WebUI</AssemblyName>
+    <RootNamespace>BookStore.WebUI</RootNamespace>
+    <AssemblyName>BookStore.WebUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -120,14 +120,14 @@
     <Content Include="SPA\admin\template\addShopDialogTemplate.html" />
     <Content Include="SPA\admin\template\adminTemplate.html" />
     <Content Include="SPA\admin\template\editTemplate.html" />
-    <Content Include="SPA\categories\categories.js" />
-    <Content Include="SPA\categories\controller\categoriesController.js" />
-    <Content Include="SPA\categories\service\motoByCategoriesService.js" />
-    <Content Include="SPA\categories\template\categoriesTemplate.html" />
+    <Content Include="SPA\sections\sections.js" />
+    <Content Include="SPA\sections\controller\sectionsController.js" />
+    <Content Include="SPA\sections\service\bookBySectionsService.js" />
+    <Content Include="SPA\sections\template\sectionsTemplate.html" />
     <Content Include="SPA\common\common.js" />
     <Content Include="SPA\common\directive\range.js" />
     <Content Include="SPA\common\filter\dateFilter.js" />
-    <Content Include="SPA\common\service\categoriesService.js" />
+    <Content Include="SPA\common\service\sectionsService.js" />
     <Content Include="SPA\common\service\adressShops.js" />
     <Content Include="SPA\common\service\registerService.js" />
     <Content Include="SPA\image\mainp.jpg" />
@@ -137,7 +137,7 @@
     <Content Include="SPA\individual\controller\individualController.js" />
     <Content Include="SPA\individual\individual.js" />
     <Content Include="SPA\individual\service\orderService.js" />
-    <Content Include="SPA\individual\service\motoService.js" />
+    <Content Include="SPA\individual\service\bookService.js" />
     <Content Include="SPA\individual\template\individualTemplate.html" />
     <Content Include="SPA\lib\angular.min.js" />
     <Content Include="SPA\lib\bootstrap.js" />
@@ -205,9 +205,9 @@
     <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MotoStore.Domain\MotoStore.Domain.csproj">
+    <ProjectReference Include="..\MotoStore.Domain\BookStore.Domain.csproj">
       <Project>{746e91ee-3441-445e-a1b0-5e6aafe39168}</Project>
-      <Name>MotoStore.Domain</Name>
+      <Name>BookStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{746E91EE-3441-445E-A1B0-5E6AAFE39168}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MotoStore.Domain</RootNamespace>
-    <AssemblyName>MotoStore.Domain</AssemblyName>
+    <RootNamespace>BookStore.Domain</RootNamespace>
+    <AssemblyName>BookStore.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -48,18 +48,18 @@
     <Compile Include="DataInitialize\DataInitializer.cs" />
     <Compile Include="DataManipulations\AdminOperations.cs" />
     <Compile Include="DataManipulations\ImagesOperations.cs" />
-    <Compile Include="DataManipulations\MotorcycleOperations.cs" />
+    <Compile Include="DataManipulations\BookOperations.cs" />
     <Compile Include="DataManipulations\OrderOperations.cs" />
-    <Compile Include="EF\MotoImage.cs" />
-    <Compile Include="EF\Motorcycle.cs" />
-    <Compile Include="EF\MotoStoreContext.cs" />
+    <Compile Include="EF\BookImage.cs" />
+    <Compile Include="EF\Book.cs" />
+    <Compile Include="EF\BookStoreContext.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\ShopInformation.cs" />
     <Compile Include="EF\User.cs" />
-    <Compile Include="Static\MotoImagesConstants.cs" />
+    <Compile Include="Static\BookImagesConstants.cs" />
     <Compile Include="ViewModels\AccountOrderInformationVm.cs" />
     <Compile Include="ViewModels\AdminInformationVm.cs" />
-    <Compile Include="ViewModels\MotorcycleVm.cs" />
+    <Compile Include="ViewModels\BookVm.cs" />
     <Compile Include="ViewModels\OrderAccountInfoVm.cs" />
     <Compile Include="ViewModels\OrderComposeVm.cs" />
     <Compile Include="ViewModels\OrderInfoVm.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="ViewModels\ShopInformationVm.cs" />
     <Compile Include="ViewModels\SuccessVm.cs" />
     <Compile Include="ViewModels\TokenVM.cs" />
-    <Compile Include="ViewModels\UniqMakesVm.cs" />
+    <Compile Include="ViewModels\UniqSectionsVm.cs" />
     <Compile Include="ViewModels\AccountInformationVm.cs" />
     <Compile Include="ViewModels\UserForAuthorization.cs" />
     <Compile Include="ViewModels\UserTokenRole.cs" />

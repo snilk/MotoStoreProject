@@ -1,1 +1,1 @@
-angular.module("motoStoreCommon", []);
+angular.module("bookStoreCommon", []);

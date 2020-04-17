@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MotoStore.Domain.EF;
-using MotoStore.Domain.ViewModels;
+using BookStore.Domain.EF;
+using BookStore.Domain.ViewModels;
 
-namespace MotoStore.Domain.DataManipulations
+namespace BookStore.Domain.DataManipulations
 {
     public static class ShopInformationOperations
     {
         public static List<ShopInformationVm> GetShopInformation()
         {
-            using (var context = new MotoStoreContext())
+            using (var context = new BookStoreContext())
             {
                 return context.ShopInformations.ToList()
                     .Select(shop => new ShopInformationVm

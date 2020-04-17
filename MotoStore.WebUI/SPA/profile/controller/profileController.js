@@ -1,16 +1,16 @@
-angular.module("motoStoreProfile").controller("profileController", [
+angular.module("bookStoreProfile").controller("profileController", [
     "$scope",
     "$state",
     "user",
     function($scope, $state, user) {
         $scope.user = user;
 
-        $scope.goToMoto = function (motorcycle) {
-            var id = motorcycle.Id;
-            var category = motorcycle.Make;
+        $scope.goToBook = function (book) {
+            var id = book.Id;
+            var section = book.Section;
 
-            $state.go('individual', { motoId: id, category: category });
-            console.log(motorcycle);
+            $state.go('individual', { BookId: id, section: section });
+            console.log(book);
         }
     }
   ]);

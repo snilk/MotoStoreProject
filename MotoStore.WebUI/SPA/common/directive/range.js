@@ -1,4 +1,4 @@
-﻿angular.module('motoStoreCommon')
+﻿angular.module('bookStoreCommon')
     .directive('rangeSlider', function () {
         return {
             restrict: "E",
