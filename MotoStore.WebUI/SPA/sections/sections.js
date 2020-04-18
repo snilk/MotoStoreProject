@@ -21,11 +21,14 @@ angular.module("bookStoreSections", ['ui.bootstrap']).config([
 
                             if (filter) {
                                 var newArr = res.data.filter(function (item) {
-                                    return (item.Price >= filter.Price.Low && item.Price <= filter.Price.High)
-                                        && (item.Year >= filter.YearofIssue.Low && item.Year <= filter.YearofIssue.High)
-                                        && (item.AuthorName >= filter.AuthorName.Low && item.AuthorName <= filter.AuthorName.High)
-                                        && (filter.Level === undefined || filter.Level === 'None' ? true : item.Level === filter.Level)
-                                        
+                                    return (item.Price >= filter.Price.Low && item.Price <= filter.Price.High) &&
+                                        (item.Year >= filter.YearofIssue.Low && item.Year <= filter.YearofIssue.High) &&
+                                        (filter.Author === undefined || filter.Author === 'None'
+                                            ? true
+                                            : item.AuthorName === filter.Author) &&
+                                        (filter.Level === undefined || filter.Level === 'None'
+                                            ? true
+                                            : item.Level === filter.Level);
                                 });
 
                                 deferred.resolve(newArr);

@@ -260,18 +260,11 @@ angular
 
             $scope.filter = function () {
                 var query = {
+                    Author: $scope.Author,
                     Level: $scope.Level,
                     YearofIssue: {
                         Low: +$scope.YearofIssue.Low || 0,
                         High: +$scope.YearofIssue.High || 1000000000000000
-                    },
-                    AuthorName: {
-                        Low: +$scope.AuthorName.Low || 0,
-                        High: +$scope.AuthorName.High || 1000000000000000
-                    },
-                    Title: {
-                        Low: +$scope.Title.Low || 0,
-                        High: +$scope.Title.High || 1000000000000000
                     },
                     Price: {
                         Low: +$scope.Price.Low || 0,
@@ -289,8 +282,7 @@ angular
                 $scope.Level = 'None';
                 $scope.Section = 'None';
                 $scope.YearofIssue = {};
-                $scope.AuthorName = {};
-                $scope.Title = {};
+                $scope.Author= {};
                 $scope.Price = {};
                 $scope.filter();
             };

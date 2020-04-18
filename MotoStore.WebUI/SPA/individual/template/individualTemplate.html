@@ -59,13 +59,13 @@
                         <span class="adress_item_title">Pickup: </span>
                         <input Type="checkbox" class="styled-checkbox" id="styled-checkbox-2" ng-click="isPickup = false" ng-model="isDelivery" />
                         <label for="styled-checkbox-2"></label>
-                        <select Name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
+                        <select class="order_input" Name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
                             <option ng-repeat="option in orderInfo.ShopsInformation" value="{{option.Id}}">{{option.Address}}</option>
                         </select>
                     </div>
                 </div>
                 <p>{{error}}</p>
-                <button class="make_order_btn" ng-click="makeOrder(isPickup, isDelivery, data.singleSelect, homeAdress)">Make Order</button>
+                <button class="make_order_btn frm_btn" ng-click="makeOrder(isPickup, isDelivery, data.singleSelect, homeAdress)">Make Order</button>
             </section>
     </div>
 </div>
