@@ -196,15 +196,17 @@ header {
   height: 60px; }
 
 .page_footer {
-  background: rgba(0, 0, 0, 0.99);
-  height: 60px;
-  width: 100%;
-  margin-top: 15px;
-  font-family: proximanovaReg;
-  display: flex;
-  color: white;
-  align-items: center;
-  justify-content: space-between; }
+    background: rgba(201, 187, 174, 1);
+    height: 60px;
+    width: 100%;
+    margin-top: 15px;
+    font-family: proximanovaReg;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(80, 67, 61, 1);
+}
   .page_footer .footer_coorp_title {
     font-size: 18px;
     margin-left: 15px; }
