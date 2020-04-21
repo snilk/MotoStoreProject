@@ -114,6 +114,9 @@ header {
     .wrapper nav ul {
          display: flex;
     }
+.wrapper nav ul li {
+    display: flex;
+}
         .wrapper nav ul li button {
             color: rgba(80, 67, 61, 1);
         }
@@ -125,8 +128,7 @@ header {
         width: 150px;
         font-size: 18px;
         text-align: center;
-        height: 40px;
-        line-height: 40px;
+          line-height: 40px;
         background-color: inherit;
         transition: 0.3s all;
         font-weight: bold;
@@ -152,7 +154,7 @@ header {
         font-size: 18px;
         text-align: center;
         height: 40px;
-        line-height: 40px;
+        line-height: 20px;
         background-color: inherit;
         transition: 0.3s all;
         font-weight: bold;
@@ -185,8 +187,10 @@ header {
           .wrapper nav ul li .section:hover::before {
             width: 100%; }
       .wrapper nav ul li span {
-        font-size: 22px;
-        transition: all 0.3s; }
+        font-size: 28px;
+        transition: all 0.3s;
+          margin-top: 0px;
+      }
 
 .page_wrapper {
   min-height: 100%;
@@ -455,7 +459,7 @@ header {
         padding: 1px; }
         .sections_wrapper .books_container .book_item .book_price {
             position: absolute;
-            top: 10px;
+            bottom: 10px;
             right: 10px;
             font-size: 18px;
             font-family: proximanova;
@@ -475,10 +479,20 @@ header {
         flex-direction: column;
         padding: 10px; }
         .sections_wrapper .books_container .book_item .book_desc .book_desc_item {
-          font-size: 18px;
-          padding: 5px 0; }
-          .sections_wrapper .books_container .book_item .book_desc .book_desc_item.Section {
-            font-family: proximanova; }
+            font-size: 18px;
+            padding: 5px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 260px;
+        }
+            .sections_wrapper .books_container .book_item .book_desc .book_desc_item.Section {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 260px;
+                font-family: proximanova;
+            }
       .sections_wrapper .books_container .book_item .view_book_info_container {
         position: absolute;
         left: 0;
@@ -557,7 +571,6 @@ header {
       height: 300px; }
     .individual_container .individual_main_info_container .individual_main_photo {
         width: 300px;
-        height: 200px;
         margin: 50px;
     }
       .individual_container .individual_main_info_container .individual_main_info .individual_info {
@@ -784,7 +797,7 @@ header {
 
 .slider {
     border-radius: 5px;
-  height: 500px;
+  height: 1000px;
   margin: 20px auto;
   position: relative;
   width: 800px;

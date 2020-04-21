@@ -110,9 +110,9 @@ angular
                 $scope.isLogIn = !$scope.isLogIn;
             };
 
-            $scope.selectSection = function (make) {
+            $scope.selectSection = function (section) {
                 
-                $state.go("sections", { section: make });
+                $state.go("sections", { section: section });
             };
 
             $scope.goToAdmin = function () {
@@ -254,7 +254,7 @@ angular
             uniqLevels();
             uniqAuthors();
             $scope.YearofIssue = {};
-            $scope.AuthorName = {};
+            $scope.Author = {};
             $scope.Title = {};
             $scope.Price = {};
 
@@ -282,8 +282,9 @@ angular
                 $scope.Level = 'None';
                 $scope.Section = 'None';
                 $scope.YearofIssue = {};
-                $scope.Author= {};
+                $scope.Author= 'None';;
                 $scope.Price = {};
+                $scope.Title = {};
                 $scope.filter();
             };
 

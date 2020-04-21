@@ -1,0 +1,35 @@
+Oracle High Availability, Disaster Recovery, and Cloud Services
+Migrating to MariaDB
+Pro Oracle Database 18c Administration
+Manage and Safeguard Your Organization’s Data
+SQL Server 2019 Revealed
+Practical Oracle JET
+Crushing the IT Gender Bias
+Java Design Patterns
+Java 13 Revealed
+Introducing Maven
+Swift 4 Recipes
+The Joys of Hashing
+Interactive C#
+PHP Arrays
+Beginning PHP and MySQL
+Learn Rails 5.2
+Beginning Ruby
+C++ for Lazy Programmers
+Cyber Operations
+Ransomware Revealed
+Smarter Homes
+Oracle IaaS
+Design, Launch, and Scale IoT Services
+UX for Developers
+Pro D3.js
+Introducing Dart Sass
+Building Design Systems
+Python for Teenagers
+Python for the Life Sciences
+Learn PySpark
+.NET DevOps for Azure
+Beginning Azure Functions
+Raspberry Pi Retro Gaming
+Practical Flutter
+Pro Android with Kotlin

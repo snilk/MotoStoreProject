@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using BookStore.Domain.EF;
 using BookStore.Domain.ViewModels;
@@ -84,6 +85,42 @@ namespace BookStore.Domain.DataManipulations
             {
                 additionalImages = bookVm.AdditionalImagesFiles.Select(vmAdditionalImage =>
                     ImagesOperations.CreateBookImage(vmAdditionalImage, imagesPath)).ToList();
+            }
+            else
+            {
+                additionalImages = new List<BookImage>
+                {
+                    ImagesOperations.CreateBookImage()
+                };
+            }
+
+            newBook.MainImage = mainImage;
+            newBook.BookImages = additionalImages;
+
+            return newBook;
+        }
+
+        internal static Book CreateNewBook(BookVm bookVm, FileInfo mainImageInfo, IEnumerable<FileInfo> additionalImagesInfo, string imagesPath)
+        {
+            var newBook = new Book
+            {
+                Title = bookVm.Title,
+                Description = bookVm.Description,
+                AuthorName = bookVm.AuthorName,
+                Section = bookVm.Section,
+                ModelsCount = bookVm.ModelsCount,
+                Price = bookVm.Price,
+                Level = bookVm.Level,
+                Year = bookVm.Year
+            };
+
+            var mainImage = ImagesOperations.CreateBookImage(mainImageInfo, imagesPath);
+            List<BookImage> additionalImages;
+
+            if (additionalImagesInfo != null)
+            {
+                additionalImages = additionalImagesInfo.Select(additionalImage =>
+                    ImagesOperations.CreateBookImage(additionalImage, imagesPath)).ToList();
             }
             else
             {

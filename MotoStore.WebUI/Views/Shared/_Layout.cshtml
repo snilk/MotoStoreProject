@@ -81,11 +81,10 @@
             <ul>
                 <li>
                     <button ng-click="selectSection('All')" class="back_main"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to main</button>
-                    <span>/</span>
                 </li>
                 <li ng-repeat="item in bookSections track by $index">
-                    <button ng-click="selectSection(item.Section)" class="section">{{item.Section}}</button>
                     <span>/</span>
+                    <button ng-click="selectSection(item.Section)" class="section">{{item.Section}}</button>
                 </li>
             </ul>
         </nav>

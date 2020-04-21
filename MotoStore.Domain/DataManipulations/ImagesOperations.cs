@@ -26,5 +26,24 @@ namespace BookStore.Domain.DataManipulations
                 ImageUrl = imageFileName
             };
         }
+
+        internal static BookImage CreateBookImage(FileInfo image, string imagesPath)
+        {
+            var imageFileName = BookImagesConstants.PlaceHolderImageUrl;
+
+            if (image != null && imagesPath != null)
+            {
+                var extenstion = image.Extension;
+                var imageName = Guid.NewGuid().ToString();
+                imageFileName = imageName + extenstion;
+
+                image.CopyTo(Path.Combine(imagesPath, imageFileName));
+            }
+
+            return new BookImage
+            {
+                ImageUrl = imageFileName
+            };
+        }
     }
 }

@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataInitialize\DataInitializer.cs" />
+    <Compile Include="DataInitialize\LevelEnum.cs" />
+    <Compile Include="DataInitialize\SectionEnum.cs" />
     <Compile Include="DataManipulations\AdminOperations.cs" />
     <Compile Include="DataManipulations\ImagesOperations.cs" />
     <Compile Include="DataManipulations\BookOperations.cs" />
@@ -56,6 +58,8 @@
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\ShopInformation.cs" />
     <Compile Include="EF\User.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Static\BookImagesConstants.cs" />
     <Compile Include="ViewModels\AccountOrderInformationVm.cs" />
     <Compile Include="ViewModels\AdminInformationVm.cs" />
@@ -88,5 +92,6 @@
       <Version>5.2.4</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
