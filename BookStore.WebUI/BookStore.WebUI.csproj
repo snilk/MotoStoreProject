@@ -172,7 +172,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MotoStore.Domain\BookStore.Domain.csproj">
+    <ProjectReference Include="..\BookStore.Domain\BookStore.Domain.csproj">
       <Project>{746e91ee-3441-445e-a1b0-5e6aafe39168}</Project>
       <Name>BookStore.Domain</Name>
     </ProjectReference>
