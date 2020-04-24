@@ -76,8 +76,8 @@
                             <p class="admin_item">Shop Address: {{shopInfo.Address}}</p>
                             <p class="admin_item">Phone1: {{shopInfo.Phone1}}</p>
                             <p class="admin_item">Phone2: {{shopInfo.Phone2}}</p>
+                            <md-button ng-click="removeShopClick(shopInfo.Id)">Remove Shop</md-button>
                         </div>
-                        <md-button class="md-secondary" ng-click="removeShopClick(shopInfo.Id)">Remove Shop</md-button>
                         <md-divider ng-if="!$last"></md-divider>
                     </md-list-item>
                 </md-list>
