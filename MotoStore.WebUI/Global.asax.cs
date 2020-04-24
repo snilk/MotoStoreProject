@@ -22,7 +22,9 @@ namespace BookStore.WebUI
             var webUIDirectory = Server.MapPath("");
             var projectDirectory = Directory.GetParent(webUIDirectory);
 
-            DataInitializer.InitializeBooks(projectDirectory.FullName, Server.MapPath(BookImagesConstants.ImagesFolder));
+            //DataInitializer.InitializeBooks(projectDirectory.FullName, Server.MapPath(BookImagesConstants.ImagesFolder));
+
+            DataInitializer.ClearBooks();
         }
     }
 }

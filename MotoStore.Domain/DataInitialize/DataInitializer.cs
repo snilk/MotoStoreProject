@@ -121,6 +121,21 @@ namespace BookStore.Domain.DataInitialize
             }
         }
 
+        public static void ClearBooks()
+        {
+            using (var context = new BookStoreContext())
+            {
+                var existingBookIds = context.Books.Select(book => book.Id).ToList();
+
+                foreach (var existingBookId in existingBookIds)
+                {
+                    AdminOperations.RemoveBookById(existingBookId);
+                }
+
+                context.SaveChanges();
+            }
+        }
+
         private static int RandomYear => random.Next(2010, 2021);
         private static int RandomNumberOfInstances => random.Next(0, 31);
         private static int RandomPrice => random.Next(10, 151);
