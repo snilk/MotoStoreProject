@@ -123,11 +123,23 @@ function ($scope, $state, adminData, adminService, $mdDialog, toastr, $rootScope
 
         function addBook($scope, $mdDialog, $rootScope) {
 
-            $scope.sections = [
-                { "Section": "DataBase" }, { "Section": "Programming Languages" }, { "Section": "Operating Systems" },
-                { "Section": "Multimedia & Design" }, { "Section": "Computer Security" }
-            ];
-            $scope.levels = ["Beginning", "Junior", "Middle", "Senior"];
+            adminService.getAvailableSections(
+                function(result) {
+                    $scope.sections = result.data;
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
+
+            adminService.getAvailableLevels(
+                function(result) {
+                    $scope.levels = result.data;
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
 
             $scope.mainImage = {};
             $scope.additionalImages = {};

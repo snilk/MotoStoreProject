@@ -1,5 +1,11 @@
 ﻿angular.module('bookStoreAdmin').factory('adminService', function ($http) {
     return {
+        getAvailableSections: function (successCb, errorCb) {
+            return $http.get('Admin/GetAvailableSections').then(successCb, errorCb);
+        },
+        getAvailableLevels: function (successCb, errorCb) {
+            return $http.get('Admin/GetAvailableLevels').then(successCb, errorCb);
+        },
         get: function (successCb, errorCb) {
             return $http.get('Admin/EnterAdmin').then(successCb, errorCb);
         },

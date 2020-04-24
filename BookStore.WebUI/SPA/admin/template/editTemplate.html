@@ -16,8 +16,8 @@
                     <label>Section</label>
                     <md-select ng-model="Section">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="Section in sections" ng-value="Section.Section">
-                            {{Section.Section}}
+                        <md-option ng-repeat="section in sections" ng-value="section">
+                            {{section}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -25,8 +25,8 @@
                     <label>Level</label>
                     <md-select ng-model="Level">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="Level in levels" ng-value="Level">
-                            {{Level}}
+                        <md-option ng-repeat="level in levels" ng-value="level">
+                            {{level}}
                         </md-option>
                     </md-select>
                 </md-input-container>

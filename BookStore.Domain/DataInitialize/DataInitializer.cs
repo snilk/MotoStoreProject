@@ -18,8 +18,15 @@ namespace BookStore.Domain.DataInitialize
         private const string MainPhotosDirectory = @"DataInitializeFiles\Osnovnoe_Foto";
         private const string AdditionalPhotosDirectory = @"DataInitializeFiles\Dopolnitelnye_Foto";
 
-
         private static readonly Random random = new Random();
+
+        public static IList<string> AvailableSections => EnumExtensions.GetValues<SectionEnum>().Select(val => val.GetEnumDescription()).ToList();
+        public static IList<string> AvailableLevels => EnumExtensions.GetValues<LevelEnum>().Select(val => val.GetEnumDescription()).ToList();
+        private static int RandomYear => random.Next(2010, 2021);
+        private static int RandomNumberOfInstances => random.Next(0, 31);
+        private static int RandomPrice => random.Next(10, 151);
+        private static int RandomAdditionalImagesCount => random.Next(2, 4);
+
         public static void InitializeTables()
         {
             using (var context = new BookStoreContext())
@@ -66,10 +73,6 @@ namespace BookStore.Domain.DataInitialize
             var fullMainPhotosDirectory = Path.Combine(projectDirectory, MainPhotosDirectory);
             var fullAdditionalPhotosDirectory = Path.Combine(projectDirectory, AdditionalPhotosDirectory);
 
-            var availableSections = EnumExtensions.GetValues<SectionEnum>().Select(val => val.GetEnumDescription())
-                .ToList();
-            var availableLevels =
-                EnumExtensions.GetValues<LevelEnum>().Select(val => val.GetEnumDescription()).ToList();
             var availableAuthors = GetArrayStringFromFile(fullAuthorsFilePath);
             var availableTitles = GetArrayStringFromFile(fullTitlesFilePath);
             var availableDescriptions = GetArrayStringFromFile(fullDescriptionFilePath);
@@ -78,11 +81,11 @@ namespace BookStore.Domain.DataInitialize
                 Directory.GetFiles(fullAdditionalPhotosDirectory).Select(img => new FileInfo(img)).ToList();
 
             var newBooks = new List<Book>();
-            foreach (var availableSection in availableSections)
+            foreach (var availableSection in AvailableSections)
             {
                 for (var i = 0; i < 2; i++)
                 {
-                    foreach (var availableLevel in availableLevels)
+                    foreach (var availableLevel in AvailableLevels)
                     {
                         var bookVm = new BookVm
                         {
@@ -135,11 +138,6 @@ namespace BookStore.Domain.DataInitialize
                 context.SaveChanges();
             }
         }
-
-        private static int RandomYear => random.Next(2010, 2021);
-        private static int RandomNumberOfInstances => random.Next(0, 31);
-        private static int RandomPrice => random.Next(10, 151);
-        private static int RandomAdditionalImagesCount => random.Next(2, 4);
 
         private static IList<string> GetArrayStringFromFile(string filePath)
         {

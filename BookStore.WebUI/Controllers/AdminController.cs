@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using BookStore.Domain.DataInitialize;
 using BookStore.Domain.DataManipulations;
 using BookStore.Domain.Static;
 using BookStore.Domain.ViewModels;
@@ -50,6 +51,21 @@ namespace BookStore.WebUI.Controllers
         public JsonResult RemoveShop(int id)
         {
             return Json(AdminOperations.RemoveShopById(id));
+        }
+
+        
+        [HttpGet]
+        [Route("GetAvailableSections")]
+        public JsonResult GetAvailableSections()
+        {
+            return Json(DataInitializer.AvailableSections, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Route("GetAvailableLevels")]
+        public JsonResult GetAvailableLevels()
+        {
+            return Json(DataInitializer.AvailableLevels, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
