@@ -6,7 +6,6 @@ namespace BookStore.WebUI.Controllers
     [RoutePrefix("Shop")]
     public class ShopController : Controller
     {
-        // GET: Shop
         [HttpGet]
         [Route("ShopInformation")]
         public JsonResult ShopInformation()

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using BookStore.Domain.DataManipulations;
 using BookStore.Domain.ViewModels;
-using BookStore.Domain;
-using BookStore.Domain.EF;
 
 namespace BookStore.WebUI.Controllers
 {
