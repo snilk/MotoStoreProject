@@ -9,11 +9,11 @@ angular.module("bookStoreIndividual", []).config([
         resolve: {
           bookById: function($stateParams, $q, bookService) {
             var deferred = $q.defer();
-            var BookId = $stateParams.BookId;
-            var Section = $stateParams.section;
+            var bookId = $stateParams.BookId;
+            var section = $stateParams.section;
   
             bookService.get(
-                BookId, Section,
+                bookId, section,
               function(res) {
                 deferred.resolve(res.data);
               },

@@ -3,31 +3,41 @@ using BookStore.Domain.DataManipulations;
 
 namespace BookStore.WebUI.Controllers
 {
+    [RoutePrefix("Products")]
     public class ProductsController : Controller
     {
         // GET: Products
         [HttpGet]
-        public JsonResult Books(string section,int id)
+        [Route("Books/{id:int}")]
+        public JsonResult Books(int id)
         {
-            return id == 0
-                ? Json(BookOperations.GetBookBySection(section), JsonRequestBehavior.AllowGet)
-                : Json(BookOperations.GetBookById(id), JsonRequestBehavior.AllowGet);
+            return Json(BookOperations.GetBookById(id), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Route("Books/{section}")]
+        public JsonResult Books(string section)
+        {
+            return Json(BookOperations.GetBookBySection(section), JsonRequestBehavior.AllowGet);
         }
 
 
         [HttpGet]
+        [Route("GetUniqSections")]
         public JsonResult GetUniqSections()
         {
             return Json(BookOperations.GetUniqSections(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
+        [Route("GetUniqLevels")]
         public JsonResult GetUniqLevels()
         {
             return Json(BookOperations.GetUniqLevels(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
+        [Route("GetUniqAuthors")]
         public JsonResult GetUniqAuthors()
         {
             return Json(BookOperations.GetUniqAuthors(), JsonRequestBehavior.AllowGet);
