@@ -67,19 +67,5 @@ namespace BookStore.WebUI.Controllers
         {
             return Json(DataInitializer.AvailableLevels, JsonRequestBehavior.AllowGet);
         }
-
-        [HttpGet]
-        [Route("api/Test1/{id:int}")]
-        public JsonResult Test(int id)
-        {
-            return Json(id, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        [Route("api/Test1/{name}")]
-        public JsonResult Test1(string name)
-        {
-            return Json(name, JsonRequestBehavior.AllowGet);
-        }
     }
 }

@@ -11,7 +11,7 @@ namespace BookStore.Domain.DataManipulations
     {
         private const string AllLabel = "All";
 
-        public static List<BookVm> GetBookBySection(string make)
+        public static List<BookVm> GetBooksBySection(string make)
         {
             using (var context = new BookStoreContext())
             {

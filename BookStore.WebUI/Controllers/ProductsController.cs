@@ -18,7 +18,7 @@ namespace BookStore.WebUI.Controllers
         [Route("Books/{section}")]
         public JsonResult Books(string section)
         {
-            return Json(BookOperations.GetBookBySection(section), JsonRequestBehavior.AllowGet);
+            return Json(BookOperations.GetBooksBySection(section), JsonRequestBehavior.AllowGet);
         }
 
 

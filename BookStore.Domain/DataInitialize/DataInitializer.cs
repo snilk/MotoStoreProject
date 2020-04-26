@@ -5,7 +5,6 @@ using System.Linq;
 using BookStore.Domain.DataManipulations;
 using BookStore.Domain.EF;
 using BookStore.Domain.Extensions;
-using BookStore.Domain.Static;
 using BookStore.Domain.ViewModels;
 
 namespace BookStore.Domain.DataInitialize
