@@ -25,16 +25,16 @@
                             <div class="info-item">
                                 <div class="table">
                                     <div class="table-cell">
-                                        <p>Have an account?</p>
-                                        <div class="btn" ng-click="toggleAuthForm()">Log in</div>
+                                        <p>Уже зарегистрированы?</p>
+                                        <div class="btn" ng-click="toggleAuthForm()">Войти</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="info-item">
                                 <div class="table">
                                     <div class="table-cell">
-                                        <p>Don't have an account?</p>
-                                        <div class="btn" ng-click="toggleAuthForm()">Sign up</div>
+                                        <p>Нету личного аккаунта?</p>
+                                        <div class="btn" ng-click="toggleAuthForm()">Зарегистрироваться</div>
                                     </div>
                                 </div>
                             </div>
@@ -43,23 +43,23 @@
                             <div class="form-item log-in">
                                 <div class="table">
                                     <div class="table-cell">
-                                        <input type="text" name="Username" ng-model="loginUsername" placeholder="Username">
-                                        <input type="password" name="Password" ng-model="loginPassword" placeholder="Password">
-                                        <div class="btn" id="submit_log" ng-click="logInUser()">Log in</div>
+                                        <input type="text" name="Username" ng-model="loginUsername" placeholder="Логин">
+                                        <input type="password" name="Password" ng-model="loginPassword" placeholder="Пароль">
+                                        <div class="btn" id="submit_log" ng-click="logInUser()">Войти</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-item sign-up">
                                 <div class="table">
                                     <div class="table-cell">
-                                        <input type="text" ng-model="registerUsername" placeholder="Username">
-                                        <input type="password" ng-model="registerPassword" placeholder="Password">
+                                        <input type="text" ng-model="registerUsername" placeholder="Логин">
+                                        <input type="password" ng-model="registerPassword" placeholder="Пароль">
                                       
-                                        <input type="text" ng-model="registerName" placeholder="Name">
-                                        <input type="text" ng-model="registerSurname" placeholder="Surname">
+                                        <input type="text" ng-model="registerName" placeholder="Имя">
+                                        <input type="text" ng-model="registerSurname" placeholder="Фамилия">
                                         <input type="email" ng-model="registerEmail" placeholder="E-mail">
-                                        <input type="text" ng-model="registerPhone" placeholder="Phone">
-                                        <div class="btn" id="submit" ng-click="registerUser()">Sign Up</div>
+                                        <input type="text" ng-model="registerPhone" placeholder="Телефон">
+                                        <div class="btn" id="submit" ng-click="registerUser()">Зарегистрироваться</div>
                                     </div>
                                 </div>
                             </div>
@@ -70,17 +70,19 @@
             <i class="fa fa-times fa-lg" id="close_popup_in" ng-click="toggleLogIn()" aria-hidden="true"></i>
         </div>
     </div>
-    <header>
-        <button class="sign_out" ng-click="toggleLeft()">Filter</button>
-        <button class="sign_out" ng-click="logOut()" ng-show="isAuthorizated">Sign out</button>
-        <button class="sign_in" ng-show="!isAdmin" ng-click="toggleLogIn()">{{isAuthorizated ? 'Profile' : 'Sign in'}}</button>
-        <button class="sign_in" ng-show="isAdmin" ng-click="goToAdmin()">Admin</button>
-    </header>
+<header>
+    <div style="margin-right:45px">
+        <button class="sign_out" ng-click="toggleLeft()">Фильтр</button>
+        <button class="sign_out" ng-click="logOut()" ng-show="isAuthorizated">Выйти</button>
+        <button class="sign_in" ng-show="!isAdmin" ng-click="toggleLogIn()">{{isAuthorizated ? 'Профиль' : 'Войти'}}</button>
+        <button class="sign_in" ng-show="isAdmin" ng-click="goToAdmin()">Администратор</button>
+    </div>
+</header>
     <div class="wrapper">
         <nav class="list_section">
             <ul>
                 <li>
-                    <button ng-click="selectSection('All')" class="back_main"><i class="fa fa-chevron-left" aria-hidden="true"></i>Back to main</button>
+                    <button ng-click="selectSection('All')" class="back_main"><i class="fa fa-chevron-left" aria-hidden="true"></i>На главную</button>
                 </li>
                 <li ng-repeat="item in bookSections track by $index">
                     <span>/</span>
@@ -116,7 +118,7 @@
         <md-content layout-margin>
             <div>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Section</label>
+                    <label>Категория</label>
                     <md-select ng-model="Section">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="Section in sections" ng-value="Section.Section">
@@ -125,7 +127,7 @@
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Level</label>
+                    <label>Уровень</label>
                     <md-select ng-model="Level">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="Level in levels" ng-value="Level">
@@ -133,18 +135,19 @@
                         </md-option>
                     </md-select>
                 </md-input-container>
+                <span>Год публикации</span>
                 <div class="group_input">
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Low Year of Issue</label>
+                        <label>с</label>
                         <input ng-model="YearofIssue.Low">
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>High Year of Issue</label>
+                        <label>по</label>
                         <input ng-model="YearofIssue.High">
                     </md-input-container>
                 </div>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Author</label>
+                    <label>Автор</label>
                     <md-select ng-model="Author">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="Author in authors" ng-value="Author">
@@ -152,25 +155,26 @@
                         </md-option>
                     </md-select>
                 </md-input-container>
+                <span>Цена</span>
                 <div class="group_input">
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Low Price</label>
+                        <label>от</label>
                         <input ng-model="Price.Low">
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>High Price</label>
+                        <label>до</label>
                         <input ng-model="Price.High">
                     </md-input-container>
                 </div>
             </div>
             <md-button ng-click="toggleLeft()">
-                Close
+                Закрыть
             </md-button>
             <md-button ng-click="filter()">
-                Filter
+                Фильтр
             </md-button>
             <md-button ng-click="clearFiler()">
-                Clear Filters
+                Очистить фильтр
             </md-button>
         </md-content>
     </md-sidenav>

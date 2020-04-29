@@ -2,7 +2,7 @@
     <form ng-cloak class="add_frm">
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Add book</h2>
+                <h2>Добавить книгу</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <span>Х</span>
@@ -13,7 +13,7 @@
         <md-dialog-content>
             <div class="md-dialog-content">
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Section</label>
+                    <label>Категория</label>
                     <md-select ng-model="Section">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="section in sections" ng-value="section">
@@ -22,7 +22,7 @@
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Level</label>
+                    <label>Уровень</label>
                     <md-select ng-model="Level">
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="level in levels" ng-value="level">
@@ -31,37 +31,37 @@
                     </md-select>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Year of Issue</label>
+                    <label>Введите Год публикации</label>
                     <input ng-model="YearofIssue">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Author Name</label>
+                    <label>Введите Имя Автора</label>
                     <input ng-model="AuthorName">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Title</label>
+                    <label>Введите Название</label>
                     <input ng-model="Title">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Description</label>
+                    <label>Введите Описание</label>
                     <input ng-model="Description">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Number of Instances</label>
+                    <label>Введите Количество Экземпляров</label>
                     <input ng-model="NumberofModels">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Type Price</label>
+                    <label>Введите Цену</label>
                     <input ng-model="Price">
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <upload-img name="Upload A Main Image" ng-model="mainImage"></upload-img>
+                    <upload-img name="Выберите главную картинку" ng-model="mainImage"></upload-img>
                 </md-input-container>
                 <div class="div_preview">
                     <img class="image_preview" ng-src="{{mainImage.src}}" ng-show="mainImage.src" alt="" />
                 </div>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <upload-img name="Upload An Additional Images" ng-model="additionalImages"></upload-img>
+                    <upload-img name="Выберите дополнительные картинки" ng-model="additionalImages"></upload-img>
                 </md-input-container>
                 <div class="div_preview_multi">
                     <div class="div_preview" ng-repeat="src in additionalImages.srcList">
@@ -74,10 +74,10 @@
         <md-dialog-actions layout="row">
             <span flex></span>
             <md-button ng-click="cancel()">
-                Cancel
+                Отмена
             </md-button>
             <md-button ng-click="addBook()">
-                Add Book
+                Добавить книгу
             </md-button>
         </md-dialog-actions>
     </form>

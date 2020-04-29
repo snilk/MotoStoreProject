@@ -1,24 +1,24 @@
-<div class="user_profile">
+﻿<div class="user_profile">
     <div class="user_profile_info">
-        <span class="info_item">Name: {{user.User.Name}}</span>
-        <span class="info_item">Surname: {{user.User.Surname}}</span>
+        <span class="info_item">Имя: {{user.User.Name}}</span>
+        <span class="info_item">Фамилия: {{user.User.Surname}}</span>
         <span class="info_item">Email: {{user.User.Email}}</span>
-        <span class="info_item">Phone: {{user.User.Phone}}</span>
-        <span class="info_item">Date registration: {{user.User.RegistrationDate | dateFilter}}</span>
+        <span class="info_item">Телефон: {{user.User.Phone}}</span>
+        <span class="info_item">Дата регистрации {{user.User.RegistrationDate | dateFilter}}</span>
     </div>
     <div class="user_profile_orders">
         <h2>{{user.AccountOrdersInformation.length ? 'Orders' : 'No Orders'}}</h2>
         <ul class="orders_list">
             <li ng-click="goToBook(order.Book)" ng-repeat="order in user.AccountOrdersInformation | orderBy:Status:true" class="order_item">
-                <span class="order_info">Section: {{order.Book.Section}}</span>
-                <span class="order_info">Level: {{order.Book.Level}}</span>
-                <span class="order_info">Year of issue: {{order.Book.Year}}</span>
-                <span class="order_info">Status: {{order.OrderInformation.Status ? 'Done' : 'Pending'}}</span>
-                <span class="order_info">Price: {{order.Book.Price}}</span>
+                <span class="order_info">Категория: {{order.Book.Section}}</span>
+                <span class="order_info">Уровень: {{order.Book.Level}}</span>
+                <span class="order_info">Год публикации: {{order.Book.Year}}</span>
+                <label class="order_info">Статус заказа: {{order.OrderInformation.Status ? 'Завершен' : 'В обработке'}}</label>
+                <span class="order_info">Цена: {{order.Book.Price}}$</span>
                 <span class="order_info">
-                    {{order.OrderInformation.HomeAddress ? 'Home Address: ' + order.OrderInformation.HomeAddress : 'Shop Address: ' + order.ShopInformation.Address + '; Phones: ' + order.ShopInformation.Phone1 + ', ' + order.ShopInformation.Phone2}}
+                    {{order.OrderInformation.HomeAddress ? 'Домашний адрес: ' + order.OrderInformation.HomeAddress : 'Адрес магазина: ' + order.ShopInformation.Address + '; Телефоны: ' + order.ShopInformation.Phone1 + ', ' + order.ShopInformation.Phone2}}
                 </span>
-                <span class="order_info">Order date: {{order.OrderInformation.OrderDate | dateFilter}}</span>
+                <span class="order_info">Дата заказа: {{order.OrderInformation.OrderDate | dateFilter}}</span>
             </li>
         </ul>
     </div>

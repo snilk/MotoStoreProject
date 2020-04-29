@@ -4,28 +4,28 @@
         <div class="admin_order">
             <md-toolbar class="md-theme-light">
                 <h2 class="md-toolbar-tools">
-                    <span>Orders</span>
+                    <span>Заказы</span>
                 </h2>
             </md-toolbar>
             <md-input-container class="md-block" flex-gt-sm>
-                <label>Type Order Surname</label>
+                <label>Введите фамилию человека, сделавшего заказ</label>
                 <input ng-model="orderFind">
             </md-input-container>
             <md-content>
                 <md-list>
                     <md-list-item class="md-3-line" ng-repeat="order in adminData.orders |orderBy:'Status' | filter:{ Surname: orderFind }">
                         <div class="md-list-item-text">
-                            <p class="admin_item">BookId: {{order.BookId}}</p>
-                            <p class="admin_item">Name: {{order.Name}}</p>
-                            <p class="admin_item">Surname: {{order.Surname}}</p>
-                            <p class="admin_item">Status: <strong>{{order.Status ? 'Done' : 'Pending'}}</strong> </p>
-                            <p class="admin_item">OrderId: {{order.orderId}}</p>
+                            <p class="admin_item">Id книги: {{order.BookId}}</p>
+                            <p class="admin_item">Имя: {{order.Name}}</p>
+                            <p class="admin_item">Фамилия: {{order.Surname}}</p>
+                            <p class="admin_item">Статус заказа: <strong>{{order.Status ? 'Заверешен' : 'В обработке'}}</strong> </p>
+                            <p class="admin_item">Id заказа: {{order.orderId}}</p>
                             <p class="admin_item">
-                                {{order.homeAdress ? 'Home Address: ' + order.homeAdress : 'Shop Address: ' + order.shopAdress + '; Phones: ' + order.Phone1 + ', ' + order.Phone2}}
+                                {{order.homeAdress ? 'Домашний адрес: ' + order.homeAdress : 'Адрес магазина: ' + order.shopAdress + '; Телефоны: ' + order.Phone1 + ', ' + order.Phone2}}
                             </p>
-                            <p class="admin_item">Order date: {{order.OrderDate | dateFilter}}</p>
+                            <p class="admin_item">Дата заказа: {{order.OrderDate | dateFilter}}</p>
                         </div>
-                        <md-button class="md-secondary" ng-click="editStatus(order.orderId)">Change Status</md-button>
+                        <md-button class="md-secondary" ng-click="editStatus(order.orderId)">Изменить статус</md-button>
                         <md-divider ng-if="!$last"></md-divider>
                     </md-list-item>
                 </md-list>
@@ -34,29 +34,29 @@
         <div class="admin_book">
             <md-toolbar class="md-theme-light">
                 <h2 class="md-toolbar-tools">
-                    <span>Books</span>
+                    <span>Книги</span>
                 </h2>
             </md-toolbar>
-            <md-button class="md-secondary" ng-click="addBook($event)">Add book</md-button>
+            <md-button class="md-secondary" ng-click="addBook($event)">Добавить книгу</md-button>
             <md-input-container class="md-block" flex-gt-sm>
-                <label>Type Book ID</label>
+                <label>Введите ID книги</label>
                 <input ng-model="bookFind">
             </md-input-container>
             <md-content>
                 <md-list>
                     <md-list-item class="md-3-line" ng-repeat="book in adminData.books | filter:{ Id: bookFind }">
                         <div class="md-list-item-text">
-                            <p class="admin_item">BookId: {{book.Id}}</p>
-                            <p class="admin_item">Description: {{book.Description}}</p>
-                            <p class="admin_item">Author: {{book.AuthorName}}</p>
-                            <p class="admin_item">Section: {{book.Section}}</p>
-                            <p class="admin_item">Title: {{book.Title}}</p>
-                            <p class="admin_item">Number of instances: <strong>{{book.ModelsCount}}</strong></p>
-                            <p class="admin_item">Price: {{book.Price}}</p>
-                            <p class="admin_item">Level: {{book.Level}}</p>
-                            <p class="admin_item">Year of issue: {{book.Year}}</p>
+                            <p class="admin_item">ID книги: {{book.Id}}</p>
+                            <p class="admin_item">Описание: {{book.Description}}</p>
+                            <p class="admin_item">Автор: {{book.AuthorName}}</p>
+                            <p class="admin_item">Категория: {{book.Section}}</p>
+                            <p class="admin_item">Название: {{book.Title}}</p>
+                            <p class="admin_item">Количество экземпляров: <strong>{{book.ModelsCount}}</strong></p>
+                            <p class="admin_item">Цена: {{book.Price}}</p>
+                            <p class="admin_item">Уровень: {{book.Level}}</p>
+                            <p class="admin_item">Год публикации: {{book.Year}}</p>
                         </div>
-                        <md-button class="md-secondary" ng-click="removeBook(book.Id)">Remove Book</md-button>
+                        <md-button class="md-secondary" ng-click="removeBook(book.Id)">Удалить книгу</md-button>
                         <md-divider ng-if="!$last"></md-divider>
                     </md-list-item>
                 </md-list>
@@ -65,18 +65,18 @@
         <div class="admin_shops">
             <md-toolbar class="md-theme-light">
                 <h2 class="md-toolbar-tools">
-                    <span>Shop Information</span>
+                    <span>Информация о магазинах</span>
                 </h2>
             </md-toolbar>
-            <md-button class="md-secondary" ng-click="showAddShopDialog($event)">Add Shop</md-button>
+            <md-button class="md-secondary" ng-click="showAddShopDialog($event)">Добавить магазин</md-button>
             <md-content>
                 <md-list>
                     <md-list-item class="md-3-line" ng-repeat="shopInfo in adminData.shopInformations">
                         <div class="md-list-item-text">
-                            <p class="admin_item">Shop Address: {{shopInfo.Address}}</p>
-                            <p class="admin_item">Phone1: {{shopInfo.Phone1}}</p>
-                            <p class="admin_item">Phone2: {{shopInfo.Phone2}}</p>
-                            <md-button ng-click="removeShopClick(shopInfo.Id)">Remove Shop</md-button>
+                            <p class="admin_item">Адрес магазина: {{shopInfo.Address}}</p>
+                            <p class="admin_item">Телефон 1: {{shopInfo.Phone1}}</p>
+                            <p class="admin_item">Телефон 2: {{shopInfo.Phone2}}</p>
+                            <md-button ng-click="removeShopClick(shopInfo.Id)">Удалить магазин</md-button>
                         </div>
                         <md-divider ng-if="!$last"></md-divider>
                     </md-list-item>

@@ -276,7 +276,6 @@ header {
         cursor: pointer;
         text-align: center;
         margin: 0 auto;
-        width: 100px;
         color: #fff;
         background-color: rgba(139, 142, 161,1);
         opacity: 1;
@@ -344,9 +343,9 @@ header {
       opacity: 0;
       transition: all 0.5s; }
         .container .container-form .btn {
+            display: table;
             position: relative;
             box-shadow: 0 0 10px 1px rgb(139, 142, 161) margin-left: 100px;
-            margin-left: 100px;
         }
   .container .form-item {
     position: absolute;

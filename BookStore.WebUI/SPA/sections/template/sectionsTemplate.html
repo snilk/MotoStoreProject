@@ -1,20 +1,20 @@
-<div class="sections_wrapper">
+﻿<div class="sections_wrapper">
     <div class="sections_filter_container">
         <div class="sections_filter">
-            <span class="sort_title">Sort by: </span>
+            <span class="sort_title">Сортировать по: </span>
             <span class="sort_btn" ng-click="sortType = 'Year'; sortReverse = !sortReverse">
-                Year of issue
+                Год публикации
                 <span ng-show="sortType == 'Year' && !sortReverse" class="fa fa-caret-down"></span>
                 <span ng-show="sortType == 'Year' && sortReverse" class="fa fa-caret-up"></span>
                 ;
             </span>
             <span class="sort_btn" ng-click="sortType = 'Price'; sortReverse = !sortReverse">
-                Price
+                Цена
                 <span ng-show="sortType == 'Price' && !sortReverse" class="fa fa-caret-down"></span>
                 <span ng-show="sortType == 'Price' && sortReverse" class="fa fa-caret-up"></span>;
             </span>
             <span class="sort_btn" ng-click="sortType = 'AuthorName'; sortReverse = !sortReverse">
-                Author
+                Автор
                 <span ng-show="sortType == 'AuthorName' && !sortReverse" class="fa fa-caret-down"></span>
                 <span ng-show="sortType == 'AuthorName' && sortReverse" class="fa fa-caret-up"></span>
                 ;
@@ -30,10 +30,10 @@
 
             <div class="book_desc">
                 <span class="book_desc_item Section">{{book.Title}}</span>
-                <span class="book_desc_item ">Section: {{book.Section}}</span>
-                <span class="book_desc_item">Level: {{book.Level}}</span>
-                <span class="book_desc_item">Author: {{book.AuthorName}}</span>
-                <span class="book_desc_item">Year of issue: {{book.Year}}</span>
+                <span class="book_desc_item ">Категория: {{book.Section}}</span>
+                <span class="book_desc_item">Уровень: {{book.Level}}</span>
+                <span class="book_desc_item">Автор: {{book.AuthorName}}</span>
+                <span class="book_desc_item">Год публикации: {{book.Year}}</span>
             </div>
             <div class="view_book_info_container" class="active" ng-class="{active: book.isShowInfoBtn}">
                 <a ui-sref="individual({ BookId: book.Id, section: book.Section })" class="view_book_info">View book info</a>

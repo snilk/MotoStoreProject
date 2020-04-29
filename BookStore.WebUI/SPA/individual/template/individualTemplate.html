@@ -1,4 +1,4 @@
-<head>
+﻿<head>
     <title>{{book.Section}}</title>
 </head>
 <div class="individual_container">
@@ -8,11 +8,11 @@
         <div class="individual_main_info">
             <div class="individual_info">
                 <span class="individual_info_item">{{book.Title}}</span>
-                <span class="individual_info_item">Section: {{book.Section}}</span>
-                <span class="individual_info_item">Level: {{book.Level}}</span>
-                <span class="individual_info_item">Price: {{book.Price}}$</span>
-                <span class="individual_info_item">Author: {{book.AuthorName}} cc<sup>3</sup></span>
-                <span class="individual_info_item">Year of issue: {{book.Year}}</span>
+                <span class="individual_info_item">Категория: {{book.Section}}</span>
+                <span class="individual_info_item">Уровень: {{book.Level}}</span>
+                <span class="individual_info_item">Цена: {{book.Price}}$</span>
+                <span class="individual_info_item">Автор: {{book.AuthorName}}</span>
+                <span class="individual_info_item">Год публикации: {{book.Year}}</span>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="individual_desc">
-        <h2 class="individual_desc_title">Additional Description:</h2>
+        <h2 class="individual_desc_title">Дополнительное описание:</h2>
         <span class="individual_desc_content">{{book.Description}}</span>
     </div>
 </div>
@@ -42,21 +42,21 @@
                 <span ng-click="isModalOpen = false" class="close_modal"></span>
             </div>
             <section class="make_order_body">
-                <span class="modal_item">Name: {{orderInfo.User.Name + " " + orderInfo.User.Surname}}</span>
+                <span class="modal_item">Имя: {{orderInfo.User.Name + " " + orderInfo.User.Surname}}</span>
                 <span class="modal_item">E-mail: {{orderInfo.User.Email}}</span>
-                <span class="modal_item">Phone: {{orderInfo.User.Phone}}</span>
-                <span class="modal_item">Book Section: {{book.Section}}</span>
-                <span class="modal_item">Book Level: {{book.Level}}</span>
-                <span class="modal_item">Book Price: {{book.Price}}$</span>
+                <span class="modal_item">Телефон: {{orderInfo.User.Phone}}</span>
+                <span class="modal_item">Категория: {{book.Section}}</span>
+                <span class="modal_item">Уровень: {{book.Level}}</span>
+                <span class="modal_item">Цена: {{book.Price}}$</span>
                 <div class="adress_container">
                     <div class="adress_item">
-                        <span class="adress_item_title">Delivery: </span>
+                        <span class="adress_item_title">Доставка: </span>
                         <input Type="checkbox" class="styled-checkbox" id="styled-checkbox-1" ng-model="isPickup" ng-click="isDelivery = false"/>
                         <label for="styled-checkbox-1"></label>
-                        <input class="order_input" Type="text" placeholder="Enter home Address" ng-show="isPickup" ng-model="homeAdress"/>
+                        <input class="order_input" Type="text" placeholder="Введите домашний адрес" ng-show="isPickup" ng-model="homeAdress"/>
                     </div>
                     <div class="adress_item">
-                        <span class="adress_item_title">Pickup: </span>
+                        <span class="adress_item_title">Самовывоз: </span>
                         <input Type="checkbox" class="styled-checkbox" id="styled-checkbox-2" ng-click="isPickup = false" ng-model="isDelivery" />
                         <label for="styled-checkbox-2"></label>
                         <select class="order_input" Name="repeatSelect" id="repeatSelect" ng-show="isDelivery" ng-model="data.singleSelect">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <p>{{error}}</p>
-                <button class="make_order_btn frm_btn" ng-click="makeOrder(isPickup, isDelivery, data.singleSelect, homeAdress)">Make Order</button>
+                <button class="make_order_btn frm_btn" ng-click="makeOrder(isPickup, isDelivery, data.singleSelect, homeAdress)">Сделать заказ</button>
             </section>
     </div>
 </div>
