@@ -193,3 +193,5 @@ Testing/AutoTest/MTS.Cirrus.AutoTest.sln.GhostDoc.xml
 
 # Help Videos
 [Hh]elp/[Vv]ideos
+
+BookStore.WebUI/SPA/image/*.jpg

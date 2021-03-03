@@ -1,7 +1,19 @@
 ﻿@charset "UTF-8";
 html, body {
-  height: 100%;
-  margin: 0; }
+    height: 100%;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background-color: #FFFFFF;
+    top: 0 !important;
+}
+
+html {
+    background-color: #ffffff;
+    overflow-y: auto !important;
+}
 
 .pop_up_sign {
   width: 100%;
@@ -10,7 +22,7 @@ html, body {
   overflow: hidden;
   position: fixed;
   top: -900px;
-  font-family: proximanovaReg;
+  
   z-index: 100000;
   opacity: 0;
   visibility: hidden;
@@ -37,15 +49,15 @@ html, body {
         transform: scale(1.4); }
 
 header {
-    font-family: proximanovaReg;
     position: fixed;
     width: 100%;
     height: 50px;
-    background: rgba(201, 187, 174, 0.99);
+    background: #FFFFFF;
     top: 0px;
     z-index: 50;
     display: flex;
     justify-content: flex-end;
+    box-shadow: 1px 1px 12px 2px rgb(0 0 0 / 20%);
 }
     header .sign_out {
         width: 110px;
@@ -57,16 +69,16 @@ header {
         margin-right: 10px;
         background-color: inherit;
         transition: visibility 0s, opacity 0.3s linear, letter-spacing 0.3s, color 0.3s, transform 0.2s;
-        color: rgba(80, 67, 61, 1);
+        color: #585858;
         border: none;
-        font-weight: bold;
-        font-size: 18px;
+        font-weight: 600;
+        font-size: 16.15px;
+        text-transform: uppercase;
     }
     header .sign_out:hover {
       border: none;
       letter-spacing: 1.2px;
-      color: white;
-      transform: scale(1.1); }
+        transform: scale(1.1); }
     header .sign_in {
         height: 50px;
         width: 110px;
@@ -75,10 +87,11 @@ header {
         background-color: inherit;
         transition: visibility 0s, opacity 0.3s linear, letter-spacing 0.3s, color 0.3s, transform 0.2s;
         margin-left: 15px;
-        color: rgba(80, 67, 61, 1);
+        color: #585858;
         border: none;
-        font-weight: bold;
-        font-size: 18px;
+        font-weight: 600;
+        font-size: 16.15px;
+        text-transform: uppercase;
     }
     header .sign_in:hover {
       border: none;
@@ -103,10 +116,9 @@ header {
       transform: scale(1.1); }
 
 .wrapper {
-  max-width: 900px;
-  margin: 0 auto; }
+    margin: 0 auto; }
   .wrapper nav {
-    font-family: proximanovaReg;
+    
     display: flex;
     margin-top: 70px;
     align-items: center;
@@ -204,7 +216,7 @@ header {
     height: 60px;
     width: 100%;
     margin-top: 15px;
-    font-family: proximanovaReg;
+    
     display: flex;
     color: white;
     align-items: center;
@@ -412,22 +424,21 @@ header {
   flex-direction: column;
   align-items: center; }
   .sections_wrapper .pagination {
-    font-family: proximanovaReg; }
+     }
     .sections_wrapper .pagination a {
         color: rgba(80, 67, 61, 1);
         background-color: rgba(201, 187, 174, 1);
     }
 
-.sections_wrapper .sections_filter_container {
-            font-family: proximanovaReg;
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            height: 30px;
-            margin: 15px 0;
-            border-bottom: 3px solid rgba(80, 67, 61,1);
-        }
-    .sections_wrapper .sections_filter_container .sections_filter {
+    .sections_wrapper .sections_filter_container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        height: 30px;
+        margin: 15px 0;
+        border-bottom: 4px solid #FFAE00;
+    }
+.sections_wrapper .sections_filter_container .sections_filter {
         user-select: none;
       margin-right: 35px;
       font-size: 18px; }
@@ -446,10 +457,8 @@ header {
         flex-direction: column;
         position: relative;
         margin: 12px;
-        font-family: proximanovaReg;
-        background-color: rgba(141, 115, 98, 0.7);
-        border: 2px solid rgba(141, 115, 98, 0.7);
-        color: rgb(80, 67, 61,1);
+        background-color: #F7F7F7;
+        border: 1px solid #EEEEEE;
         cursor: pointer;
     }
       .sections_wrapper .books_container .book_item .book_img {
@@ -461,7 +470,7 @@ header {
             bottom: 10px;
             right: 10px;
             font-size: 18px;
-            font-family: proximanova;
+            
             color: rgba(80, 67, 61,1);
         }
         .sections_wrapper .books_container .book_item .book_numbers {
@@ -469,7 +478,7 @@ header {
             bottom: 203px;
             left: 10px;
             font-size: 22px;
-            font-family: proximanova;
+            
             color:black;
         }
       
@@ -490,7 +499,8 @@ header {
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 width: 260px;
-                font-family: proximanova;
+                font-weight: 700;
+                color: #1F1F1F;
             }
       .sections_wrapper .books_container .book_item .view_book_info_container {
         position: absolute;
@@ -561,7 +571,7 @@ header {
 
   .individual_container .individual_main_info_container {
     display: flex;
-    font-family: proximanovaReg;
+    
     align-items: center; }
     .individual_container .individual_main_info_container .individual_main_info {
       display: flex;
@@ -599,7 +609,7 @@ header {
     margin-top: 190px;
     display: flex;
     flex-direction: column;
-    font-family: proximanovaReg; }
+     }
     .individual_container .individual_desc .individual_desc_title {
       font-size: 30px; }
     .individual_container .individual_desc .individual_desc_content {
@@ -622,7 +632,6 @@ header {
     .overlay .modal_window {
         min-height: 400px;
         background: white;
-        font-family: 'proximanovaReg';
         width: 600px;
         background-color: rgba(238, 235, 230, 1);
         color: rgba(80, 67, 61, 1);
@@ -850,7 +859,6 @@ header {
     align-items: center;
     justify-content: space-between;
     margin: 10px auto;
-    font-family: 'proximanovaReg';
 }
 
 .user_profile .user_profile_info {
@@ -892,16 +900,6 @@ header {
 .admin_page {
     max-width: 1300px;
     margin: 10px auto;
-}
-
-body {
-    background-color: rgba(238, 235, 230, 1);
-    top: 0 !important;
-}
-
-html {
-    background-color: rgba(238, 235, 230, 1);
-    overflow-y: auto !important;
 }
 
 .group_input {
