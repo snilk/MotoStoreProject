@@ -14,12 +14,14 @@ namespace BookStore.Domain.EF
         public string Title { get; set; }
         public string Description { get; set; }
         public int ModelsCount { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
         public int MainImageId { get; set; }
 
         [ForeignKey(nameof(MainImageId))]
         public virtual BookImage MainImage { get; set; }
         public virtual ICollection<BookImage> BookImages { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<Survey> Surveys { get; set; }
     }
 }

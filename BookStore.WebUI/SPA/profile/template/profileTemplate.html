@@ -16,7 +16,7 @@
                 <label class="order_info">Статус заказа: {{order.OrderInformation.Status ? 'Завершен' : 'В обработке'}}</label>
                 <span class="order_info">Цена: {{order.Book.Price}}$</span>
                 <span class="order_info">
-                    {{order.OrderInformation.HomeAddress ? 'Домашний адрес: ' + order.OrderInformation.HomeAddress : 'Адрес магазина: ' + order.ShopInformation.Address + '; Телефоны: ' + order.ShopInformation.Phone1 + ', ' + order.ShopInformation.Phone2}}
+                    {{order.OrderInformation.HomeAddress ? 'Домашний адрес: ' + order.OrderInformation.HomeAddress : 'Адрес офиса: ' + order.ShopInformation.Address + '; Телефоны: ' + order.ShopInformation.Phone1 + ', ' + order.ShopInformation.Phone2}}
                 </span>
                 <span class="order_info">Дата заказа: {{order.OrderInformation.OrderDate | dateFilter}}</span>
             </li>

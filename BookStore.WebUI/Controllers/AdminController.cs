@@ -3,6 +3,7 @@ using BookStore.Domain.DataInitialize;
 using BookStore.Domain.DataManipulations;
 using BookStore.Domain.Static;
 using BookStore.Domain.ViewModels;
+using BookStore.Domain.ViewModels.Admin;
 
 namespace BookStore.WebUI.Controllers
 {
@@ -66,6 +67,27 @@ namespace BookStore.WebUI.Controllers
         public JsonResult GetAvailableLevels()
         {
             return Json(DataInitializer.AvailableLevels, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public JsonResult GetAllUsers()
+        {
+            return Json(AdminOperations.GetUsersInformation(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [Route("ApplyBonusPoints")]
+        public JsonResult ApplyBonusPoints(ApplyBonusPointsVm applyBonusPointsVm)
+        {
+            return Json(AdminOperations.ApplyBonusPoints(applyBonusPointsVm));
+        }
+
+        [HttpGet]
+        [Route("GetPopularBooksByDepartment/{department}")]
+        public JsonResult GetPopularBooksByDepartment(string department)
+        {
+            return Json(AdminOperations.GetPopularBooks(department), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -96,8 +96,7 @@ header {
     header .sign_in:hover {
       border: none;
       letter-spacing: 1.2px;
-      color: white;
-      transform: scale(1.1); }
+        transform: scale(1.1); }
   header .sign_up {
     height: 50px;
     width: 110px;
@@ -130,7 +129,7 @@ header {
     display: flex;
 }
         .wrapper nav ul li button {
-            color: rgba(80, 67, 61, 1);
+            color: #585858;
         }
             .wrapper nav ul li button:active, button:focus {
                 outline: 0;
@@ -158,7 +157,7 @@ header {
             top: 12px;
             left: -10px;
             transition: 0.3s all;
-            color: rgba(80, 67, 61, 1);
+            color: #585858;
         }
       .wrapper nav ul li .section {
         min-width: 130px;
@@ -212,16 +211,15 @@ header {
   height: 60px; }
 
 .page_footer {
-    background: rgba(201, 187, 174, 1);
+    background: #202A3B;
     height: 60px;
     width: 100%;
     margin-top: 15px;
-    
     display: flex;
     color: white;
     align-items: center;
     justify-content: space-between;
-    color: rgba(80, 67, 61, 1);
+    color: #FFFFFF;
 }
   .page_footer .footer_coorp_title {
     font-size: 18px;
@@ -254,7 +252,7 @@ header {
     width: 600px;
     margin: 0px auto 0;
     height: 420px;
-    background-color: rgba(201, 187, 174, 0.99);
+    background-color: #ffffff;
     box-shadow: 0px 0px 4px 1.3px white;
     transition: all 0.5s;
 }
@@ -289,7 +287,7 @@ header {
         text-align: center;
         margin: 0 auto;
         color: #fff;
-        background-color: rgba(139, 142, 161,1);
+        background-color: #202A3B;
         opacity: 1;
         transition: all 0.5s;
     }
@@ -303,8 +301,7 @@ header {
         width: 220px;
         transition: all 0.3s;
         border-color: rgba(80, 67, 61,1);
-        border-width: 0.5px;
-        background-color: rgb(238, 235, 230,1);
+        border-width: 0.5px;;
     }
   .container .container-forms .container-info {
     text-align: left;
@@ -337,11 +334,11 @@ header {
     .container .container-form {
         overflow: hidden;
         position: absolute;
-        left: 30px;
+        left: 25px;
         top: -30px;
-        width: 305px;
+        width: 310px;
         height: 480px;
-        background-color: rgba(238, 235, 230, 1);
+        background-color: #F7F7F7;
         box-shadow: 0 0 15px 0 rgba(238, 235, 230, 0.2);
         transition: all 0.3s;
     }
@@ -426,8 +423,11 @@ header {
   .sections_wrapper .pagination {
      }
     .sections_wrapper .pagination a {
-        color: rgba(80, 67, 61, 1);
-        background-color: rgba(201, 187, 174, 1);
+        color: #585858;
+    }
+
+    .sections_wrapper .pagination > .active > a {
+        background-color: #FFAE00 !Important;
     }
 
     .sections_wrapper .sections_filter_container {
@@ -551,7 +551,7 @@ header {
     position: relative;
     display: flex;
     flex-direction: column;
-    color: rgba(80, 67, 61, 1);
+    color: #585858;
 }
 
     .individual_container .make_order_icon {
@@ -622,7 +622,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 69%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -633,8 +633,7 @@ header {
         min-height: 400px;
         background: white;
         width: 600px;
-        background-color: rgba(238, 235, 230, 1);
-        color: rgba(80, 67, 61, 1);
+        color: #585858;
     }
 
         .overlay .modal_window .make_order_header {
@@ -691,23 +690,18 @@ header {
   cursor: pointer;
   padding: 0;
 }
-.styled-checkbox + label:before {
-  content: "";
-  margin-right: 10px;
-  display: inline-block;
-  vertical-align: text-top;
-  width: 20px;
-  height: 20px;
-  background: grey;
-}
-    .styled-checkbox:hover + label:before {
-        background: rgba(80, 67, 61,1);
+    .styled-checkbox + label:before {
+        content: "";
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: text-top;
+        width: 20px;
+        height: 20px;
+        background: #FFAE00;
     }
-    .styled-checkbox:focus + label:before {
-        box-shadow: 0 0 0 3px rgba(80, 67, 61, 1);
-    }
-    .styled-checkbox:checked + label:before {
-        background: rgba(80, 67, 61,1);
+
+.styled-checkbox:focus + label:before {
+        box-shadow: 0 0 0 3px #585858;
     }
 .styled-checkbox:disabled + label {
   color: #b8b8b8;
@@ -1020,8 +1014,8 @@ md-list-item:hover {
 
 
 .admin_data_container md-toolbar {
-    background-color: rgba(201, 187, 174, 1);
-    color: rgba(80, 67, 61, 1);
+    background-color: #F7F7F7;
+    color: #585858;
 }
 
 .admin_data_container md-content {
@@ -1029,12 +1023,13 @@ md-list-item:hover {
 }
 
 .side_bar {
-    background-color: rgba(238, 235, 230, 1);
+    
 }
 
     .side_bar md-toolbar {
-        background-color: rgba(201, 187, 174, 1);
-        color: rgba(80, 67, 61, 1);
+        background-color: #F7F7F7;
+        color: #585858;
+        box-shadow: 1px 1px 12px 2px rgb(0 0 0 / 20%);
     }
 
     .side_bar md-content { background-color: transparent 
@@ -1044,7 +1039,7 @@ md-list-item:hover {
 .frm_btn {
     background-color: inherit;
     transition: visibility 0s, opacity 0.3s linear, letter-spacing 0.3s, color 0.3s, transform 0.2s;
-    color: rgba(80, 67, 61, 1);
+    color: #585858;
     border: none;
     font-weight: bold;
     font-size: 18px;
@@ -1053,7 +1048,6 @@ md-list-item:hover {
     .frm_btn:hover {
         border: none;
         letter-spacing: 1.2px;
-        color: white;
         transform: scale(1.1);
     }
 .order_input {
@@ -1062,7 +1056,6 @@ md-list-item:hover {
     transition: all 0.3s;
     border-color: rgba(80, 67, 61,1);
     border-width: 0.5px;
-    background-color: rgb(238, 235, 230,1);
 }
 
 .add_frm {
@@ -1070,7 +1063,7 @@ md-list-item:hover {
 }
 .add_frm md-toolbar {
         background-color: rgba(201, 187, 174, 1);
-        color: rgba(80, 67, 61, 1);
+        color: #585858;
     }
 
 .add_frm md-content {

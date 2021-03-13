@@ -25,9 +25,17 @@ namespace BookStore.Domain.Extensions
         /// <summary>
         /// Gets the values of an enum.
         /// </summary>
-        public static IEnumerable<T> GetValues<T>()
+        public static IEnumerable<T> GetValues<T>() where T: Enum
         {
             return Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+        /// <summary>
+        /// Gets the values of an enum.
+        /// </summary>
+        public static IList<string> GetValuesDescriptions<T>() where T: Enum
+        {
+            return GetValues<T>().Select(val => val.GetEnumDescription()).ToList();
         }
     }
 }

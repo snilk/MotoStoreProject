@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using BookStore.Domain.Interfaces;
 
 namespace BookStore.Domain.EF
 {
-    public class Order
+    public class Order : IBookContained
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

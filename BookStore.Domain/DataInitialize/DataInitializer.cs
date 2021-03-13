@@ -19,8 +19,8 @@ namespace BookStore.Domain.DataInitialize
 
         private static readonly Random random = new Random();
 
-        public static IList<string> AvailableSections => EnumExtensions.GetValues<SectionEnum>().Select(val => val.GetEnumDescription()).ToList();
-        public static IList<string> AvailableLevels => EnumExtensions.GetValues<LevelEnum>().Select(val => val.GetEnumDescription()).ToList();
+        public static IList<string> AvailableSections => EnumExtensions.GetValuesDescriptions<SectionEnum>();
+        public static IList<string> AvailableLevels => EnumExtensions.GetValuesDescriptions<LevelEnum>();
         private static int RandomYear => random.Next(2010, 2021);
         private static int RandomNumberOfInstances => random.Next(0, 31);
         private static int RandomPrice => random.Next(10, 151);

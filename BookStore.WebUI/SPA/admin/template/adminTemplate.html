@@ -65,18 +65,18 @@
         <div class="admin_shops">
             <md-toolbar class="md-theme-light">
                 <h2 class="md-toolbar-tools">
-                    <span>Информация о магазинах</span>
+                    <span>Информация о офисах</span>
                 </h2>
             </md-toolbar>
-            <md-button class="md-secondary" ng-click="showAddShopDialog($event)">Добавить магазин</md-button>
+            <md-button class="md-secondary" ng-click="showAddShopDialog($event)">Добавить офис</md-button>
             <md-content>
                 <md-list>
                     <md-list-item class="md-3-line" ng-repeat="shopInfo in adminData.shopInformations">
                         <div class="md-list-item-text">
-                            <p class="admin_item">Адрес магазина: {{shopInfo.Address}}</p>
+                            <p class="admin_item">Адрес офиса: {{shopInfo.Address}}</p>
                             <p class="admin_item">Телефон 1: {{shopInfo.Phone1}}</p>
                             <p class="admin_item">Телефон 2: {{shopInfo.Phone2}}</p>
-                            <md-button ng-click="removeShopClick(shopInfo.Id)">Удалить магазин</md-button>
+                            <md-button ng-click="removeShopClick(shopInfo.Id)">Удалить офис</md-button>
                         </div>
                         <md-divider ng-if="!$last"></md-divider>
                     </md-list-item>

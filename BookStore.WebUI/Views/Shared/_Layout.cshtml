@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Store</title>
+    <title>Book Library</title>
     <base href="/">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
@@ -99,9 +99,12 @@
 
     <footer class="page_footer">
         <span class="footer_coorp_title">
-            &copy; Love'Eina BookStore
+            &copy; Love'Eina
         </span>
         <div class="footer_store_conatiner">
+            <span class="footer_coorp_title">
+               Офисы: 
+            </span>
             <p ng-repeat="shop in shopsInfo">
                 {{shop.Address}}; {{shop.Phone1}}, {{shop.Phone2}}
             </p>

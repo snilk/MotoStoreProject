@@ -31,7 +31,7 @@ namespace BookStore.Domain.ViewModels
         public string Title { get; set; }
         public string Description { get; set; }
         public int ModelsCount { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
         public string MainImage { get; set; }
         public string[] AdditionalImages { get; set; }
         public HttpPostedFileBase[] AdditionalImagesFiles { get; set; }

@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using BookStore.Domain.EF;
+using BookStore.Domain.Interfaces;
 using BookStore.Domain.ViewModels;
+using BookStore.Domain.ViewModels.Admin;
 
 namespace BookStore.Domain.DataManipulations
 {
@@ -39,14 +43,39 @@ namespace BookStore.Domain.DataManipulations
 
                 if (changedOrder == null)
                 {
-                    return new SuccessVm(false);
+                    return new SuccessVm(false)
+                    {
+                        SystemDescription = "Incorrect order id"
+                    };
+                }
+
+                var user = changedOrder.User;
+
+                if (user == null)
+                {
+                    return new SuccessVm(false)
+                    {
+                        SystemDescription = "There are no user for this order"
+                    };
+                }
+
+                var book = changedOrder.Book;
+
+                if (!changedOrder.Status && user.BonusPoints < book.Price)
+                {
+                    return new SuccessVm(false)
+                    {
+                        Description = "The user doesn't have enough bonus points to get this book"
+                    };
                 }
 
                 changedOrder.Status = !changedOrder.Status;
-                var book = changedOrder.Book;
 
-                var offSet = changedOrder.Status ? -1 : 1;
-                book.ModelsCount += offSet;
+                var bonusOffset = changedOrder.Status ? book.Price : -book.Price;
+                user.BonusPoints += bonusOffset;
+
+                var modelsCountOffset = changedOrder.Status ? -1 : 1;
+                book.ModelsCount += modelsCountOffset;
 
                 context.SaveChanges();
             }
@@ -116,6 +145,72 @@ namespace BookStore.Domain.DataManipulations
             }
 
             return new SuccessVm(true);
+        }
+
+        public static AdminUsersInformation GetUsersInformation()
+        {
+            var adminUsersInformation = new AdminUsersInformation();
+            var users = new List<OrderUserVm>();
+
+            using (var context = new BookStoreContext())
+            {
+                context.Users.ToList().ForEach(user => users.Add(new OrderUserVm(user)));
+            }
+
+            adminUsersInformation.Users = users;
+
+            return adminUsersInformation;
+        }
+
+        public static SuccessVm ApplyBonusPoints(ApplyBonusPointsVm applyBonusPointsVm)
+        {
+            var successVm = new SuccessVm();
+            using (var context = new BookStoreContext())
+            {
+                var userToApplyPoints = UsersOperations.GetUserByToken(applyBonusPointsVm.UserToken, context);
+
+                if (userToApplyPoints != null)
+                {
+                    successVm.Success = true;
+
+                    userToApplyPoints.BonusPoints = applyBonusPointsVm.BonusPoints;
+                    context.SaveChanges();
+                }
+            }
+
+            return successVm;
+        }
+
+        public static IList<PopularBookVm> GetPopularBooks(string department)
+        {
+            using (var context = new BookStoreContext())
+            {
+                return GetPopularBooks(context.Orders,
+                    order => order.User != null && string.Equals(department, order.User.Department, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+
+        internal static IList<PopularBookVm> GetPopularBooks<T>(IQueryable<T> dbSet, Expression<Func<T, bool>> predicate) where T : class, IBookContained
+        {
+            var popularBookVms = new List<PopularBookVm>();
+
+            var surveys = dbSet.Where(predicate);
+
+            FillPopularBookVmList(popularBookVms, surveys);
+
+            return popularBookVms.OrderBy(vm => vm.SoldBooksCount).ToList();
+        }
+
+        private static void FillPopularBookVmList<T>(IList<PopularBookVm> popularBookVms, IQueryable<T> surveys) where T: IBookContained
+        {
+            foreach (var groupByBook in surveys.GroupBy(survey => survey.Book))
+            {
+                popularBookVms.Add(new PopularBookVm
+                {
+                    Book = new BookVm(groupByBook.Key),
+                    SoldBooksCount = groupByBook.Count()
+                });
+            }
         }
     }
 }

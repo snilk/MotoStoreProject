@@ -54,11 +54,6 @@ namespace BookStore.Domain.DataManipulations
             
         }
 
-        public static string GetTokenById(int id)
-        {
-            return KeyStart + id + KeyLast;
-        }
-
         public static TokenVm CheckUserByToken(string token)
         {
             var user = GetUserByToken(token);
@@ -78,7 +73,7 @@ namespace BookStore.Domain.DataManipulations
             return tokenVm;
         }
 
-        public static User GetUserByToken(string token)
+        public static User GetUserByToken(string token, BookStoreContext context)
         {
             User user = null;
 
@@ -86,35 +81,42 @@ namespace BookStore.Domain.DataManipulations
             {
                 var id = Convert.ToInt32(token.Replace(KeyStart, "").Replace(KeyLast, ""));
 
-                using (var context = new BookStoreContext())
-                {
-                    user = context.Users.FirstOrDefault(u => u.Id == id);
-                }
+                user = context.Users.FirstOrDefault(u => u.Id == id);
             }
 
             return user;
         }
 
-        public static AccountInformationVm GetAccountInformation(string token)
+        public static User GetUserByToken(string token)
         {
-            var user = GetUserByToken(token);
-
-            if (user == null)
-            {
-                return null;
-            }
-
             using (var context = new BookStoreContext())
             {
-                var userWithinContext = context.Users.FirstOrDefault(us => us.Id == user.Id);
+                User user = null;
 
-                if (userWithinContext == null)
+                if (token!= null && token.Contains(KeyLast) && token.Contains(KeyStart))
+                {
+                    var id = Convert.ToInt32(token.Replace(KeyStart, "").Replace(KeyLast, ""));
+
+                    user = context.Users.FirstOrDefault(u => u.Id == id);
+                }
+
+                return user;
+            }
+        }
+
+        public static AccountInformationVm GetAccountInformation(string token)
+        {
+            using (var context = new BookStoreContext())
+            {
+                var user = GetUserByToken(token, context);
+
+                if (user == null)
                 {
                     return null;
                 }
 
-                var userVm = new OrderUserVm(userWithinContext);
-                var userOrders = userWithinContext.Orders.ToList();
+                var userVm = new OrderUserVm(user);
+                var userOrders = user.Orders.ToList();
 
                 var accountOrderInformationVmList = new List<AccountOrderInformationVm>();
 
@@ -155,6 +157,11 @@ namespace BookStore.Domain.DataManipulations
                 Surname = userVm.Surname,
                 UserName = userVm.UserName
             };
+        }
+
+        private static string GetTokenById(int id)
+        {
+            return KeyStart + id + KeyLast;
         }
     }
 }

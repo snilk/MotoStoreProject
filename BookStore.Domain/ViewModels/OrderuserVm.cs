@@ -17,6 +17,7 @@ namespace BookStore.Domain.ViewModels
             Email = user.Email;
             Phone = user.Phone;
             RegistrationDate = user.RegistrationDate;
+            BonusPoints = user.BonusPoints;
         }
         public string Name { get; set; }
 
@@ -27,5 +28,7 @@ namespace BookStore.Domain.ViewModels
         public string Email { get; set; }
 
         public DateTime RegistrationDate { get; set; }
+
+        public int BonusPoints { get; set; }
     }
 }

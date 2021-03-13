@@ -12,5 +12,9 @@
         }
 
         public bool Success { get; set; }
+
+        public string SystemDescription { get; set; }
+
+        public string Description { get; set; }
     }
 }

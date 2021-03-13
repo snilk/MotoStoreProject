@@ -17,6 +17,12 @@ namespace BookStore.Domain.EF
         public bool? IsAdmin { get; set; }
         public string Email { get; set; }
 
+        public int BonusPoints { get; set; }
+
+        public string Department { get; set; }
+
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<Survey> Surveys { get; set; }
     }
 }

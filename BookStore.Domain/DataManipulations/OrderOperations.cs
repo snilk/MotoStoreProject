@@ -26,18 +26,11 @@ namespace BookStore.Domain.DataManipulations
 
         public static SuccessVm AddNewOrder(OrderInfoVm orderInfoVm)
         {
-            var user = UsersOperations.GetUserByToken(orderInfoVm.Token);
-
-            if (user == null)
-            {
-                return new SuccessVm(false);
-            }
-
             using (var context = new BookStoreContext())
             {
-                var userWithinContext = context.Users.FirstOrDefault(us => us.Id == user.Id);
+                var user = UsersOperations.GetUserByToken(orderInfoVm.Token, context);
 
-                if (userWithinContext == null)
+                if (user == null)
                 {
                     return new SuccessVm(false);
                 }
@@ -53,7 +46,7 @@ namespace BookStore.Domain.DataManipulations
                 var order = new Order
                 {
                     Address = orderInfoVm.Address,
-                    User = userWithinContext,
+                    User = user,
                     ShopInformation = shopInformation,
                     Book = book,
                     OrderDate = DateTime.Now,

@@ -22,7 +22,7 @@ namespace BookStore.Domain.DataManipulations
 
                 var books = context.Books.Where(book =>
                     book.Section.Equals(make, StringComparison.OrdinalIgnoreCase));
-
+                
                 return books.ToList().Select(book => new BookVm(book)).ToList();
             }
         }

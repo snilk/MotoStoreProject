@@ -15,6 +15,8 @@ namespace BookStore.Domain.EF
         public virtual DbSet<ShopInformation> ShopInformations { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
+        public virtual DbSet<Survey> Surveys { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //throw new UnintentionalCodeFirstException();
